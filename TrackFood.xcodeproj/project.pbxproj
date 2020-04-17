@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,9 +13,15 @@
 		886DF54B24492DBB006BC63E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 886DF54924492DBB006BC63E /* Main.storyboard */; };
 		886DF54D24492DBD006BC63E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 886DF54C24492DBD006BC63E /* Assets.xcassets */; };
 		886DF55024492DBD006BC63E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 886DF54E24492DBD006BC63E /* LaunchScreen.storyboard */; };
+		886DF55824492FC8006BC63E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 886DF55724492FC8006BC63E /* GoogleService-Info.plist */; };
+		886DF55A244932EA006BC63E /* MenuPunkt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886DF559244932EA006BC63E /* MenuPunkt.swift */; };
+		886DF55C24493335006BC63E /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886DF55B24493335006BC63E /* ModelData.swift */; };
+		886DF55E24493A59006BC63E /* MenuPointCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886DF55D24493A59006BC63E /* MenuPointCell.swift */; };
+		A4147A756AAD723D52F9F70F /* Pods_TrackFood.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C31B6CE83A454436247B9D26 /* Pods_TrackFood.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		727839F3C3FF56E8349E0CC4 /* Pods-TrackFood.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackFood.debug.xcconfig"; path = "Target Support Files/Pods-TrackFood/Pods-TrackFood.debug.xcconfig"; sourceTree = "<group>"; };
 		886DF54024492DBB006BC63E /* TrackFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		886DF54324492DBB006BC63E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		886DF54524492DBB006BC63E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +30,12 @@
 		886DF54C24492DBD006BC63E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		886DF54F24492DBD006BC63E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		886DF55124492DBD006BC63E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		886DF55724492FC8006BC63E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		886DF559244932EA006BC63E /* MenuPunkt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPunkt.swift; sourceTree = "<group>"; };
+		886DF55B24493335006BC63E /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		886DF55D24493A59006BC63E /* MenuPointCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPointCell.swift; sourceTree = "<group>"; };
+		C31B6CE83A454436247B9D26 /* Pods_TrackFood.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrackFood.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9D47D5C009AEB3005C9B39C /* Pods-TrackFood.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackFood.release.xcconfig"; path = "Target Support Files/Pods-TrackFood/Pods-TrackFood.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4147A756AAD723D52F9F70F /* Pods_TrackFood.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +55,8 @@
 			children = (
 				886DF54224492DBB006BC63E /* TrackFood */,
 				886DF54124492DBB006BC63E /* Products */,
+				D5E9AE9C2C44E74383A9F456 /* Pods */,
+				9E72D0F26B83904671A1B3FE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +71,7 @@
 		886DF54224492DBB006BC63E /* TrackFood */ = {
 			isa = PBXGroup;
 			children = (
+				886DF55724492FC8006BC63E /* GoogleService-Info.plist */,
 				886DF54324492DBB006BC63E /* AppDelegate.swift */,
 				886DF54524492DBB006BC63E /* SceneDelegate.swift */,
 				886DF54724492DBB006BC63E /* ViewController.swift */,
@@ -63,8 +79,28 @@
 				886DF54C24492DBD006BC63E /* Assets.xcassets */,
 				886DF54E24492DBD006BC63E /* LaunchScreen.storyboard */,
 				886DF55124492DBD006BC63E /* Info.plist */,
+				886DF559244932EA006BC63E /* MenuPunkt.swift */,
+				886DF55B24493335006BC63E /* ModelData.swift */,
+				886DF55D24493A59006BC63E /* MenuPointCell.swift */,
 			);
 			path = TrackFood;
+			sourceTree = "<group>";
+		};
+		9E72D0F26B83904671A1B3FE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C31B6CE83A454436247B9D26 /* Pods_TrackFood.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D5E9AE9C2C44E74383A9F456 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				727839F3C3FF56E8349E0CC4 /* Pods-TrackFood.debug.xcconfig */,
+				D9D47D5C009AEB3005C9B39C /* Pods-TrackFood.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +110,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 886DF55424492DBD006BC63E /* Build configuration list for PBXNativeTarget "TrackFood" */;
 			buildPhases = (
+				9808C9A504942F9FAE936345 /* [CP] Check Pods Manifest.lock */,
 				886DF53C24492DBB006BC63E /* Sources */,
 				886DF53D24492DBB006BC63E /* Frameworks */,
 				886DF53E24492DBB006BC63E /* Resources */,
+				00EBE75166AE5AE75617E7B8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				886DF55024492DBD006BC63E /* LaunchScreen.storyboard in Resources */,
+				886DF55824492FC8006BC63E /* GoogleService-Info.plist in Resources */,
 				886DF54D24492DBD006BC63E /* Assets.xcassets in Resources */,
 				886DF54B24492DBB006BC63E /* Main.storyboard in Resources */,
 			);
@@ -133,12 +172,57 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		00EBE75166AE5AE75617E7B8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TrackFood/Pods-TrackFood-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TrackFood/Pods-TrackFood-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TrackFood/Pods-TrackFood-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9808C9A504942F9FAE936345 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TrackFood-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		886DF53C24492DBB006BC63E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				886DF54824492DBB006BC63E /* ViewController.swift in Sources */,
+				886DF55A244932EA006BC63E /* MenuPunkt.swift in Sources */,
+				886DF55C24493335006BC63E /* ModelData.swift in Sources */,
+				886DF55E24493A59006BC63E /* MenuPointCell.swift in Sources */,
 				886DF54424492DBB006BC63E /* AppDelegate.swift in Sources */,
 				886DF54624492DBB006BC63E /* SceneDelegate.swift in Sources */,
 			);
@@ -282,11 +366,13 @@
 		};
 		886DF55524492DBD006BC63E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 727839F3C3FF56E8349E0CC4 /* Pods-TrackFood.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CMCESWENEQ;
 				INFOPLIST_FILE = TrackFood/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -300,11 +386,13 @@
 		};
 		886DF55624492DBD006BC63E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D9D47D5C009AEB3005C9B39C /* Pods-TrackFood.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CMCESWENEQ;
 				INFOPLIST_FILE = TrackFood/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
