@@ -1,29 +1,25 @@
 //
-//  ViewController.swift
+//  LebensmittelTab.swift
 //  TrackFood
 //
 //  Created by Alpay Kücük on 17.04.20.
 //  Copyright © 2020 Alpay Kücük. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
+class LebensmittelTab: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
 
-    @IBOutlet weak var menucv: UICollectionView!
+    @IBOutlet weak var lebensmittelcv: UICollectionView!
+    
     let modeldata = ModelData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        menucv.delegate = self
-        menucv.dataSource = self
+        lebensmittelcv.delegate = self
+        lebensmittelcv.dataSource = self
         hideKeyboardWhenTappedAround()
-    }
-    
-    @IBAction func logout(_ sender: Any) {
-        dismiss(animated: true) {
-            
-        }
     }
     
     
@@ -35,12 +31,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
       
       
       func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return modeldata.main_menupoints.count
+        return modeldata.lebensmittel_menupoints.count
       }
       
       func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let currentMenuPoint = modeldata.main_menupoints[indexPath.item]
-          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "menupointcell", for: indexPath) as! MenuPointCell
+        let currentMenuPoint = modeldata.lebensmittel_menupoints[indexPath.item]
+          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "lebensmittelpointcell", for: indexPath) as! MenuPointCell
             cell.bild.image = currentMenuPoint.bild
           return cell
           
@@ -48,13 +44,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
       
       
       func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let currentMenuPoint = modeldata.main_menupoints[indexPath.item]
+        let currentMenuPoint = modeldata.lebensmittel_menupoints[indexPath.item]
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
         let newViewController: UIViewController?
         switch currentMenuPoint.name {
-        case "Lebensmittel":
-            newViewController = storyBoard.instantiateViewController(withIdentifier: "lebensmitteltab") as! LebensmittelTab
+        case "Liste ansehen":
+            newViewController = storyBoard.instantiateViewController(withIdentifier: "listeansehentab") as! ListeAnsehenTab
+            break
+        case "Neue Lieferung":
+            newViewController = storyBoard.instantiateViewController(withIdentifier: "neuelieferungtab") as! NeueLieferungTab
             break
         default:
             newViewController = storyBoard.instantiateViewController(withIdentifier: "lebensmitteltab") as! LebensmittelTab
@@ -68,15 +67,3 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
 }
 
-// Put this piece of code anywhere you like
-extension UIViewController {
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-}

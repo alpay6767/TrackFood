@@ -72,11 +72,13 @@ PODS:
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
+  - TextFieldEffects (1.6.0)
 
 DEPENDENCIES:
   - Firebase
   - Firebase/Analytics
   - FirebaseDatabase
+  - TextFieldEffects
 
 SPEC REPOS:
   trunk:
@@ -94,6 +96,7 @@ SPEC REPOS:
     - GoogleUtilities
     - leveldb-library
     - nanopb
+    - TextFieldEffects
 
 SPEC CHECKSUMS:
   Firebase: 0219bb4782eb1406f1b9b0628a2e625484ce910d
@@ -110,7 +113,8 @@ SPEC CHECKSUMS:
   GoogleUtilities: 29bd0d8f850efbd28cff6d99e8b7da1f8d236bcf
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
 
-PODFILE CHECKSUM: a6f9fa6b3f363c28a1ca668f9d364ff751a872ba
+PODFILE CHECKSUM: f9987c48820ab03c1cff8c0a32d831e1dd3fa4bc
 
 COCOAPODS: 1.8.4
