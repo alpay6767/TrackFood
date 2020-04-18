@@ -35,5 +35,27 @@ class Lizenz {
         self.filialenid = value!["filialenid"] as? String
         self.ablaufdatum = value!["ablaufdatum"] as? String
     }
+    
+    
+    func updateLizenze() {
+        var dataComponent = DateComponents()
+        let currentDate = Date()
+        dataComponent.year = 1
+        let neuesAblaufDatum = Calendar.current.date(byAdding: dataComponent, to: currentDate)
+        
+        self.ablaufdatum = neuesAblaufDatum!.day + "." + neuesAblaufDatum!.month + "." + neuesAblaufDatum!.year
+        let ref = Database.database().reference()
+        ref.child("Lizenzen").child(id!).child("ablaufdatum").setValue(self.ablaufdatum)
+    }
+    
+    func updateAblaufDatum(snapshot: DataSnapshot) {
+        let value = snapshot.value as? String
+        self.ablaufdatum = value!
+    }
+    
+    func updateLizenzcode(snapshot: DataSnapshot) {
+        let value = snapshot.value as? String
+        self.lizenzcode = value!
+    }
 
 }

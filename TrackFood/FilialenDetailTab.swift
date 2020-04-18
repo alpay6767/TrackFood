@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import FirebaseDatabase
+import AZDialogView
 
 class FilialenDetailTab: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
     
@@ -29,6 +31,10 @@ class FilialenDetailTab: UIViewController, UICollectionViewDelegate, UICollectio
         anschrift.text = (FilialenDetailTab.currentFiliale?.name)! + " " + (FilialenDetailTab.currentFiliale?.address)! + " " + (FilialenDetailTab.currentFiliale?.city)!
         lizenzcode.text = FilialenDetailTab.currentFiliale?.lizenz?.lizenzcode
         ablaufdatum.text = FilialenDetailTab.currentFiliale?.lizenz?.ablaufdatum
+        
+        
+        listenToLizenzcode()
+        listenToAblaufDatum()
     }
     
     
@@ -54,24 +60,101 @@ class FilialenDetailTab: UIViewController, UICollectionViewDelegate, UICollectio
       
       func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let currentMenuPoint = modeldata.filialendetails_menupoints[indexPath.item]
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
-        let newViewController: UIViewController?
         switch currentMenuPoint.name {
-        case "Filialen":
-            newViewController = storyBoard.instantiateViewController(withIdentifier: "filialenverwaltentab") as! FilialenVerwaltenTab
+        case "Lizenzerneuern":
+            askAblaufdatumErneuern()
             break
-        case "Finanzen":
-            newViewController = storyBoard.instantiateViewController(withIdentifier: "neuelieferungtab") as! NeueLieferungTab
+        case "Codeerneuern":
+            askLizenzCodeErneuern()
             break
         default:
-            newViewController = storyBoard.instantiateViewController(withIdentifier: "lebensmitteltab") as! LebensmittelTab
+            print("Default")
             break
         }
         
-        self.present(newViewController!, animated: true, completion: nil)
       }
+    
+    
+    
+    
+    func lizenzErneuern() {
+        FilialenDetailTab.currentFiliale?.lizenz?.updateLizenze()
+    }
 
+    
+    func codeErneuern() {
+        
+    }
+    
+    //DB Methoden:
+    func listenToAblaufDatum() {
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        ref.child("Lizenzen").child((FilialenDetailTab.currentFiliale?.lizenz!.id)!).child("ablaufdatum").observe(.value) { snapshot in
+            FilialenDetailTab.currentFiliale?.lizenz?.updateAblaufDatum(snapshot: snapshot)
+            self.ablaufdatum.text = FilialenDetailTab.currentFiliale?.lizenz?.ablaufdatum
+        }
+    }
+    
+    func listenToLizenzcode() {
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        ref.child("Lizenzen").child((FilialenDetailTab.currentFiliale?.lizenz!.id)!).child("lizenzcode").observe(.value) { snapshot in
+            FilialenDetailTab.currentFiliale?.lizenz?.updateLizenzcode(snapshot: snapshot)
+            self.lizenzcode.text = FilialenDetailTab.currentFiliale?.lizenz?.lizenzcode
+        }
+    }
+    
+    func askLizenzCodeErneuern() {
+        let dialog = AZDialogViewController(title: "Bist du sicher?", message: "Willst du den Lizenzcode wirklich erneuern?")
+        dialog.titleColor = .black
+        dialog.messageColor = .black
+        dialog.alertBackgroundColor = .white
+        dialog.dismissDirection = .bottom
+        dialog.dismissWithOutsideTouch = true
+        dialog.showSeparator = true
+        dialog.rubberEnabled = true
+        dialog.blurBackground = false
+        dialog.blurEffectStyle = .light
+        dialog.imageHandler = { (imageView) in
+            imageView.image = UIImage(named: "asklogo")
+                
+               imageView.contentMode = .scaleAspectFill
+               return true //must return true, otherwise image won't show.
+        }
+        
+        dialog.addAction(AZDialogAction(title: "Erneuern") { (dialog) -> (Void) in
+            self.codeErneuern()
+            dialog.dismiss()
+        })
+        dialog.show(in: self)
+    }
+    
+    func askAblaufdatumErneuern() {
+        let dialog = AZDialogViewController(title: "Bist du sicher?", message: "Willst du das Ablaufdatum wirklich erneuern?")
+        dialog.titleColor = .black
+        dialog.messageColor = .black
+        dialog.alertBackgroundColor = .white
+        dialog.dismissDirection = .bottom
+        dialog.dismissWithOutsideTouch = true
+        dialog.showSeparator = true
+        dialog.rubberEnabled = true
+        dialog.blurBackground = false
+        dialog.blurEffectStyle = .light
+        dialog.imageHandler = { (imageView) in
+            imageView.image = UIImage(named: "asklogo")
+                
+               imageView.contentMode = .scaleAspectFill
+               return true //must return true, otherwise image won't show.
+        }
+        
+        dialog.addAction(AZDialogAction(title: "Erneuern") { (dialog) -> (Void) in
+            self.lizenzErneuern()
+            dialog.dismiss()
+        })
+        dialog.show(in: self)
+    }
 
 }
 

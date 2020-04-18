@@ -12,6 +12,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     @IBOutlet weak var menucv: UICollectionView!
     let modeldata = ModelData()
+    static var currentMitarbeiter: Mitarbeiter?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +56,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         switch currentMenuPoint.name {
         case "Lebensmittel":
             newViewController = storyBoard.instantiateViewController(withIdentifier: "lebensmitteltab") as! LebensmittelTab
+            break
+        case "Mein Profil":
+            newViewController = storyBoard.instantiateViewController(withIdentifier: "profiltab") as! ProfilTab
             break
         default:
             newViewController = storyBoard.instantiateViewController(withIdentifier: "lebensmitteltab") as! LebensmittelTab

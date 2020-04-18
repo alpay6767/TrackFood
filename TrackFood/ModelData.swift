@@ -17,6 +17,7 @@ class ModelData {
     var neueLieferung_menupoints = [MenuPunkt]()
     var adminmode_menupoints = [MenuPunkt]()
     var filialendetails_menupoints = [MenuPunkt]()
+    var profile_menupoints = [MenuPunkt]()
     var unternehmen = [Unternehmen]()
     var citys = [String]()
     
@@ -28,6 +29,7 @@ class ModelData {
         neuelieferung()
         adminmode()
         filialendetails()
+        profile()
         
         initUnternehmen()
         initCitys()
@@ -38,11 +40,13 @@ class ModelData {
         let lebensmittel = MenuPunkt(name: "Lebensmittel", bild: UIImage(named: "lebensmittel")!)
         let Toilettenpapier = MenuPunkt(name: "Toilettenpapier", bild: UIImage(named: "toilettenpapier")!)
         let besucher = MenuPunkt(name: "Besucher", bild: UIImage(named: "besucher")!)
+        let meinprofil = MenuPunkt(name: "Mein Profil", bild: UIImage(named: "meinprofil")!)
         
         main_menupoints.append(baldablaufend)
         main_menupoints.append(lebensmittel)
         main_menupoints.append(Toilettenpapier)
         main_menupoints.append(besucher)
+        main_menupoints.append(meinprofil)
         
     }
     
@@ -91,6 +95,11 @@ class ModelData {
         let codeerneuern = MenuPunkt(name: "Codeerneuern", bild: UIImage(named: "codeerneuern")!)
         filialendetails_menupoints.append(lizenzerneuern)
         filialendetails_menupoints.append(codeerneuern)
+    }
+    
+    func profile() {
+        let profillöschen = MenuPunkt(name: "Profil löschen", bild: UIImage(named: "profillöschen")!)
+        profile_menupoints.append(profillöschen)
     }
     
     func initCitys() {

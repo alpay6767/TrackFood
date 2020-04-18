@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import AZDialogView
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,7 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppDelegate.getMitarbeiterFromDB()
         AppDelegate.getLizenzcodesFromDB()
         AppDelegate.getFragenVonDB()
-        mergeLizenzWithFilialen()
+        
+        
         return true
     }
 
@@ -112,7 +114,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
            
        }
        
-       
+    static func fillwithLicenses() {
+        for currentFiliale in AppDelegate.filialenList {
+            var ref: DatabaseReference!
+            ref = Database.database().reference()
+            let newId = ref.child("Lizenzen").childByAutoId().key
+            let shortenId = currentFiliale.id!.prefix(10)
+            let newlicenseCode = currentFiliale.name! + shortenId
+            let newLizenz = Lizenz(id: newId!, lizenzcode: newlicenseCode, filialenid: currentFiliale.id!, ablaufdatum: "31.12.2020")
+            ref.child("Lizenzen").child(newId!).setValue(["id": newLizenz.id!, "lizenzcode": newLizenz.lizenzcode!, "filialenid": newLizenz.filialenid!, "ablaufdatum": newLizenz.ablaufdatum!])
+        }
+    }
        
        
        static func getFilialenFromDatabase() {
@@ -280,7 +292,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        }
     
     
-    func mergeLizenzWithFilialen() {
+    static func mergeLizenzWithFilialen() {
         for currentFiliale in AppDelegate.filialenList {
             for currentLizenz in AppDelegate.lizenzcodes {
                 if currentLizenz.filialenid == currentFiliale.id {
@@ -292,5 +304,104 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+}
+
+
+
+extension UIViewController {
+    
+    func showFailedDialog(message: String) {
+            
+            let dialog = AZDialogViewController(title: "Fehler", message: message)
+            dialog.titleColor = .black
+            dialog.messageColor = .black
+            dialog.alertBackgroundColor = .white
+            dialog.dismissDirection = .bottom
+            dialog.dismissWithOutsideTouch = true
+            dialog.showSeparator = true
+            dialog.rubberEnabled = true
+            dialog.blurBackground = false
+            dialog.blurEffectStyle = .light
+            dialog.imageHandler = { (imageView) in
+                imageView.image = UIImage(named: "failedlogo")
+                    
+                   imageView.contentMode = .scaleAspectFill
+                   return true //must return true, otherwise image won't show.
+            }
+            dialog.show(in: self)
+            
+    }
+    
+    func showSuccessDialog(message: String) {
+            
+            let dialog = AZDialogViewController(title: "OK", message: message)
+            dialog.titleColor = .black
+            dialog.messageColor = .black
+            dialog.alertBackgroundColor = .white
+            dialog.dismissDirection = .bottom
+            dialog.dismissWithOutsideTouch = true
+            dialog.showSeparator = true
+            dialog.rubberEnabled = true
+            dialog.blurBackground = false
+            dialog.blurEffectStyle = .light
+            dialog.imageHandler = { (imageView) in
+                imageView.image = UIImage(named: "erfolglogo")
+                    
+                   imageView.contentMode = .scaleAspectFill
+                   return true //must return true, otherwise image won't show.
+            }
+            dialog.show(in: self)
+            
+    }
+    
+    /*func showAskDialog(buttontext: String, message: String) {
+        let dialog = AZDialogViewController(title: "Bist du sicher?", message: message)
+        dialog.titleColor = .black
+        dialog.messageColor = .black
+        dialog.alertBackgroundColor = .white
+        dialog.dismissDirection = .bottom
+        dialog.dismissWithOutsideTouch = true
+        dialog.showSeparator = true
+        dialog.rubberEnabled = true
+        dialog.blurBackground = false
+        dialog.blurEffectStyle = .light
+        dialog.imageHandler = { (imageView) in
+            imageView.image = UIImage(named: "asklogo")
+                
+               imageView.contentMode = .scaleAspectFill
+               return true //must return true, otherwise image won't show.
+        }
+        
+        dialog.addAction(AZDialogAction(title: buttontext) { (dialog) -> (Void) in
+            
+            dialog.dismiss()
+        })
+        dialog.show(in: self)
+    }
+ */
+    
+    
+    
+}
+
+
+extension Date {
+    var month: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM"
+        return dateFormatter.string(from: self)
+    }
+    
+    var year: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        return dateFormatter.string(from: self)
+    }
+    
+    var day: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd"
+        return dateFormatter.string(from: self)
+    }
 }
 
