@@ -14,15 +14,27 @@
 		886DF54B24492DBB006BC63E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 886DF54924492DBB006BC63E /* Main.storyboard */; };
 		886DF54D24492DBD006BC63E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 886DF54C24492DBD006BC63E /* Assets.xcassets */; };
 		886DF55024492DBD006BC63E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 886DF54E24492DBD006BC63E /* LaunchScreen.storyboard */; };
-		886DF55824492FC8006BC63E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 886DF55724492FC8006BC63E /* GoogleService-Info.plist */; };
 		886DF55A244932EA006BC63E /* MenuPunkt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886DF559244932EA006BC63E /* MenuPunkt.swift */; };
 		886DF55C24493335006BC63E /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886DF55B24493335006BC63E /* ModelData.swift */; };
 		886DF55E24493A59006BC63E /* MenuPointCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886DF55D24493A59006BC63E /* MenuPointCell.swift */; };
+		88922E49244A647B000C46D1 /* AdminModeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88922E48244A647B000C46D1 /* AdminModeTab.swift */; };
+		88922E4B244A6D33000C46D1 /* FirmenLizenzCheckTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88922E4A244A6D33000C46D1 /* FirmenLizenzCheckTab.swift */; };
+		88922E4D244A6F4D000C46D1 /* Lizenz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88922E4C244A6F4D000C46D1 /* Lizenz.swift */; };
 		88C377EC2449E346004931C1 /* LebensmittelTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C377EB2449E346004931C1 /* LebensmittelTab.swift */; };
 		88C377EE2449F1A5004931C1 /* ListeAnsehenTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C377ED2449F1A5004931C1 /* ListeAnsehenTab.swift */; };
 		88C377F02449F43F004931C1 /* NeueLieferungTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C377EF2449F43F004931C1 /* NeueLieferungTab.swift */; };
 		88C377F2244A1310004931C1 /* Lebensmittel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C377F1244A1310004931C1 /* Lebensmittel.swift */; };
 		88C377F6244A142D004931C1 /* Mitarbeiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C377F5244A142D004931C1 /* Mitarbeiter.swift */; };
+		88E86876244B1BE8006E3BB3 /* Unternehmen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86875244B1BE8006E3BB3 /* Unternehmen.swift */; };
+		88E86878244B1D39006E3BB3 /* FilialenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86877244B1D39006E3BB3 /* FilialenCell.swift */; };
+		88E8687A244B1DA3006E3BB3 /* FilialenVerwaltenTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86879244B1DA3006E3BB3 /* FilialenVerwaltenTab.swift */; };
+		88E8687C244B1E58006E3BB3 /* Filiale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E8687B244B1E58006E3BB3 /* Filiale.swift */; };
+		88E8687E244B1EDB006E3BB3 /* Lieferrung.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E8687D244B1EDB006E3BB3 /* Lieferrung.swift */; };
+		88E86880244B1F0C006E3BB3 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E8687F244B1F0C006E3BB3 /* Person.swift */; };
+		88E86882244B1F6E006E3BB3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88E86881244B1F6E006E3BB3 /* GoogleService-Info.plist */; };
+		88E86884244B2033006E3BB3 /* Berechtigungscode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86883244B2032006E3BB3 /* Berechtigungscode.swift */; };
+		88E86886244B2525006E3BB3 /* Frage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86885244B2525006E3BB3 /* Frage.swift */; };
+		88E86888244B2F1B006E3BB3 /* FilialenDetailTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86887244B2F1B006E3BB3 /* FilialenDetailTab.swift */; };
 		A4147A756AAD723D52F9F70F /* Pods_TrackFood.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C31B6CE83A454436247B9D26 /* Pods_TrackFood.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,15 +49,27 @@
 		886DF54C24492DBD006BC63E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		886DF54F24492DBD006BC63E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		886DF55124492DBD006BC63E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		886DF55724492FC8006BC63E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		886DF559244932EA006BC63E /* MenuPunkt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPunkt.swift; sourceTree = "<group>"; };
 		886DF55B24493335006BC63E /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		886DF55D24493A59006BC63E /* MenuPointCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPointCell.swift; sourceTree = "<group>"; };
+		88922E48244A647B000C46D1 /* AdminModeTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminModeTab.swift; sourceTree = "<group>"; };
+		88922E4A244A6D33000C46D1 /* FirmenLizenzCheckTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirmenLizenzCheckTab.swift; sourceTree = "<group>"; };
+		88922E4C244A6F4D000C46D1 /* Lizenz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lizenz.swift; sourceTree = "<group>"; };
 		88C377EB2449E346004931C1 /* LebensmittelTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LebensmittelTab.swift; sourceTree = "<group>"; };
 		88C377ED2449F1A5004931C1 /* ListeAnsehenTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeAnsehenTab.swift; sourceTree = "<group>"; };
 		88C377EF2449F43F004931C1 /* NeueLieferungTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeueLieferungTab.swift; sourceTree = "<group>"; };
 		88C377F1244A1310004931C1 /* Lebensmittel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lebensmittel.swift; sourceTree = "<group>"; };
 		88C377F5244A142D004931C1 /* Mitarbeiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mitarbeiter.swift; sourceTree = "<group>"; };
+		88E86875244B1BE8006E3BB3 /* Unternehmen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unternehmen.swift; sourceTree = "<group>"; };
+		88E86877244B1D39006E3BB3 /* FilialenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilialenCell.swift; sourceTree = "<group>"; };
+		88E86879244B1DA3006E3BB3 /* FilialenVerwaltenTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilialenVerwaltenTab.swift; sourceTree = "<group>"; };
+		88E8687B244B1E58006E3BB3 /* Filiale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filiale.swift; sourceTree = "<group>"; };
+		88E8687D244B1EDB006E3BB3 /* Lieferrung.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lieferrung.swift; sourceTree = "<group>"; };
+		88E8687F244B1F0C006E3BB3 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		88E86881244B1F6E006E3BB3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		88E86883244B2032006E3BB3 /* Berechtigungscode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Berechtigungscode.swift; sourceTree = "<group>"; };
+		88E86885244B2525006E3BB3 /* Frage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Frage.swift; sourceTree = "<group>"; };
+		88E86887244B2F1B006E3BB3 /* FilialenDetailTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilialenDetailTab.swift; sourceTree = "<group>"; };
 		C31B6CE83A454436247B9D26 /* Pods_TrackFood.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrackFood.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9D47D5C009AEB3005C9B39C /* Pods-TrackFood.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackFood.release.xcconfig"; path = "Target Support Files/Pods-TrackFood/Pods-TrackFood.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,7 +107,8 @@
 		886DF54224492DBB006BC63E /* TrackFood */ = {
 			isa = PBXGroup;
 			children = (
-				886DF55724492FC8006BC63E /* GoogleService-Info.plist */,
+				88E86881244B1F6E006E3BB3 /* GoogleService-Info.plist */,
+				886DF55B24493335006BC63E /* ModelData.swift */,
 				886DF54324492DBB006BC63E /* AppDelegate.swift */,
 				886DF54524492DBB006BC63E /* SceneDelegate.swift */,
 				886DF54724492DBB006BC63E /* ViewController.swift */,
@@ -92,7 +117,6 @@
 				886DF54E24492DBD006BC63E /* LaunchScreen.storyboard */,
 				886DF55124492DBD006BC63E /* Info.plist */,
 				886DF559244932EA006BC63E /* MenuPunkt.swift */,
-				886DF55B24493335006BC63E /* ModelData.swift */,
 				886DF55D24493A59006BC63E /* MenuPointCell.swift */,
 				8806536C2449D93100B6010D /* LoginTab.swift */,
 				88C377EB2449E346004931C1 /* LebensmittelTab.swift */,
@@ -100,6 +124,18 @@
 				88C377EF2449F43F004931C1 /* NeueLieferungTab.swift */,
 				88C377F1244A1310004931C1 /* Lebensmittel.swift */,
 				88C377F5244A142D004931C1 /* Mitarbeiter.swift */,
+				88922E48244A647B000C46D1 /* AdminModeTab.swift */,
+				88922E4A244A6D33000C46D1 /* FirmenLizenzCheckTab.swift */,
+				88922E4C244A6F4D000C46D1 /* Lizenz.swift */,
+				88E8687F244B1F0C006E3BB3 /* Person.swift */,
+				88E8687D244B1EDB006E3BB3 /* Lieferrung.swift */,
+				88E86883244B2032006E3BB3 /* Berechtigungscode.swift */,
+				88E86885244B2525006E3BB3 /* Frage.swift */,
+				88E8687B244B1E58006E3BB3 /* Filiale.swift */,
+				88E86875244B1BE8006E3BB3 /* Unternehmen.swift */,
+				88E86877244B1D39006E3BB3 /* FilialenCell.swift */,
+				88E86879244B1DA3006E3BB3 /* FilialenVerwaltenTab.swift */,
+				88E86887244B2F1B006E3BB3 /* FilialenDetailTab.swift */,
 			);
 			path = TrackFood;
 			sourceTree = "<group>";
@@ -182,7 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				886DF55024492DBD006BC63E /* LaunchScreen.storyboard in Resources */,
-				886DF55824492FC8006BC63E /* GoogleService-Info.plist in Resources */,
+				88E86882244B1F6E006E3BB3 /* GoogleService-Info.plist in Resources */,
 				886DF54D24492DBD006BC63E /* Assets.xcassets in Resources */,
 				886DF54B24492DBB006BC63E /* Main.storyboard in Resources */,
 			);
@@ -237,17 +273,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88E86888244B2F1B006E3BB3 /* FilialenDetailTab.swift in Sources */,
+				88E86886244B2525006E3BB3 /* Frage.swift in Sources */,
+				88E8687A244B1DA3006E3BB3 /* FilialenVerwaltenTab.swift in Sources */,
+				88922E49244A647B000C46D1 /* AdminModeTab.swift in Sources */,
 				88C377F6244A142D004931C1 /* Mitarbeiter.swift in Sources */,
 				886DF54824492DBB006BC63E /* ViewController.swift in Sources */,
 				886DF55A244932EA006BC63E /* MenuPunkt.swift in Sources */,
 				88C377F02449F43F004931C1 /* NeueLieferungTab.swift in Sources */,
+				88E86876244B1BE8006E3BB3 /* Unternehmen.swift in Sources */,
+				88922E4B244A6D33000C46D1 /* FirmenLizenzCheckTab.swift in Sources */,
 				886DF55C24493335006BC63E /* ModelData.swift in Sources */,
 				886DF55E24493A59006BC63E /* MenuPointCell.swift in Sources */,
 				8806536D2449D93100B6010D /* LoginTab.swift in Sources */,
+				88E86878244B1D39006E3BB3 /* FilialenCell.swift in Sources */,
 				886DF54424492DBB006BC63E /* AppDelegate.swift in Sources */,
+				88E86884244B2033006E3BB3 /* Berechtigungscode.swift in Sources */,
+				88922E4D244A6F4D000C46D1 /* Lizenz.swift in Sources */,
 				886DF54624492DBB006BC63E /* SceneDelegate.swift in Sources */,
 				88C377EE2449F1A5004931C1 /* ListeAnsehenTab.swift in Sources */,
 				88C377F2244A1310004931C1 /* Lebensmittel.swift in Sources */,
+				88E8687C244B1E58006E3BB3 /* Filiale.swift in Sources */,
+				88E86880244B1F0C006E3BB3 /* Person.swift in Sources */,
+				88E8687E244B1EDB006E3BB3 /* Lieferrung.swift in Sources */,
 				88C377EC2449E346004931C1 /* LebensmittelTab.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

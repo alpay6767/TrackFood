@@ -9,6 +9,7 @@ target 'TrackFood' do
   pod 'Firebase/Analytics'
   pod 'Firebase'
   pod 'FirebaseDatabase'
-  pod 'TextFieldEffects'
-
+  pod 'UICircularProgressRing'
+  pod 'AZDialogView'
+  
 end
