@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import AZDialogView
+import BarcodeScanner
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static var lizenzcodes = [Lizenz]()
     static var mitarbeiterlist = [Mitarbeiter]()
     static var fragen = [Frage]()
+    static var lebensmittellist = [Lebensmittel]()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -26,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppDelegate.getMitarbeiterFromDB()
         AppDelegate.getLizenzcodesFromDB()
         AppDelegate.getFragenVonDB()
-        
+        AppDelegate.getLebensmittelVonDB()
         
         return true
     }
@@ -113,6 +115,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
            }
            
        }
+    
+    static func getLebensmittelVonDB() {
+        
+        AppDelegate.lebensmittellist.removeAll()
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        ref.child("Lebensmittel").observe(.value) { snapshot in
+            AppDelegate.lebensmittellist.removeAll()
+            for child_1 in snapshot.children {
+                let child_ds = child_1 as! DataSnapshot
+                for child_2 in child_ds.children {
+                     if let snapshot = child_2 as? DataSnapshot,
+                         let card = Lebensmittel(snapshot: snapshot) {
+                         AppDelegate.lebensmittellist.append(card)
+                     }
+                }
+            }
+        }
+        
+    }
        
     static func fillwithLicenses() {
         for currentFiliale in AppDelegate.filialenList {
@@ -272,6 +294,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
            }
            return Mitarbeiter()
        }
+    
+    
+    static func schauObLebensmittelGefunden(barcode: String) -> Bool {
+        for currentLebensmittel in lebensmittellist {
+            if currentLebensmittel.barcode == barcode {
+                return true
+            }
+         }
+        return false
+    }
+    
+    static func sucheLebensmittelInListe(barcode: String) -> Lebensmittel {
+        for currentLebensmittel in lebensmittellist {
+            if currentLebensmittel.barcode == barcode {
+                return currentLebensmittel
+            }
+         }
+        return Lebensmittel()
+    }
        
        static func schauObMitarbeiterCodeGefunden(mitarbeitercode: String) -> Bool {
            for currentUser in mitarbeiterlist {
@@ -290,6 +331,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
            }
            return false
        }
+    
+    static func schauObProduktBereitsVorhanden(lizenzcode: String) -> Bool {
+        for currentLebensmittel in lizenzcodes {
+            if currentLebensmittel.lizenzcode == lizenzcode {
+                return true
+            }
+        }
+        return false
+    }
     
     
     static func mergeLizenzWithFilialen() {
@@ -405,3 +455,10 @@ extension Date {
     }
 }
 
+
+extension ViewController: BarcodeScannerCodeDelegate {
+  func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
+    print(code)
+    controller.reset()
+  }
+}

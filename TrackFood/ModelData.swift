@@ -20,6 +20,7 @@ class ModelData {
     var profile_menupoints = [MenuPunkt]()
     var unternehmen = [Unternehmen]()
     var citys = [String]()
+    var kategories = [String]()
     
     
     init() {
@@ -33,6 +34,7 @@ class ModelData {
         
         initUnternehmen()
         initCitys()
+        initkategories()
     }
     
     func main(){
@@ -51,12 +53,14 @@ class ModelData {
     }
     
     func lebensmittel(){
-          let listeansehen = MenuPunkt(name: "Liste ansehen", bild: UIImage(named: "listeansehen")!)
-          let neuelieferung = MenuPunkt(name: "Neue Lieferung", bild: UIImage(named: "neuelieferung")!)
+        let listeansehen = MenuPunkt(name: "Liste ansehen", bild: UIImage(named: "listeansehen")!)
+        let neuelieferung = MenuPunkt(name: "Neue Lieferung", bild: UIImage(named: "neuelieferung")!)
+        let lebensmittelhinzufügen = MenuPunkt(name: "Lebensmittel hinzufügen", bild: UIImage(named: "lebensmittelhinzufügen")!)
     
-          lebensmittel_menupoints.append(listeansehen)
-          lebensmittel_menupoints.append(neuelieferung)
-      }
+        lebensmittel_menupoints.append(listeansehen)
+        lebensmittel_menupoints.append(neuelieferung)
+        lebensmittel_menupoints.append(lebensmittelhinzufügen)
+    }
     
     func listeansehen(){
         let backwaren = MenuPunkt(name: "Backwaren", bild: UIImage(named: "backwaren")!)
@@ -253,6 +257,28 @@ class ModelData {
         
         
         
+    }
+    
+    
+    func initkategories() {
+        
+        let kategorie1 = "Backwaren"
+        let kategorie2 = "Obst"
+        let kategorie3 = "Gemüse"
+        let kategorie4 = "Fleisch & Fisch"
+        let kategorie5 = "Milchprodukte"
+        let kategorie6 = "Teigwaren"
+        let kategorie7 = "Sonstiges"
+        let kategorie8 = "Getränke"
+        
+        kategories.append(kategorie1)
+        kategories.append(kategorie2)
+        kategories.append(kategorie3)
+        kategories.append(kategorie4)
+        kategories.append(kategorie5)
+        kategories.append(kategorie6)
+        kategories.append(kategorie7)
+        kategories.append(kategorie8)
     }
     
     

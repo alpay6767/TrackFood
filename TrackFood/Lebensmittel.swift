@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import FirebaseDatabase
 
 class Lebensmittel {
     
@@ -18,6 +19,20 @@ class Lebensmittel {
     
     init(id: String, bezeichnung: String, barcode: String, ablaufdatum: String) {
         self.id = id
+        self.bezeichnung = bezeichnung
+        self.barcode = barcode
+        self.ablaufdatum = ablaufdatum
     }
     
+    init() {
+        
+    }
+    
+    init?(snapshot: DataSnapshot) {
+        let value = snapshot.value as? [String : AnyObject]
+        self.id = value!["id"] as? String
+        self.bezeichnung = value!["bezeichnung"] as? String
+        self.barcode = value!["barcode"] as? String
+        self.ablaufdatum = (value!["ablaufdatum"] as? String)!
+    }
 }

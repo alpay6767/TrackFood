@@ -971,18 +971,97 @@ Falls nicht, spreche mit deinem Filial- oder Teamleiter</string>
             </objects>
             <point key="canvasLocation" x="2660.8695652173915" y="847.76785714285711"/>
         </scene>
+        <!--Lebensmittel Hinzufügen Tab-->
+        <scene sceneID="foB-1m-kPh">
+            <objects>
+                <viewController storyboardIdentifier="lebensmittelhinzufügentab" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ckx-LT-r3y" customClass="LebensmittelHinzufügenTab" customModule="TrackFood" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VY9-Tn-Y0t">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wähle oder mache ein Foto vom Produkt" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Tw-IV-PYT">
+                                <rect key="frame" x="52" y="66" width="310" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Bezeichnung" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" background="textfieldbackground" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="A1i-vb-qDa">
+                                <rect key="frame" x="92.5" y="322" width="229" height="53"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="A1i-vb-qDa" secondAttribute="height" multiplier="229:53" id="8pH-EP-SgB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="drm-YL-6iD">
+                                <rect key="frame" x="0.0" y="385" width="414" height="216"/>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LMt-2W-m5d">
+                                <rect key="frame" x="106.5" y="601" width="201" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="LMt-2W-m5d" secondAttribute="height" multiplier="201:52" id="oYP-6g-ovb"/>
+                                </constraints>
+                                <state key="normal" image="hinzufügenbtn"/>
+                                <connections>
+                                    <action selector="hinzufügen:" destination="Ckx-LT-r3y" eventType="touchUpInside" id="Gfg-cO-LtV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTv-Lg-WD9">
+                                <rect key="frame" x="104.5" y="96.5" width="205" height="205"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="bTv-Lg-WD9" secondAttribute="height" multiplier="1:1" id="HTM-ke-yDt"/>
+                                </constraints>
+                                <state key="normal" image="selectphotobtn"/>
+                                <connections>
+                                    <action selector="selectphoto:" destination="Ckx-LT-r3y" eventType="touchUpInside" id="Su2-yP-50q"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.88" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="drm-YL-6iD" firstAttribute="top" secondItem="A1i-vb-qDa" secondAttribute="bottom" constant="10" id="3Ik-n7-0TH"/>
+                            <constraint firstItem="1Tw-IV-PYT" firstAttribute="width" secondItem="VY9-Tn-Y0t" secondAttribute="width" multiplier="0.748792" id="55c-t1-5UF"/>
+                            <constraint firstItem="bTv-Lg-WD9" firstAttribute="top" secondItem="1Tw-IV-PYT" secondAttribute="bottom" constant="10" id="Dod-HH-RvF"/>
+                            <constraint firstItem="drm-YL-6iD" firstAttribute="leading" secondItem="SLo-EZ-xqk" secondAttribute="leading" id="PV7-8f-2Sc"/>
+                            <constraint firstItem="bTv-Lg-WD9" firstAttribute="centerX" secondItem="1Tw-IV-PYT" secondAttribute="centerX" id="XZm-ox-5fa"/>
+                            <constraint firstItem="A1i-vb-qDa" firstAttribute="top" secondItem="bTv-Lg-WD9" secondAttribute="bottom" constant="20.5" id="YVm-Br-F3E"/>
+                            <constraint firstItem="LMt-2W-m5d" firstAttribute="top" secondItem="drm-YL-6iD" secondAttribute="bottom" id="eXM-kr-rC6"/>
+                            <constraint firstItem="drm-YL-6iD" firstAttribute="centerX" secondItem="A1i-vb-qDa" secondAttribute="centerX" id="enL-le-Ztg"/>
+                            <constraint firstItem="SLo-EZ-xqk" firstAttribute="trailing" secondItem="drm-YL-6iD" secondAttribute="trailing" id="nzq-M6-ZAg"/>
+                            <constraint firstItem="1Tw-IV-PYT" firstAttribute="centerX" secondItem="SLo-EZ-xqk" secondAttribute="centerX" id="pD6-q9-nL7"/>
+                            <constraint firstItem="1Tw-IV-PYT" firstAttribute="top" secondItem="SLo-EZ-xqk" secondAttribute="top" constant="22" id="tqV-zU-TVh"/>
+                            <constraint firstItem="LMt-2W-m5d" firstAttribute="width" secondItem="VY9-Tn-Y0t" secondAttribute="width" multiplier="0.485507" id="uwf-rn-idf"/>
+                            <constraint firstItem="LMt-2W-m5d" firstAttribute="centerX" secondItem="drm-YL-6iD" secondAttribute="centerX" id="vJ0-Wj-pcE"/>
+                            <constraint firstItem="A1i-vb-qDa" firstAttribute="centerX" secondItem="bTv-Lg-WD9" secondAttribute="centerX" id="xNI-JW-Mb8"/>
+                            <constraint firstItem="A1i-vb-qDa" firstAttribute="width" secondItem="VY9-Tn-Y0t" secondAttribute="width" multiplier="0.55314" id="xeN-Wt-3V8"/>
+                            <constraint firstItem="bTv-Lg-WD9" firstAttribute="width" secondItem="VY9-Tn-Y0t" secondAttribute="width" multiplier="0.495169" id="yqf-IK-SId"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="SLo-EZ-xqk"/>
+                    </view>
+                    <connections>
+                        <outlet property="bezeichnungtv" destination="A1i-vb-qDa" id="n2l-i6-dPO"/>
+                        <outlet property="kategoriepicker" destination="drm-YL-6iD" id="ZDu-4L-eHd"/>
+                        <outlet property="selectphotobtn" destination="bTv-Lg-WD9" id="OVo-Pe-D5d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s6N-rj-szr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3434.7826086956525" y="847.76785714285711"/>
+        </scene>
     </scenes>
     <resources>
         <image name="baldablaufen" width="448.5" height="448.5"/>
         <image name="finanzen" width="448.5" height="448.5"/>
         <image name="fleisch" width="448.5" height="448.5"/>
         <image name="headerbg" width="5184" height="3397"/>
+        <image name="hinzufügenbtn" width="912" height="240.5"/>
         <image name="listeansehen" width="448.5" height="448.5"/>
         <image name="loginbtn" width="912" height="240.5"/>
         <image name="logoheader" width="488" height="329"/>
         <image name="logoutbtn" width="403.5" height="403.5"/>
         <image name="registrierenbtn" width="912" height="240.5"/>
         <image name="scannen" width="448.5" height="448.5"/>
+        <image name="selectphotobtn" width="445" height="445"/>
         <image name="textfieldbackground" width="819" height="211"/>
         <image name="weiterbtn" width="912" height="240.5"/>
     </resources>

@@ -11,5 +11,6 @@ target 'TrackFood' do
   pod 'FirebaseDatabase'
   pod 'UICircularProgressRing'
   pod 'AZDialogView'
+  pod 'BarcodeScanner'
   
 end
