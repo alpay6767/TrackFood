@@ -24,6 +24,8 @@
 		88922E4D244A6F4D000C46D1 /* Lizenz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88922E4C244A6F4D000C46D1 /* Lizenz.swift */; };
 		88ABF9B9244BC95F006E13F4 /* LebensmittelHinzufügenTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88ABF9B8244BC95F006E13F4 /* LebensmittelHinzufügenTab.swift */; };
 		88ABF9BB244BD09F006E13F4 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88ABF9BA244BD09F006E13F4 /* ImagePicker.swift */; };
+		88BF920D244C6C1000E5EE6B /* LebensmittelSearchTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BF920C244C6C1000E5EE6B /* LebensmittelSearchTab.swift */; };
+		88BF920F244C6D7000E5EE6B /* LebensmittelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BF920E244C6D7000E5EE6B /* LebensmittelCell.swift */; };
 		88C377EC2449E346004931C1 /* LebensmittelTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C377EB2449E346004931C1 /* LebensmittelTab.swift */; };
 		88C377EE2449F1A5004931C1 /* ListeAnsehenTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C377ED2449F1A5004931C1 /* ListeAnsehenTab.swift */; };
 		88C377F02449F43F004931C1 /* NeueLieferungTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C377EF2449F43F004931C1 /* NeueLieferungTab.swift */; };
@@ -63,6 +65,8 @@
 		88922E4C244A6F4D000C46D1 /* Lizenz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lizenz.swift; sourceTree = "<group>"; };
 		88ABF9B8244BC95F006E13F4 /* LebensmittelHinzufügenTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LebensmittelHinzufügenTab.swift"; sourceTree = "<group>"; };
 		88ABF9BA244BD09F006E13F4 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		88BF920C244C6C1000E5EE6B /* LebensmittelSearchTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LebensmittelSearchTab.swift; sourceTree = "<group>"; };
+		88BF920E244C6D7000E5EE6B /* LebensmittelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LebensmittelCell.swift; sourceTree = "<group>"; };
 		88C377EB2449E346004931C1 /* LebensmittelTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LebensmittelTab.swift; sourceTree = "<group>"; };
 		88C377ED2449F1A5004931C1 /* ListeAnsehenTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeAnsehenTab.swift; sourceTree = "<group>"; };
 		88C377EF2449F43F004931C1 /* NeueLieferungTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeueLieferungTab.swift; sourceTree = "<group>"; };
@@ -148,6 +152,8 @@
 				88318CEE244B77D000B85FAD /* registerTab.swift */,
 				88318CF0244B877F00B85FAD /* ProfilTab.swift */,
 				88ABF9B8244BC95F006E13F4 /* LebensmittelHinzufügenTab.swift */,
+				88BF920C244C6C1000E5EE6B /* LebensmittelSearchTab.swift */,
+				88BF920E244C6D7000E5EE6B /* LebensmittelCell.swift */,
 			);
 			path = TrackFood;
 			sourceTree = "<group>";
@@ -297,12 +303,14 @@
 				88C377F02449F43F004931C1 /* NeueLieferungTab.swift in Sources */,
 				88E86876244B1BE8006E3BB3 /* Unternehmen.swift in Sources */,
 				88922E4B244A6D33000C46D1 /* FirmenLizenzCheckTab.swift in Sources */,
+				88BF920D244C6C1000E5EE6B /* LebensmittelSearchTab.swift in Sources */,
 				886DF55C24493335006BC63E /* ModelData.swift in Sources */,
 				886DF55E24493A59006BC63E /* MenuPointCell.swift in Sources */,
 				8806536D2449D93100B6010D /* LoginTab.swift in Sources */,
 				88E86878244B1D39006E3BB3 /* FilialenCell.swift in Sources */,
 				886DF54424492DBB006BC63E /* AppDelegate.swift in Sources */,
 				88ABF9BB244BD09F006E13F4 /* ImagePicker.swift in Sources */,
+				88BF920F244C6D7000E5EE6B /* LebensmittelCell.swift in Sources */,
 				88E86884244B2033006E3BB3 /* Berechtigungscode.swift in Sources */,
 				88922E4D244A6F4D000C46D1 /* Lizenz.swift in Sources */,
 				886DF54624492DBB006BC63E /* SceneDelegate.swift in Sources */,

@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import AZDialogView
 import BarcodeScanner
+import FirebaseStorage
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -116,7 +117,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
            
        }
     
-    static func getLebensmittelVonDB() {
+    static func getLebensmittelVonDB(){
         
         AppDelegate.lebensmittellist.removeAll()
         var ref: DatabaseReference!
@@ -128,7 +129,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 for child_2 in child_ds.children {
                      if let snapshot = child_2 as? DataSnapshot,
                          let card = Lebensmittel(snapshot: snapshot) {
-                         AppDelegate.lebensmittellist.append(card)
+                        card.getUIImageFromURL()
+                        AppDelegate.lebensmittellist.append(card)
                      }
                 }
             }
@@ -429,8 +431,6 @@ extension UIViewController {
         dialog.show(in: self)
     }
  */
-    
-    
     
 }
 

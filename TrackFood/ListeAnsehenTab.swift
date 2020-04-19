@@ -46,18 +46,47 @@ class ListeAnsehenTab: UIViewController, UICollectionViewDelegate, UICollectionV
       
       func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let currentMenuPoint = modeldata.listeansehen_menupoints[indexPath.item]
-      /*    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        var newVC: UIViewController?
         
         switch currentMenuPoint.name {
-        case "Bald ablaufend":
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "checktab") as! CheckTab
+        case "Backwaren":
+            LebensmittelSearchTab.currentList = AppDelegate.lebensmittellist
+            newVC = storyBoard.instantiateViewController(withIdentifier: "lebensmittelsearchtab") as! LebensmittelSearchTab
+        break
+            case "Obst":
+            LebensmittelSearchTab.currentList = AppDelegate.lebensmittellist
+            newVC = storyBoard.instantiateViewController(withIdentifier: "lebensmittelsearchtab") as! LebensmittelSearchTab
+        break
+            case "Gemüse":
+            LebensmittelSearchTab.currentList = AppDelegate.lebensmittellist
+            newVC = storyBoard.instantiateViewController(withIdentifier: "lebensmittelsearchtab") as! LebensmittelSearchTab
+        break
+            case "Fleisch & Fisch":
+            LebensmittelSearchTab.currentList = AppDelegate.lebensmittellist
+            newVC = storyBoard.instantiateViewController(withIdentifier: "lebensmittelsearchtab") as! LebensmittelSearchTab
+        break
+            case "Milchprodukte":
+            LebensmittelSearchTab.currentList = AppDelegate.lebensmittellist
+            newVC = storyBoard.instantiateViewController(withIdentifier: "lebensmittelsearchtab") as! LebensmittelSearchTab
+        break
+            case "Teigwaren":
+            LebensmittelSearchTab.currentList = AppDelegate.lebensmittellist
+            newVC = storyBoard.instantiateViewController(withIdentifier: "lebensmittelsearchtab") as! LebensmittelSearchTab
+        break
+            case "Sonstiges":
+            LebensmittelSearchTab.currentList = AppDelegate.lebensmittellist
+            newVC = storyBoard.instantiateViewController(withIdentifier: "lebensmittelsearchtab") as! LebensmittelSearchTab
+        break
+            case "Getränke":
+            LebensmittelSearchTab.currentList = AppDelegate.lebensmittellist
+            newVC = storyBoard.instantiateViewController(withIdentifier: "lebensmittelsearchtab") as! LebensmittelSearchTab
             break
         default:
-            <#code#>
+            break
         }
         
-        self.present(newViewController, animated: true, completion: nil)
-         */
+        self.present(newVC!, animated: true, completion: nil)
       }
 
 

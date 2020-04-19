@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import FirebaseDatabase
 import AZDialogView
+import FirebaseStorage
 
 class LebensmittelHinzufügenTab: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -29,6 +30,7 @@ class LebensmittelHinzufügenTab: UIViewController, UIPickerViewDelegate, UIPic
         super.viewDidLoad()
         kategoriepicker.delegate = self
         kategoriepicker.dataSource = self
+        hideKeyboardWhenTappedAround()
         currentKategoriePick = modeldata.kategories[0]
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
 
@@ -68,13 +70,40 @@ class LebensmittelHinzufügenTab: UIViewController, UIPickerViewDelegate, UIPic
     
     
     //DB Methoden:
+    func uploadMedia(completion: @escaping (_ url: String?) -> Void) {
+
+        let storageRef = Storage.storage().reference().child("Lebensmittel").child(self.currentKategoriePick!).child(LebensmittelHinzufügenTab.barcode! + ".png")
+        if let uploadData = selectedImage!.pngData() {
+            storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
+                if error != nil {
+                    print("error" + error.debugDescription)
+                    completion(nil)
+                } else {
+
+                    storageRef.downloadURL(completion: { (url, error) in
+                        print(url?.absoluteString)
+                        completion(url?.absoluteString)
+                    })
+
+                  //  completion((metadata?.downloadURL()?.absoluteString)!))
+                    // your uploaded photo url.
+
+
+                }
+            }
+        }
+    }
     
     func saveInDatabase() {
         var ref: DatabaseReference!
         ref = Database.database().reference()
-        let id = ref.child("Lebensmittel").child(currentKategoriePick!).childByAutoId().key
-        let currentLebensmittel = Lebensmittel(id: id!, bezeichnung: bezeichnungtv.text!.description, barcode: LebensmittelHinzufügenTab.barcode!, ablaufdatum: Date().getSaveableDate())
-        ref.child("Lebensmittel").child(currentKategoriePick!).child(id!).setValue(["id": id, "bezeichnung": currentLebensmittel.bezeichnung, "barcode": currentLebensmittel.barcode, "ablaufdatum": currentLebensmittel.ablaufdatum])
+        
+        uploadMedia(){ url in
+        guard let url = url else { return }
+            let id = ref.child("Lebensmittel").child(self.currentKategoriePick!).childByAutoId().key
+            let currentLebensmittel = Lebensmittel(id: id!, bezeichnung: self.bezeichnungtv.text!.description, barcode: LebensmittelHinzufügenTab.barcode!, ablaufdatum: Date().getSaveableDate(), image: url)
+                ref.child("Lebensmittel").child(self.currentKategoriePick!).child(id!).setValue(["id": id, "bezeichnung": currentLebensmittel.bezeichnung, "barcode": currentLebensmittel.barcode, "ablaufdatum": currentLebensmittel.ablaufdatum, "image": currentLebensmittel.image])
+        }
     }
 }
 
