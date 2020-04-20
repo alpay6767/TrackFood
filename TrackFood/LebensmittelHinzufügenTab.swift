@@ -73,7 +73,7 @@ class LebensmittelHinzufügenTab: UIViewController, UIPickerViewDelegate, UIPic
     func uploadMedia(completion: @escaping (_ url: String?) -> Void) {
 
         let storageRef = Storage.storage().reference().child("Lebensmittel").child(self.currentKategoriePick!).child(LebensmittelHinzufügenTab.barcode! + ".png")
-        if let uploadData = selectedImage!.pngData() {
+        if let uploadData = selectedImage!.jpegData(compressionQuality: 0.3) {
             storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
                 if error != nil {
                     print("error" + error.debugDescription)
@@ -111,7 +111,7 @@ class LebensmittelHinzufügenTab: UIViewController, UIPickerViewDelegate, UIPic
 extension Date {
     
     func getSaveableDate() -> String {
-        return day + " " + month + " " + year
+        return day + "." + month + "." + year
     }
 }
 
@@ -121,8 +121,6 @@ extension LebensmittelHinzufügenTab: ImagePickerDelegate {
     func didSelect(image: UIImage?) {
         
         if image == nil {
-            
-            
             
         } else {
             selectphotobtn.setImage(image, for: .normal)

@@ -296,6 +296,91 @@
             </objects>
             <point key="canvasLocation" x="3436.2318840579715" y="128.57142857142856"/>
         </scene>
+        <!--Lebensmittel Details Tab-->
+        <scene sceneID="hbh-vA-aAt">
+            <objects>
+                <viewController storyboardIdentifier="lebensmitteldetailstab" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Gsm-Oa-3sf" customClass="LebensmittelDetailsTab" customModule="TrackFood" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="S2c-Z3-ul7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xxT-FA-reo">
+                                <rect key="frame" x="147" y="58" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="xxT-FA-reo" secondAttribute="height" multiplier="1:1" id="DfO-gy-e3Z"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sr5-nR-Blu">
+                                <rect key="frame" x="33" y="196" width="348" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bpS-HG-1w3">
+                                <rect key="frame" x="0.0" y="224.5" width="414" height="637.5"/>
+                                <color key="backgroundColor" white="0.88" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="me4-bZ-gMD">
+                                    <size key="itemSize" width="193" height="193"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="lebensmitteldetailspointcell" id="ov3-Nx-nO0" customClass="MenuPointCell" customModule="TrackFood" customModuleProvider="target">
+                                        <rect key="frame" x="110.5" y="20" width="193" height="193"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Wec-q7-eC5">
+                                            <rect key="frame" x="0.0" y="0.0" width="193" height="193"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="finanzen" translatesAutoresizingMaskIntoConstraints="NO" id="vZ6-MD-Vnu">
+                                                    <rect key="frame" x="0.0" y="0.0" width="193" height="193"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="vZ6-MD-Vnu" firstAttribute="top" secondItem="Wec-q7-eC5" secondAttribute="top" id="Kxn-Qi-Tos"/>
+                                                <constraint firstAttribute="trailing" secondItem="vZ6-MD-Vnu" secondAttribute="trailing" id="P4i-Xb-a5p"/>
+                                                <constraint firstItem="vZ6-MD-Vnu" firstAttribute="centerX" secondItem="Wec-q7-eC5" secondAttribute="centerX" id="eZB-Da-wEO"/>
+                                                <constraint firstItem="vZ6-MD-Vnu" firstAttribute="leading" secondItem="Wec-q7-eC5" secondAttribute="leading" id="jn4-Iv-Pt4"/>
+                                                <constraint firstAttribute="bottom" secondItem="vZ6-MD-Vnu" secondAttribute="bottom" id="nue-Y2-RA9"/>
+                                                <constraint firstItem="vZ6-MD-Vnu" firstAttribute="centerY" secondItem="Wec-q7-eC5" secondAttribute="centerY" id="q3d-6I-Ob0"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="193" height="193"/>
+                                        <connections>
+                                            <outlet property="bild" destination="vZ6-MD-Vnu" id="rM2-Vo-k7z"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.88" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5BW-pw-3oS" firstAttribute="bottom" secondItem="bpS-HG-1w3" secondAttribute="bottom" id="1Ss-XA-qtP"/>
+                            <constraint firstItem="5BW-pw-3oS" firstAttribute="trailing" secondItem="bpS-HG-1w3" secondAttribute="trailing" id="2KD-I7-zIC"/>
+                            <constraint firstItem="5BW-pw-3oS" firstAttribute="trailing" secondItem="Sr5-nR-Blu" secondAttribute="trailing" constant="33" id="5ii-ew-m0Q"/>
+                            <constraint firstItem="xxT-FA-reo" firstAttribute="width" secondItem="S2c-Z3-ul7" secondAttribute="width" multiplier="0.289855" id="Hm7-XS-EN0"/>
+                            <constraint firstItem="xxT-FA-reo" firstAttribute="centerX" secondItem="5BW-pw-3oS" secondAttribute="centerX" id="KMD-ZQ-9yw"/>
+                            <constraint firstItem="Sr5-nR-Blu" firstAttribute="leading" secondItem="5BW-pw-3oS" secondAttribute="leading" constant="33" id="Z4f-l9-S47"/>
+                            <constraint firstItem="Sr5-nR-Blu" firstAttribute="top" secondItem="xxT-FA-reo" secondAttribute="bottom" constant="18" id="j2l-ub-GcF"/>
+                            <constraint firstItem="xxT-FA-reo" firstAttribute="top" secondItem="5BW-pw-3oS" secondAttribute="top" constant="14" id="lis-TR-Uer"/>
+                            <constraint firstItem="Sr5-nR-Blu" firstAttribute="centerX" secondItem="xxT-FA-reo" secondAttribute="centerX" id="n8H-Db-lsp"/>
+                            <constraint firstItem="bpS-HG-1w3" firstAttribute="leading" secondItem="5BW-pw-3oS" secondAttribute="leading" id="pT6-4d-ziw"/>
+                            <constraint firstItem="bpS-HG-1w3" firstAttribute="centerX" secondItem="Sr5-nR-Blu" secondAttribute="centerX" id="tbd-Ee-qxc"/>
+                            <constraint firstItem="bpS-HG-1w3" firstAttribute="top" secondItem="Sr5-nR-Blu" secondAttribute="bottom" constant="8" id="yBB-Qz-EyN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5BW-pw-3oS"/>
+                    </view>
+                    <connections>
+                        <outlet property="bild" destination="xxT-FA-reo" id="0xY-12-CbO"/>
+                        <outlet property="lebensmitteldetailscv" destination="bpS-HG-1w3" id="w3w-aZ-6hZ"/>
+                        <outlet property="name" destination="Sr5-nR-Blu" id="7LK-yQ-pTR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tOS-AT-RXS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4186.9565217391309" y="128.57142857142856"/>
+        </scene>
         <!--Login Tab-->
         <scene sceneID="CIx-pF-8Ks">
             <objects>
@@ -1133,6 +1218,76 @@ Falls nicht, spreche mit deinem Filial- oder Teamleiter</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dbC-6i-QkL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4188.4057971014499" y="852.45535714285711"/>
+        </scene>
+        <!--Lieferung Hinzufügen Tab-->
+        <scene sceneID="7L4-CJ-f1y">
+            <objects>
+                <viewController storyboardIdentifier="lieferunghinzufügentab" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5O0-rY-knO" customClass="LieferungHinzufügenTab" customModule="TrackFood" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ee0-O2-WHu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nWZ-Bk-Rs1">
+                                <rect key="frame" x="147" y="76" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="nWZ-Bk-Rs1" secondAttribute="height" multiplier="1:1" id="JGD-LU-yny"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2q-9R-3Wg">
+                                <rect key="frame" x="33" y="223" width="348" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="ZL7-39-Vst">
+                                <rect key="frame" x="47" y="294.5" width="320" height="216"/>
+                                <locale key="locale" localeIdentifier="de_DE"/>
+                            </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verfallsdatum wählen:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="110-5t-fIc">
+                                <rect key="frame" x="122.5" y="263.5" width="169" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.28705798980000002" green="0.26944803899999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LeU-TV-HbW">
+                                <rect key="frame" x="118" y="528" width="178" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="LeU-TV-HbW" secondAttribute="height" multiplier="89:23" id="f3U-bZ-yoF"/>
+                                </constraints>
+                                <state key="normal" image="hinzufügenbtn"/>
+                                <connections>
+                                    <action selector="erstellen:" destination="5O0-rY-knO" eventType="touchUpInside" id="pRV-OC-2B4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.88" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="E2q-9R-3Wg" firstAttribute="leading" secondItem="PnY-Gc-dgF" secondAttribute="leading" constant="33" id="7lw-5J-vrG"/>
+                            <constraint firstItem="PnY-Gc-dgF" firstAttribute="trailing" secondItem="E2q-9R-3Wg" secondAttribute="trailing" constant="33" id="AVi-fJ-9IX"/>
+                            <constraint firstItem="E2q-9R-3Wg" firstAttribute="top" secondItem="nWZ-Bk-Rs1" secondAttribute="bottom" constant="27" id="BXD-AM-bOj"/>
+                            <constraint firstItem="LeU-TV-HbW" firstAttribute="width" secondItem="Ee0-O2-WHu" secondAttribute="width" multiplier="0.429952" id="LXP-Ky-fXx"/>
+                            <constraint firstItem="E2q-9R-3Wg" firstAttribute="centerX" secondItem="nWZ-Bk-Rs1" secondAttribute="centerX" id="NFH-45-3Zo"/>
+                            <constraint firstItem="110-5t-fIc" firstAttribute="top" secondItem="E2q-9R-3Wg" secondAttribute="bottom" constant="20" id="YA6-6s-rCP"/>
+                            <constraint firstItem="ZL7-39-Vst" firstAttribute="centerX" secondItem="E2q-9R-3Wg" secondAttribute="centerX" id="aKv-m1-e8V"/>
+                            <constraint firstItem="110-5t-fIc" firstAttribute="centerX" secondItem="E2q-9R-3Wg" secondAttribute="centerX" id="bgr-HR-cIk"/>
+                            <constraint firstItem="ZL7-39-Vst" firstAttribute="top" secondItem="110-5t-fIc" secondAttribute="bottom" constant="10" id="dTu-fk-5id"/>
+                            <constraint firstItem="nWZ-Bk-Rs1" firstAttribute="width" secondItem="Ee0-O2-WHu" secondAttribute="width" multiplier="0.289855" id="ghS-YV-wQu"/>
+                            <constraint firstItem="nWZ-Bk-Rs1" firstAttribute="top" secondItem="PnY-Gc-dgF" secondAttribute="top" constant="32" id="iT6-Ia-Tl1"/>
+                            <constraint firstItem="LeU-TV-HbW" firstAttribute="centerX" secondItem="ZL7-39-Vst" secondAttribute="centerX" id="m6x-rq-PhI"/>
+                            <constraint firstItem="nWZ-Bk-Rs1" firstAttribute="centerX" secondItem="PnY-Gc-dgF" secondAttribute="centerX" id="pGK-xO-uTK"/>
+                            <constraint firstItem="LeU-TV-HbW" firstAttribute="top" secondItem="ZL7-39-Vst" secondAttribute="bottom" constant="17.5" id="xOx-Vs-Yf0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PnY-Gc-dgF"/>
+                    </view>
+                    <connections>
+                        <outlet property="bezeichnung" destination="E2q-9R-3Wg" id="9Pw-p4-CQ6"/>
+                        <outlet property="bild" destination="nWZ-Bk-Rs1" id="f0j-c5-pEc"/>
+                        <outlet property="datepicker" destination="ZL7-39-Vst" id="MGi-SH-nKZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z8r-3q-YWe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4940.579710144928" y="847.76785714285711"/>
         </scene>
     </scenes>
     <resources>

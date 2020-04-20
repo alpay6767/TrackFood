@@ -18,6 +18,7 @@ class ModelData {
     var adminmode_menupoints = [MenuPunkt]()
     var filialendetails_menupoints = [MenuPunkt]()
     var profile_menupoints = [MenuPunkt]()
+    var lebensmitteldetails_menupoints = [MenuPunkt]()
     var unternehmen = [Unternehmen]()
     var citys = [String]()
     var kategories = [String]()
@@ -31,6 +32,7 @@ class ModelData {
         adminmode()
         filialendetails()
         profile()
+        lebensmitteldetails()
         
         initUnternehmen()
         initCitys()
@@ -104,6 +106,11 @@ class ModelData {
     func profile() {
         let profillöschen = MenuPunkt(name: "Profil löschen", bild: UIImage(named: "profillöschen")!)
         profile_menupoints.append(profillöschen)
+    }
+    
+    func lebensmitteldetails() {
+        let lebensmittellöschen = MenuPunkt(name: "Löschen", bild: UIImage(named: "löschenbtn")!)
+        lebensmitteldetails_menupoints.append(lebensmittellöschen)
     }
     
     func initCitys() {

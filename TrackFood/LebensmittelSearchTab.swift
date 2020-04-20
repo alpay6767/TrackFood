@@ -24,7 +24,6 @@ class LebensmittelSearchTab: UIViewController, UICollectionViewDelegate, UIColle
         hideKeyboardWhenTappedAround()
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
           
         return CGSize(width: view.bounds.width, height: view.bounds.height*0.17
@@ -51,27 +50,13 @@ class LebensmittelSearchTab: UIViewController, UICollectionViewDelegate, UIColle
       
       
       func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let currentMenuPoint = modeldata.lebensmittel_menupoints[indexPath.item]
+        let currentLebensmittel = LebensmittelSearchTab.currentList![indexPath.item]
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        
+        LebensmittelDetailsTab.currentLebensmittel = currentLebensmittel
         let newViewController: UIViewController?
-        switch currentMenuPoint.name {
-        case "Liste ansehen":
-            newViewController = storyBoard.instantiateViewController(withIdentifier: "listeansehentab") as! ListeAnsehenTab
+            newViewController = storyBoard.instantiateViewController(withIdentifier: "lebensmitteldetailstab") as! LebensmittelDetailsTab
             present(newViewController!, animated: true) {
-            }
-            break
-        case "Neue Lieferung":
-            newViewController = storyBoard.instantiateViewController(withIdentifier: "neuelieferungtab") as! NeueLieferungTab
-            present(newViewController!, animated: true) {
-            }
-            break
-        case "Lebensmittel hinzufügen":
-            break
-        default:
-            break
         }
-      }
+    }
 
 }
-

@@ -29,6 +29,8 @@ class FirmenLizenzCheckTab: UIViewController {
         } else {
             if AppDelegate.schauObLizenzCodeGefunden(lizenzcode: firmenlizenzcode.text!) {
                 
+                let currentLizenz = AppDelegate.searchLizenzcode(lizenzcode: firmenlizenzcode.text!)
+                registerTab.firmenLizenz = currentLizenz
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                     let newViewController = storyBoard.instantiateViewController(withIdentifier: "registertab") as! registerTab
                 

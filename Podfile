@@ -13,5 +13,6 @@ target 'TrackFood' do
   pod 'AZDialogView'
   pod 'BarcodeScanner'
   pod 'FirebaseStorage'
+  pod 'SwiftySound'
   
 end

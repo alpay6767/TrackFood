@@ -21,6 +21,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static var mitarbeiterlist = [Mitarbeiter]()
     static var fragen = [Frage]()
     static var lebensmittellist = [Lebensmittel]()
+    static var lebensmittellieferungenlist = [LebensmittelLieferung]()
+    
+    //Lebensmittel:
+    static var backwarenlist = [Lebensmittel]()
+    static var obstlist = [Lebensmittel]()
+    static var gemüselist = [Lebensmittel]()
+    static var fleischundfischlist = [Lebensmittel]()
+    static var milchproduktlist = [Lebensmittel]()
+    static var teigwarenlist = [Lebensmittel]()
+    static var sonstigeslist = [Lebensmittel]()
+    static var getränkelist = [Lebensmittel]()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -29,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppDelegate.getMitarbeiterFromDB()
         AppDelegate.getLizenzcodesFromDB()
         AppDelegate.getFragenVonDB()
-        AppDelegate.getLebensmittelVonDB()
+        AppDelegate.pullLebensmittelFromDB()
         
         return true
     }
@@ -137,6 +148,186 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
     }
+    
+    static func getLebensmittellieferungenVonDB(currentFiliale: Filiale) {
+        
+        lebensmittellieferungenlist.removeAll()
+        var ref: DatabaseReference!
+        
+        ref = Database.database().reference()
+        ref.child("Lebensmittellieferungen").child(currentFiliale.id!).observe(.value) { snapshot in
+            lebensmittellieferungenlist.removeAll()
+            for child in snapshot.children {
+                if let snapshot = child as? DataSnapshot,
+                    let card = LebensmittelLieferung(snapshot: snapshot) {
+                    AppDelegate.lebensmittellieferungenlist.append(card)
+                }
+            }
+        }
+        
+    }
+    
+    //-------- LEBENSMITTEL PULLEN -----------
+    
+    static func mergeAllLebensmittel(){
+        lebensmittellist.append(contentsOf: backwarenlist)
+        lebensmittellist.append(contentsOf: obstlist)
+        lebensmittellist.append(contentsOf: gemüselist)
+        lebensmittellist.append(contentsOf: fleischundfischlist)
+        lebensmittellist.append(contentsOf: milchproduktlist)
+        lebensmittellist.append(contentsOf: teigwarenlist)
+        lebensmittellist.append(contentsOf: sonstigeslist)
+        lebensmittellist.append(contentsOf: getränkelist)
+    }
+    
+    static func pullLebensmittelFromDB(){
+        getBackwarenFromDB()
+        getObstFromDB()
+        getGemüseFromDB()
+        getFleischAndFischFromDB()
+        getMilchprodukteFromDB()
+        getTeigwarenFromDB()
+        getSonstigesFromDB()
+        getGetränkeFromDB()
+    }
+    
+    static func getBackwarenFromDB(){
+        AppDelegate.backwarenlist.removeAll()
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        ref.child("Lebensmittel").child("Backwaren").observe(.value) { snapshot in
+            AppDelegate.backwarenlist.removeAll()
+            for child in snapshot.children {
+                if let snapshot = child as? DataSnapshot,
+                    let card = Lebensmittel(snapshot: snapshot) {
+                    card.kategorie = "Backwaren"
+                        card.getUIImageFromURL()
+                    AppDelegate.backwarenlist.append(card)
+                }
+            }
+        }
+    }
+    
+    static func getObstFromDB(){
+        AppDelegate.obstlist.removeAll()
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        ref.child("Lebensmittel").child("Obst").observe(.value) { snapshot in
+            AppDelegate.obstlist.removeAll()
+            for child in snapshot.children {
+                if let snapshot = child as? DataSnapshot,
+                    let card = Lebensmittel(snapshot: snapshot) {
+                        card.kategorie = "Obst"
+                        card.getUIImageFromURL()
+                    AppDelegate.obstlist.append(card)
+                }
+            }
+        }
+    }
+    
+    static func getGemüseFromDB(){
+        AppDelegate.gemüselist.removeAll()
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        ref.child("Lebensmittel").child("Gemüse").observe(.value) { snapshot in
+            AppDelegate.gemüselist.removeAll()
+            for child in snapshot.children {
+                if let snapshot = child as? DataSnapshot,
+                    let card = Lebensmittel(snapshot: snapshot) {
+                        card.kategorie = "Gemüse"
+                        card.getUIImageFromURL()
+                    AppDelegate.gemüselist.append(card)
+                }
+            }
+        }
+    }
+    
+    static func getFleischAndFischFromDB(){
+        AppDelegate.fleischundfischlist.removeAll()
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        ref.child("Lebensmittel").child("Fleisch & Fisch").observe(.value) { snapshot in
+            AppDelegate.fleischundfischlist.removeAll()
+            for child in snapshot.children {
+                if let snapshot = child as? DataSnapshot,
+                    let card = Lebensmittel(snapshot: snapshot) {
+                        card.kategorie = "Fleisch & Fisch"
+                        card.getUIImageFromURL()
+                    AppDelegate.fleischundfischlist.append(card)
+                }
+            }
+        }
+    }
+    
+    static func getMilchprodukteFromDB(){
+        AppDelegate.milchproduktlist.removeAll()
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        ref.child("Lebensmittel").child("Milchprodukte").observe(.value) { snapshot in
+            AppDelegate.milchproduktlist.removeAll()
+            for child in snapshot.children {
+                if let snapshot = child as? DataSnapshot,
+                    let card = Lebensmittel(snapshot: snapshot) {
+                        card.kategorie = "Milchprodukte"
+                        card.getUIImageFromURL()
+                    AppDelegate.milchproduktlist.append(card)
+                }
+            }
+        }
+    }
+    
+    static func getTeigwarenFromDB(){
+        AppDelegate.teigwarenlist.removeAll()
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        ref.child("Lebensmittel").child("Teigwaren").observe(.value) { snapshot in
+            AppDelegate.teigwarenlist.removeAll()
+            for child in snapshot.children {
+                if let snapshot = child as? DataSnapshot,
+                    let card = Lebensmittel(snapshot: snapshot) {
+                        card.kategorie = "Teigwaren"
+                        card.getUIImageFromURL()
+                    AppDelegate.teigwarenlist.append(card)
+                }
+            }
+        }
+    }
+    
+    static func getSonstigesFromDB(){
+        AppDelegate.sonstigeslist.removeAll()
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        ref.child("Lebensmittel").child("Sonstiges").observe(.value) { snapshot in
+            AppDelegate.sonstigeslist.removeAll()
+            for child in snapshot.children {
+                if let snapshot = child as? DataSnapshot,
+                    let card = Lebensmittel(snapshot: snapshot) {
+                        card.kategorie = "Sonstiges"
+                        card.getUIImageFromURL()
+                    AppDelegate.sonstigeslist.append(card)
+                }
+            }
+        }
+    }
+    
+    static func getGetränkeFromDB(){
+        AppDelegate.getränkelist.removeAll()
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        ref.child("Lebensmittel").child("Getränke").observe(.value) { snapshot in
+            AppDelegate.getränkelist.removeAll()
+            for child in snapshot.children {
+                if let snapshot = child as? DataSnapshot,
+                    let card = Lebensmittel(snapshot: snapshot) {
+                        card.kategorie = "Getränke"
+                        card.getUIImageFromURL()
+                    AppDelegate.getränkelist.append(card)
+                }
+            }
+        }
+    }
+    
+    //-------- LEBENSMITTEL PULLEN END -----------
        
     static func fillwithLicenses() {
         for currentFiliale in AppDelegate.filialenList {
@@ -168,6 +359,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                }
            }
        }
+    
+    
+    
        
        static func getReserviertePersonenFuerFilialen(filiale: Filiale) {
            
@@ -353,6 +547,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
         }
+    }
+    
+    
+    static func findFilialeWithFilialenID(filialenid: String) -> Filiale {
+        
+        var counter = 0
+        var gefundeneFiliale: Filiale?
+        for currentFiliale in AppDelegate.filialenList {
+            if currentFiliale.id == filialenid {
+                gefundeneFiliale = AppDelegate.filialenList[counter]
+                break
+            }
+            counter += 1
+        }
+        return gefundeneFiliale!
     }
 
 

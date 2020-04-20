@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import BarcodeScanner
+import SwiftySound
 
 class LebensmittelTab: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
 
@@ -21,6 +22,7 @@ class LebensmittelTab: UIViewController, UICollectionViewDelegate, UICollectionV
         lebensmittelcv.delegate = self
         lebensmittelcv.dataSource = self
         hideKeyboardWhenTappedAround()
+        AppDelegate.mergeAllLebensmittel()
     }
     
     
@@ -92,18 +94,21 @@ extension LebensmittelTab: BarcodeScannerCodeDelegate {
    func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
     controller.dismiss(animated: true) {
     }
-    
+    Sound.play(file: "beep.wav")
     if AppDelegate.schauObLebensmittelGefunden(barcode: code) {
-        print("Code gefunden: " + (AppDelegate.sucheLebensmittelInListe(barcode: code)).bezeichnung!)
+        LebensmittelDetailsTab.currentLebensmittel = AppDelegate.sucheLebensmittelInListe(barcode: code)
+        print(code)
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController: UIViewController?
+        newViewController = storyBoard.instantiateViewController(withIdentifier: "lebensmitteldetailstab") as! LebensmittelDetailsTab
+        present(newViewController!, animated: true) {}
     } else {
-    
         LebensmittelHinzufügenTab.barcode = code
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController: UIViewController?
         newViewController = storyBoard.instantiateViewController(withIdentifier: "lebensmittelhinzufügentab") as! LebensmittelHinzufügenTab
         present(newViewController!, animated: true) {}
     }
-    
 }
 }
 

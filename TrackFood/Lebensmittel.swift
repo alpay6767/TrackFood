@@ -20,6 +20,7 @@ class Lebensmittel {
     var image: String?
     
     var uiimage: UIImage?
+    var kategorie: String?
     
     init(id: String, bezeichnung: String, barcode: String, ablaufdatum: String, image: String) {
         self.id = id

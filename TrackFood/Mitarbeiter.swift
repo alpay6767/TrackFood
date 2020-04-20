@@ -16,12 +16,16 @@ class Mitarbeiter {
     var vorname: String?
     var nachname: String?
     var mitarbeitercode: String?
+    var firmenid: String?
     
-    init(id: String, vorname: String, nachname: String, mitarbeitercode: String) {
+    var filiale: Filiale?
+    
+    init(id: String, vorname: String, nachname: String, mitarbeitercode: String, firmenid: String) {
         self.id = id
         self.vorname = vorname
         self.nachname = nachname
         self.mitarbeitercode = mitarbeitercode
+        self.firmenid = firmenid
     }
     
     init(mitarbeitercode: String) {
@@ -38,6 +42,7 @@ class Mitarbeiter {
         self.id = value!["id"] as? String
         self.nachname = value!["nachname"] as? String
         self.mitarbeitercode = (value!["mitarbeitercode"] as? String)!
+        self.firmenid = value!["firmenid"] as? String
     }
        
     static func Anmelden(mitarbeitercode: String) -> Mitarbeiter {
@@ -82,6 +87,8 @@ class Mitarbeiter {
         }
         return gefunden
     }
+    
+    
        
     
 }

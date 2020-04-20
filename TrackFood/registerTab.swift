@@ -16,6 +16,8 @@ class registerTab: UIViewController {
     @IBOutlet weak var nachname: UITextField!
     @IBOutlet weak var vorname: UITextField!
     
+    static var firmenLizenz: Lizenz?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
@@ -42,8 +44,8 @@ class registerTab: UIViewController {
         var ref: DatabaseReference!
         ref = Database.database().reference()
         let id = ref.child("Mitarbeiter").childByAutoId().key
-        let currentNewUser = Mitarbeiter(id: id!, vorname: vorname.text!, nachname: nachname.text!, mitarbeitercode: generateMitarbeiterCode(currentid: id!))
-        ref.child("Mitarbeiter").child(id!).setValue(["id": id, "mitarbeitercode": currentNewUser.mitarbeitercode, "vorname": currentNewUser.vorname, "nachname": currentNewUser.nachname])
+        let currentNewUser = Mitarbeiter(id: id!, vorname: vorname.text!, nachname: nachname.text!, mitarbeitercode: generateMitarbeiterCode(currentid: id!), firmenid: (registerTab.firmenLizenz?.filialenid)!)
+        ref.child("Mitarbeiter").child(id!).setValue(["id": id, "mitarbeitercode": currentNewUser.mitarbeitercode, "vorname": currentNewUser.vorname, "nachname": currentNewUser.nachname, "firmenid": currentNewUser.firmenid])
         saveToUserDefaults(mitarbeitercode: currentNewUser.mitarbeitercode!)
     }
 

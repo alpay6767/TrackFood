@@ -19,6 +19,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         menucv.delegate = self
         menucv.dataSource = self
         hideKeyboardWhenTappedAround()
+        
+        ViewController.currentMitarbeiter?.filiale = AppDelegate.findFilialeWithFilialenID(filialenid: (ViewController.currentMitarbeiter?.firmenid)!)
+        AppDelegate.getLebensmittellieferungenVonDB(currentFiliale: (ViewController.currentMitarbeiter?.filiale)!)
     }
     
     @IBAction func logout(_ sender: Any) {

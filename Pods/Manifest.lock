@@ -79,6 +79,7 @@ PODS:
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
+  - SwiftySound (1.2.0)
   - UICircularProgressRing (6.5.0)
 
 DEPENDENCIES:
@@ -88,6 +89,7 @@ DEPENDENCIES:
   - Firebase/Analytics
   - FirebaseDatabase
   - FirebaseStorage
+  - SwiftySound
   - UICircularProgressRing
 
 SPEC REPOS:
@@ -110,6 +112,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - leveldb-library
     - nanopb
+    - SwiftySound
     - UICircularProgressRing
 
 SPEC CHECKSUMS:
@@ -131,8 +134,9 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 43b8b64263023d4f32caa0b40f4c8bfa3c5f36d8
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  SwiftySound: 9eb28bb14edb601b40027e44319e0ef8383f88bf
   UICircularProgressRing: e6852e8f88e296cbbbe2720cccb55241acda6708
 
-PODFILE CHECKSUM: 6ec6d25cbaa41c14e98c8b5a613ec070643cd1c1
+PODFILE CHECKSUM: c635d5363cd062e063064a10ebfc068ad858886c
 
 COCOAPODS: 1.8.4

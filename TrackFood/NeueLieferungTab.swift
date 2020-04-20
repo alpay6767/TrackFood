@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import BarcodeScanner
 
 class NeueLieferungTab: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
     
@@ -45,22 +46,66 @@ class NeueLieferungTab: UIViewController, UICollectionViewDelegate, UICollection
       
       func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let currentMenuPoint = modeldata.neueLieferung_menupoints[indexPath.item]
-      /*    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
         switch currentMenuPoint.name {
-        case "Bald ablaufend":
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "checktab") as! CheckTab
+        case "Scannen":
+            openScanner()
             break
         default:
-            <#code#>
+            break
         }
-        
-        self.present(newViewController, animated: true, completion: nil)
-         */
+
       }
+
+    func openScanner() {
+           let viewController = BarcodeScannerViewController()
+           viewController.headerViewController.titleLabel.text = "Barcode scannen"
+           viewController.messageViewController.textLabel.text = "Platziere den Barcode vor die Kamera um es einzuscannen. Die Suche startet automatisch!"
+           viewController.codeDelegate = self
+           viewController.errorDelegate = self
+           viewController.dismissalDelegate = self
+           viewController.isOneTimeSearch = true
+
+           present(viewController, animated: true, completion: nil)
+       }
 
 
 }
+
+extension NeueLieferungTab: BarcodeScannerErrorDelegate {
+     func scanner(_ controller: BarcodeScannerViewController, didReceiveError error: Error) {
+    print(error)
+  }
+}
+
+extension NeueLieferungTab: BarcodeScannerCodeDelegate {
+   func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
+    controller.dismiss(animated: true) {
+    }
+    
+    if AppDelegate.schauObLebensmittelGefunden(barcode: code) {
+        LieferungHinzufügenTab.currentLebensmittel = AppDelegate.sucheLebensmittelInListe(barcode: code)
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController: UIViewController?
+        newViewController = storyBoard.instantiateViewController(withIdentifier: "lieferunghinzufügentab") as! LieferungHinzufügenTab
+        present(newViewController!, animated: true) {}
+    } else {
+        LebensmittelHinzufügenTab.barcode = code
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController: UIViewController?
+        newViewController = storyBoard.instantiateViewController(withIdentifier: "lebensmittelhinzufügentab") as! LebensmittelHinzufügenTab
+        present(newViewController!, animated: true) {}
+    }
+    
+}
+}
+
+extension NeueLieferungTab: BarcodeScannerDismissalDelegate {
+  func scannerDidDismiss(_ controller: BarcodeScannerViewController) {
+    controller.dismiss(animated: true, completion: nil)
+  }
+}
+
 
 
 
