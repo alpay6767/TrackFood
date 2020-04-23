@@ -45,6 +45,8 @@
 		88E86884244B2033006E3BB3 /* Berechtigungscode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86883244B2032006E3BB3 /* Berechtigungscode.swift */; };
 		88E86886244B2525006E3BB3 /* Frage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86885244B2525006E3BB3 /* Frage.swift */; };
 		88E86888244B2F1B006E3BB3 /* FilialenDetailTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86887244B2F1B006E3BB3 /* FilialenDetailTab.swift */; };
+		88F7E956245117A700B1867F /* LebensmittelLieferungCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F7E955245117A700B1867F /* LebensmittelLieferungCell.swift */; };
+		88F7E958245118C200B1867F /* baldAblaufendTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F7E957245118C200B1867F /* baldAblaufendTab.swift */; };
 		A4147A756AAD723D52F9F70F /* Pods_TrackFood.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C31B6CE83A454436247B9D26 /* Pods_TrackFood.framework */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +92,8 @@
 		88E86883244B2032006E3BB3 /* Berechtigungscode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Berechtigungscode.swift; sourceTree = "<group>"; };
 		88E86885244B2525006E3BB3 /* Frage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Frage.swift; sourceTree = "<group>"; };
 		88E86887244B2F1B006E3BB3 /* FilialenDetailTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilialenDetailTab.swift; sourceTree = "<group>"; };
+		88F7E955245117A700B1867F /* LebensmittelLieferungCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LebensmittelLieferungCell.swift; sourceTree = "<group>"; };
+		88F7E957245118C200B1867F /* baldAblaufendTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = baldAblaufendTab.swift; sourceTree = "<group>"; };
 		C31B6CE83A454436247B9D26 /* Pods_TrackFood.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrackFood.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9D47D5C009AEB3005C9B39C /* Pods-TrackFood.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackFood.release.xcconfig"; path = "Target Support Files/Pods-TrackFood/Pods-TrackFood.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,6 +170,8 @@
 				88BF920E244C6D7000E5EE6B /* LebensmittelCell.swift */,
 				88C33ADA244CF2D400723ADE /* LebensmittelDetailsTab.swift */,
 				88C33ADE244D271500723ADE /* LieferungHinzufügenTab.swift */,
+				88F7E955245117A700B1867F /* LebensmittelLieferungCell.swift */,
+				88F7E957245118C200B1867F /* baldAblaufendTab.swift */,
 			);
 			path = TrackFood;
 			sourceTree = "<group>";
@@ -304,7 +310,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88F7E958245118C200B1867F /* baldAblaufendTab.swift in Sources */,
 				88E86888244B2F1B006E3BB3 /* FilialenDetailTab.swift in Sources */,
+				88F7E956245117A700B1867F /* LebensmittelLieferungCell.swift in Sources */,
 				88ABF9B9244BC95F006E13F4 /* LebensmittelHinzufügenTab.swift in Sources */,
 				88318CF1244B877F00B85FAD /* ProfilTab.swift in Sources */,
 				88E86886244B2525006E3BB3 /* Frage.swift in Sources */,

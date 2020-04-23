@@ -149,8 +149,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-    static func getLebensmittellieferungenVonDB(currentFiliale: Filiale) {
+    static func getLebensmittellieferungenVonDB(currentFiliale: Filiale){
         
+        lebensmittellist.removeAll()
+        mergeAllLebensmittel()
         lebensmittellieferungenlist.removeAll()
         var ref: DatabaseReference!
         
@@ -160,11 +162,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             for child in snapshot.children {
                 if let snapshot = child as? DataSnapshot,
                     let card = LebensmittelLieferung(snapshot: snapshot) {
+                    card.lebensmittel = sucheLebensmittelFuerBarcode(barcode: card.lebensmittelbarcode!)
                     AppDelegate.lebensmittellieferungenlist.append(card)
                 }
             }
         }
         
+    }
+    
+    static func sucheLebensmittelFuerBarcode(barcode: String) -> Lebensmittel{
+        for currentLebensmittel in lebensmittellist {
+            if barcode == currentLebensmittel.barcode {
+                return currentLebensmittel
+                break
+            }
+        }
+        return Lebensmittel()
     }
     
     //-------- LEBENSMITTEL PULLEN -----------
@@ -354,7 +367,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                for child in snapshot.children {
                    if let snapshot = child as? DataSnapshot,
                        let card = Filiale(snapshot: snapshot) {
-                       AppDelegate.filialenList.append(card)
+                    if card.verkauftLebensmittel! {
+                        AppDelegate.filialenList.append(card)
+                    }
                    }
                }
            }

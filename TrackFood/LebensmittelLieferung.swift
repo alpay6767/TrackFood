@@ -17,6 +17,7 @@ class LebensmittelLieferung {
     var monat: Int?
     var jahr: Int?
     var lebensmittelbarcode: String?
+    var lebensmittel: Lebensmittel?
     
     init(date: Date) {
         self.date = date

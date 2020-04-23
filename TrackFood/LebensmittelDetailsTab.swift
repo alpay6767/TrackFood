@@ -101,8 +101,9 @@ class LebensmittelDetailsTab: UIViewController, UICollectionViewDelegate, UIColl
         dialog.addAction(AZDialogAction(title: "Löschen") { (dialog) -> (Void) in
             self.LebensmittelLöschen()
             AppDelegate.getMitarbeiterFromDB()
-            self.dismiss(animated: true) {
-            }
+            self.presentedViewController?.dismiss(animated: true, completion: {
+                
+            })
             dialog.dismiss()
         })
         dialog.show(in: self)

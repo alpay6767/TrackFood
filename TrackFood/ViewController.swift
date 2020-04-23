@@ -63,6 +63,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         case "Mein Profil":
             newViewController = storyBoard.instantiateViewController(withIdentifier: "profiltab") as! ProfilTab
             break
+        case "Bald ablaufend":
+            newViewController = storyBoard.instantiateViewController(withIdentifier: "baldablaufendtab") as! baldAblaufendTab
+            break
         default:
             newViewController = storyBoard.instantiateViewController(withIdentifier: "lebensmitteltab") as! LebensmittelTab
             break
