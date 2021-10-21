@@ -20,7 +20,6 @@ class AdminModeTab: UIViewController, UICollectionViewDelegate, UICollectionView
         adminmodecv.delegate = self
         adminmodecv.dataSource = self
         hideKeyboardWhenTappedAround()
-        AppDelegate.mergeLizenzWithFilialen()
     }
     
     @IBAction func logout(_ sender: Any) {

@@ -22,12 +22,13 @@ class Lebensmittel {
     var uiimage: UIImage?
     var kategorie: String?
     
-    init(id: String, bezeichnung: String, barcode: String, ablaufdatum: String, image: String) {
+    init(id: String, bezeichnung: String, barcode: String, ablaufdatum: String, image: String, kategorie: String) {
         self.id = id
         self.bezeichnung = bezeichnung
         self.barcode = barcode
         self.ablaufdatum = ablaufdatum
         self.image = image
+        self.kategorie = kategorie
     }
     
     init() {
@@ -41,6 +42,7 @@ class Lebensmittel {
         self.barcode = value!["barcode"] as? String
         self.ablaufdatum = (value!["ablaufdatum"] as? String)!
         self.image = value!["image"] as? String
+        self.kategorie = value!["kategorie"] as? String
     }
     
     

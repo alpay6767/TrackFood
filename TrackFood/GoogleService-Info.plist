@@ -3,23 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1058754567152-a6gfo0pied7sb7kiatcmt2ecsjrhm3qn.apps.googleusercontent.com</string>
+	<string>129636961406-02j7uhdtv2re8lvu792n2tr78353csc4.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1058754567152-a6gfo0pied7sb7kiatcmt2ecsjrhm3qn</string>
-	<key>ANDROID_CLIENT_ID</key>
-	<string>1058754567152-6gp8172dugu6mkfld8oajamt3q92ks1s.apps.googleusercontent.com</string>
+	<string>com.googleusercontent.apps.129636961406-02j7uhdtv2re8lvu792n2tr78353csc4</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCWNPkmbUCYApMjnd7Pl9oZMmMe1BlomXQ</string>
+	<string>AIzaSyAfAiGsSsSQFjbz5pp8G4eZ_NKZP1stlbk</string>
 	<key>GCM_SENDER_ID</key>
-	<string>1058754567152</string>
+	<string>129636961406</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>CyberFacility.TrackFood</string>
+	<string>com.cyberFacility.TrackFood</string>
 	<key>PROJECT_ID</key>
-	<string>covid-entrance-check</string>
+	<string>trackfood-1d5ae</string>
 	<key>STORAGE_BUCKET</key>
-	<string>covid-entrance-check.appspot.com</string>
+	<string>trackfood-1d5ae.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1058754567152:ios:13a898f3413f1c3cbd5b35</string>
+	<string>1:129636961406:ios:80f00c9bb942b3db9fdc2f</string>
 	<key>DATABASE_URL</key>
-	<string>https://covid-entrance-check.firebaseio.com</string>
+	<string>https://trackfood-1d5ae.firebaseio.com</string>
 </dict>
 </plist>

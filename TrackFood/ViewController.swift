@@ -12,7 +12,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     @IBOutlet weak var menucv: UICollectionView!
     let modeldata = ModelData()
-    static var currentMitarbeiter: Mitarbeiter?
+    static var currentUser: User?
+    static var currentFiliale: Filiale?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +21,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         menucv.dataSource = self
         hideKeyboardWhenTappedAround()
         
-        ViewController.currentMitarbeiter?.filiale = AppDelegate.findFilialeWithFilialenID(filialenid: (ViewController.currentMitarbeiter?.firmenid)!)
-        AppDelegate.getLebensmittellieferungenVonDB(currentFiliale: (ViewController.currentMitarbeiter?.filiale)!)
+        
     }
     
     @IBAction func logout(_ sender: Any) {

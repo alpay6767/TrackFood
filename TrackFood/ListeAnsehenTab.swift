@@ -51,35 +51,35 @@ class ListeAnsehenTab: UIViewController, UICollectionViewDelegate, UICollectionV
         
         switch currentMenuPoint.name {
         case "Backwaren":
-            LebensmittelSearchTab.currentList = AppDelegate.backwarenlist
+            LebensmittelSearchTab.currentcat = "Backwaren"
             newVC = storyBoard.instantiateViewController(withIdentifier: "lebensmittelsearchtab") as! LebensmittelSearchTab
         break
             case "Obst":
-            LebensmittelSearchTab.currentList = AppDelegate.obstlist
+                LebensmittelSearchTab.currentcat = "Obst"
             newVC = storyBoard.instantiateViewController(withIdentifier: "lebensmittelsearchtab") as! LebensmittelSearchTab
         break
             case "Gemüse":
-            LebensmittelSearchTab.currentList = AppDelegate.gemüselist
+                LebensmittelSearchTab.currentcat = "Gemüse"
             newVC = storyBoard.instantiateViewController(withIdentifier: "lebensmittelsearchtab") as! LebensmittelSearchTab
         break
             case "Fleisch & Fisch":
-            LebensmittelSearchTab.currentList = AppDelegate.fleischundfischlist
+                LebensmittelSearchTab.currentcat = "Fleisch & Fisch"
             newVC = storyBoard.instantiateViewController(withIdentifier: "lebensmittelsearchtab") as! LebensmittelSearchTab
         break
             case "Milchprodukte":
-            LebensmittelSearchTab.currentList = AppDelegate.milchproduktlist
+                LebensmittelSearchTab.currentcat = "Milchprodukte"
             newVC = storyBoard.instantiateViewController(withIdentifier: "lebensmittelsearchtab") as! LebensmittelSearchTab
         break
             case "Teigwaren":
-            LebensmittelSearchTab.currentList = AppDelegate.teigwarenlist
+                LebensmittelSearchTab.currentcat = "Teigwaren"
             newVC = storyBoard.instantiateViewController(withIdentifier: "lebensmittelsearchtab") as! LebensmittelSearchTab
         break
             case "Sonstiges":
-            LebensmittelSearchTab.currentList = AppDelegate.sonstigeslist
+                LebensmittelSearchTab.currentcat = "Sonstiges"
             newVC = storyBoard.instantiateViewController(withIdentifier: "lebensmittelsearchtab") as! LebensmittelSearchTab
         break
             case "Getränke":
-            LebensmittelSearchTab.currentList = AppDelegate.getränkelist
+                LebensmittelSearchTab.currentcat = "Getränke"
             newVC = storyBoard.instantiateViewController(withIdentifier: "lebensmittelsearchtab") as! LebensmittelSearchTab
             break
         default:

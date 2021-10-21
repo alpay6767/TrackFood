@@ -19,25 +19,19 @@ class Filiale {
     var address: String?
     var zip: String?
     var city: String?
-    var capacity: Int?
-    var customer = [Person]()
-    var currentCustomers = 0
-    var verkauftKlopapier: Bool?
-    var verkauftLebensmittel: Bool?
-    var anzahlKlopapier: Int?
-    var reserviertePersonen = [Person]()
-    var lieferrungen = [Lieferrung]()
-    var lizenz: Lizenz?
+    var lizenz: String?
+    var ablaufdatum: String?
     
     
-    init(id: String, name: String, pictureURL: String, address: String,zip: String, city: String, capacity: Int) {
+    init(id: String, name: String, pictureURL: String, address: String,zip: String, city: String, lizenz: String, ablaufdatum: String) {
         self.id = id
         self.name = name
         self.pictureURL = pictureURL
         self.address = address
         self.zip = zip
         self.city = city
-        self.capacity = capacity
+        self.lizenz = lizenz
+        self.ablaufdatum = ablaufdatum
     }
     
     
@@ -49,37 +43,12 @@ class Filiale {
         self.address = value!["address"] as? String
         self.zip = value!["zip"] as? String
         self.city = value!["city"] as? String
-        self.capacity = value!["capacity"] as? Int
-        let currentcustomers = value!["currentcustomers"] as? Int
-        self.currentCustomers = currentcustomers!
-        self.verkauftKlopapier = value!["verkauftKlopapier"] as? Bool
-        self.verkauftLebensmittel = value!["verkauftLebensmittel"] as? Bool
-        self.anzahlKlopapier = value!["anzahlKlopapier"] as? Int
+        self.ablaufdatum = value!["ablaufdatum"] as? String
+        self.lizenz = value!["lizenz"] as? String
     }
     
-    
-    
-    
-    //Methoden:
-    
-    func hatReserviert(currentPerson: Person) -> Bool {
-        for currentReserviertePerson in reserviertePersonen {
-            if currentReserviertePerson.id == currentPerson.id {
-                return true
-            }
-        }
-        return false
-    }
-    
-    
-    func updateCurrentCustomers(snapshot: DataSnapshot) {
-        let value = snapshot.value as? Int
-        self.currentCustomers = value!
-    }
-    
-    func updateAnzahlKlopapier(snapshot: DataSnapshot) {
-        let value = snapshot.value as? Int
-        self.anzahlKlopapier = value!
+    init() {
+        
     }
     
     

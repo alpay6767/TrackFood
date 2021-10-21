@@ -24,12 +24,12 @@
 		88922E4D244A6F4D000C46D1 /* Lizenz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88922E4C244A6F4D000C46D1 /* Lizenz.swift */; };
 		88ABF9B9244BC95F006E13F4 /* LebensmittelHinzufügenTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88ABF9B8244BC95F006E13F4 /* LebensmittelHinzufügenTab.swift */; };
 		88ABF9BB244BD09F006E13F4 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88ABF9BA244BD09F006E13F4 /* ImagePicker.swift */; };
+		88BA627525165DCD00E534B9 /* createFilialeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BA627425165DCD00E534B9 /* createFilialeTab.swift */; };
 		88BF920D244C6C1000E5EE6B /* LebensmittelSearchTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BF920C244C6C1000E5EE6B /* LebensmittelSearchTab.swift */; };
 		88BF920F244C6D7000E5EE6B /* LebensmittelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BF920E244C6D7000E5EE6B /* LebensmittelCell.swift */; };
 		88C33ADB244CF2D400723ADE /* LebensmittelDetailsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C33ADA244CF2D400723ADE /* LebensmittelDetailsTab.swift */; };
 		88C33ADD244D1DC400723ADE /* beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 88C33ADC244D1DC400723ADE /* beep.wav */; };
 		88C33ADF244D271500723ADE /* LieferungHinzufügenTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C33ADE244D271500723ADE /* LieferungHinzufügenTab.swift */; };
-		88C33AE1244D2F0900723ADE /* LebensmittelLieferung.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C33AE0244D2F0900723ADE /* LebensmittelLieferung.swift */; };
 		88C377EC2449E346004931C1 /* LebensmittelTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C377EB2449E346004931C1 /* LebensmittelTab.swift */; };
 		88C377EE2449F1A5004931C1 /* ListeAnsehenTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C377ED2449F1A5004931C1 /* ListeAnsehenTab.swift */; };
 		88C377F02449F43F004931C1 /* NeueLieferungTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C377EF2449F43F004931C1 /* NeueLieferungTab.swift */; };
@@ -41,10 +41,13 @@
 		88E8687C244B1E58006E3BB3 /* Filiale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E8687B244B1E58006E3BB3 /* Filiale.swift */; };
 		88E8687E244B1EDB006E3BB3 /* Lieferrung.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E8687D244B1EDB006E3BB3 /* Lieferrung.swift */; };
 		88E86880244B1F0C006E3BB3 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E8687F244B1F0C006E3BB3 /* Person.swift */; };
-		88E86882244B1F6E006E3BB3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88E86881244B1F6E006E3BB3 /* GoogleService-Info.plist */; };
 		88E86884244B2033006E3BB3 /* Berechtigungscode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86883244B2032006E3BB3 /* Berechtigungscode.swift */; };
 		88E86886244B2525006E3BB3 /* Frage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86885244B2525006E3BB3 /* Frage.swift */; };
 		88E86888244B2F1B006E3BB3 /* FilialenDetailTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86887244B2F1B006E3BB3 /* FilialenDetailTab.swift */; };
+		88F6F8132514D86700DCC88E /* FBHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F6F8122514D86700DCC88E /* FBHandler.swift */; };
+		88F6F8152514D97700DCC88E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88F6F8142514D97700DCC88E /* GoogleService-Info.plist */; };
+		88F6F8172514D9CF00DCC88E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F6F8162514D9CF00DCC88E /* User.swift */; };
+		88F6F8192514E18C00DCC88E /* splashScreenTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F6F8182514E18C00DCC88E /* splashScreenTab.swift */; };
 		88F7E956245117A700B1867F /* LebensmittelLieferungCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F7E955245117A700B1867F /* LebensmittelLieferungCell.swift */; };
 		88F7E958245118C200B1867F /* baldAblaufendTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F7E957245118C200B1867F /* baldAblaufendTab.swift */; };
 		A4147A756AAD723D52F9F70F /* Pods_TrackFood.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C31B6CE83A454436247B9D26 /* Pods_TrackFood.framework */; };
@@ -71,12 +74,12 @@
 		88922E4C244A6F4D000C46D1 /* Lizenz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lizenz.swift; sourceTree = "<group>"; };
 		88ABF9B8244BC95F006E13F4 /* LebensmittelHinzufügenTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LebensmittelHinzufügenTab.swift"; sourceTree = "<group>"; };
 		88ABF9BA244BD09F006E13F4 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		88BA627425165DCD00E534B9 /* createFilialeTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createFilialeTab.swift; sourceTree = "<group>"; };
 		88BF920C244C6C1000E5EE6B /* LebensmittelSearchTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LebensmittelSearchTab.swift; sourceTree = "<group>"; };
 		88BF920E244C6D7000E5EE6B /* LebensmittelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LebensmittelCell.swift; sourceTree = "<group>"; };
 		88C33ADA244CF2D400723ADE /* LebensmittelDetailsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LebensmittelDetailsTab.swift; sourceTree = "<group>"; };
 		88C33ADC244D1DC400723ADE /* beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beep.wav; sourceTree = "<group>"; };
 		88C33ADE244D271500723ADE /* LieferungHinzufügenTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LieferungHinzufügenTab.swift"; sourceTree = "<group>"; };
-		88C33AE0244D2F0900723ADE /* LebensmittelLieferung.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LebensmittelLieferung.swift; sourceTree = "<group>"; };
 		88C377EB2449E346004931C1 /* LebensmittelTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LebensmittelTab.swift; sourceTree = "<group>"; };
 		88C377ED2449F1A5004931C1 /* ListeAnsehenTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeAnsehenTab.swift; sourceTree = "<group>"; };
 		88C377EF2449F43F004931C1 /* NeueLieferungTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeueLieferungTab.swift; sourceTree = "<group>"; };
@@ -88,10 +91,13 @@
 		88E8687B244B1E58006E3BB3 /* Filiale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filiale.swift; sourceTree = "<group>"; };
 		88E8687D244B1EDB006E3BB3 /* Lieferrung.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lieferrung.swift; sourceTree = "<group>"; };
 		88E8687F244B1F0C006E3BB3 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
-		88E86881244B1F6E006E3BB3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		88E86883244B2032006E3BB3 /* Berechtigungscode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Berechtigungscode.swift; sourceTree = "<group>"; };
 		88E86885244B2525006E3BB3 /* Frage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Frage.swift; sourceTree = "<group>"; };
 		88E86887244B2F1B006E3BB3 /* FilialenDetailTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilialenDetailTab.swift; sourceTree = "<group>"; };
+		88F6F8122514D86700DCC88E /* FBHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBHandler.swift; sourceTree = "<group>"; };
+		88F6F8142514D97700DCC88E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		88F6F8162514D9CF00DCC88E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		88F6F8182514E18C00DCC88E /* splashScreenTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = splashScreenTab.swift; sourceTree = "<group>"; };
 		88F7E955245117A700B1867F /* LebensmittelLieferungCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LebensmittelLieferungCell.swift; sourceTree = "<group>"; };
 		88F7E957245118C200B1867F /* baldAblaufendTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = baldAblaufendTab.swift; sourceTree = "<group>"; };
 		C31B6CE83A454436247B9D26 /* Pods_TrackFood.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrackFood.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,7 +137,7 @@
 		886DF54224492DBB006BC63E /* TrackFood */ = {
 			isa = PBXGroup;
 			children = (
-				88E86881244B1F6E006E3BB3 /* GoogleService-Info.plist */,
+				88F6F8142514D97700DCC88E /* GoogleService-Info.plist */,
 				886DF55B24493335006BC63E /* ModelData.swift */,
 				886DF54324492DBB006BC63E /* AppDelegate.swift */,
 				886DF54524492DBB006BC63E /* SceneDelegate.swift */,
@@ -141,6 +147,7 @@
 				88C33ADC244D1DC400723ADE /* beep.wav */,
 				886DF54E24492DBD006BC63E /* LaunchScreen.storyboard */,
 				886DF55124492DBD006BC63E /* Info.plist */,
+				88F6F8122514D86700DCC88E /* FBHandler.swift */,
 				886DF559244932EA006BC63E /* MenuPunkt.swift */,
 				886DF55D24493A59006BC63E /* MenuPointCell.swift */,
 				8806536C2449D93100B6010D /* LoginTab.swift */,
@@ -155,7 +162,6 @@
 				88922E4C244A6F4D000C46D1 /* Lizenz.swift */,
 				88E8687F244B1F0C006E3BB3 /* Person.swift */,
 				88E8687D244B1EDB006E3BB3 /* Lieferrung.swift */,
-				88C33AE0244D2F0900723ADE /* LebensmittelLieferung.swift */,
 				88E86883244B2032006E3BB3 /* Berechtigungscode.swift */,
 				88E86885244B2525006E3BB3 /* Frage.swift */,
 				88E8687B244B1E58006E3BB3 /* Filiale.swift */,
@@ -172,6 +178,9 @@
 				88C33ADE244D271500723ADE /* LieferungHinzufügenTab.swift */,
 				88F7E955245117A700B1867F /* LebensmittelLieferungCell.swift */,
 				88F7E957245118C200B1867F /* baldAblaufendTab.swift */,
+				88F6F8162514D9CF00DCC88E /* User.swift */,
+				88F6F8182514E18C00DCC88E /* splashScreenTab.swift */,
+				88BA627425165DCD00E534B9 /* createFilialeTab.swift */,
 			);
 			path = TrackFood;
 			sourceTree = "<group>";
@@ -255,7 +264,7 @@
 			files = (
 				88C33ADD244D1DC400723ADE /* beep.wav in Resources */,
 				886DF55024492DBD006BC63E /* LaunchScreen.storyboard in Resources */,
-				88E86882244B1F6E006E3BB3 /* GoogleService-Info.plist in Resources */,
+				88F6F8152514D97700DCC88E /* GoogleService-Info.plist in Resources */,
 				886DF54D24492DBD006BC63E /* Assets.xcassets in Resources */,
 				886DF54B24492DBB006BC63E /* Main.storyboard in Resources */,
 			);
@@ -322,6 +331,7 @@
 				886DF54824492DBB006BC63E /* ViewController.swift in Sources */,
 				886DF55A244932EA006BC63E /* MenuPunkt.swift in Sources */,
 				88C377F02449F43F004931C1 /* NeueLieferungTab.swift in Sources */,
+				88F6F8132514D86700DCC88E /* FBHandler.swift in Sources */,
 				88E86876244B1BE8006E3BB3 /* Unternehmen.swift in Sources */,
 				88922E4B244A6D33000C46D1 /* FirmenLizenzCheckTab.swift in Sources */,
 				88BF920D244C6C1000E5EE6B /* LebensmittelSearchTab.swift in Sources */,
@@ -332,13 +342,15 @@
 				886DF54424492DBB006BC63E /* AppDelegate.swift in Sources */,
 				88ABF9BB244BD09F006E13F4 /* ImagePicker.swift in Sources */,
 				88BF920F244C6D7000E5EE6B /* LebensmittelCell.swift in Sources */,
+				88F6F8172514D9CF00DCC88E /* User.swift in Sources */,
+				88F6F8192514E18C00DCC88E /* splashScreenTab.swift in Sources */,
 				88E86884244B2033006E3BB3 /* Berechtigungscode.swift in Sources */,
 				88922E4D244A6F4D000C46D1 /* Lizenz.swift in Sources */,
 				886DF54624492DBB006BC63E /* SceneDelegate.swift in Sources */,
 				88318CEF244B77D000B85FAD /* registerTab.swift in Sources */,
 				88C377EE2449F1A5004931C1 /* ListeAnsehenTab.swift in Sources */,
+				88BA627525165DCD00E534B9 /* createFilialeTab.swift in Sources */,
 				88C377F2244A1310004931C1 /* Lebensmittel.swift in Sources */,
-				88C33AE1244D2F0900723ADE /* LebensmittelLieferung.swift in Sources */,
 				88C33ADB244CF2D400723ADE /* LebensmittelDetailsTab.swift in Sources */,
 				88C33ADF244D271500723ADE /* LieferungHinzufügenTab.swift in Sources */,
 				88E8687C244B1E58006E3BB3 /* Filiale.swift in Sources */,
@@ -497,7 +509,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CyberFacility.TrackFood;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cyberFacility.TrackFood;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -517,7 +529,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CyberFacility.TrackFood;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cyberFacility.TrackFood;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

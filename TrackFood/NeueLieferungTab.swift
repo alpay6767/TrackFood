@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import BarcodeScanner
+import SwiftySound
+
 
 class NeueLieferungTab: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
     
@@ -83,20 +85,28 @@ extension NeueLieferungTab: BarcodeScannerCodeDelegate {
     controller.dismiss(animated: true) {
     }
     
-    if AppDelegate.schauObLebensmittelGefunden(barcode: code) {
-        LieferungHinzufügenTab.currentLebensmittel = AppDelegate.sucheLebensmittelInListe(barcode: code)
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController: UIViewController?
-        newViewController = storyBoard.instantiateViewController(withIdentifier: "lieferunghinzufügentab") as! LieferungHinzufügenTab
-        present(newViewController!, animated: true) {}
-    } else {
-        LebensmittelHinzufügenTab.barcode = code
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController: UIViewController?
-        newViewController = storyBoard.instantiateViewController(withIdentifier: "lebensmittelhinzufügentab") as! LebensmittelHinzufügenTab
-        present(newViewController!, animated: true) {}
-    }
+    Sound.play(file: "beep.wav")
+    let fbhandler = FBHandler()
     
+    
+    fbhandler.checkLebensmittelBarcode(currentbarcode: code){ authentificated,foundLebensmittel  in
+     guard let authentificated = authentificated else { return }
+    guard let foundLebensmittel = foundLebensmittel else {return}
+    
+        if (authentificated) {
+            LieferungHinzufügenTab.currentLebensmittel = foundLebensmittel
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let newViewController: UIViewController?
+            newViewController = storyBoard.instantiateViewController(withIdentifier: "lieferunghinzufügentab") as! LieferungHinzufügenTab
+            self.present(newViewController!, animated: true) {}
+        } else {
+            LebensmittelHinzufügenTab.barcode = code
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let newViewController: UIViewController?
+            newViewController = storyBoard.instantiateViewController(withIdentifier: "lebensmittelhinzufügentab") as! LebensmittelHinzufügenTab
+            self.present(newViewController!, animated: true) {}
+        }
+    }
 }
 }
 

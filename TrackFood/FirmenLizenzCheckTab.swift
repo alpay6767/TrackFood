@@ -13,6 +13,7 @@ class FirmenLizenzCheckTab: UIViewController {
     
     @IBOutlet weak var firmenlizenzcode: UITextField!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
@@ -23,31 +24,31 @@ class FirmenLizenzCheckTab: UIViewController {
 
         if firmenlizenzcode.text!.isEmpty {
             
-            showFailedDialog(message: "Bitte fülle alle Felder aus!")
-            
+                showBeautyfulFailedDialog(title: "Lizenz fehlt", description: "Bitte gib eine gültige Lizenz ein!")
             
         } else {
-            if AppDelegate.schauObLizenzCodeGefunden(lizenzcode: firmenlizenzcode.text!) {
-                
-                let currentLizenz = AppDelegate.searchLizenzcode(lizenzcode: firmenlizenzcode.text!)
-                registerTab.firmenLizenz = currentLizenz
-                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let newViewController = storyBoard.instantiateViewController(withIdentifier: "registertab") as! registerTab
-                
-                newViewController.modalPresentationStyle = .fullScreen
-                //or .overFullScreen for transparency
-                self.present(newViewController, animated: true, completion: nil)
-                
-                
-            } else {
-                showFailedDialog(message: "Lizenzcode nicht gefunden!")
+            
+            let fbhandler = FBHandler()
+            
+            fbhandler.checkFirmenLizenz(currentLizenz: firmenlizenzcode.text!) { authentificated,foundFiliale  in
+                 guard let authentificated = authentificated else { return }
+                guard let foundFiliale = foundFiliale else {return}
+            
+            
+                if (authentificated) {
+                    registerTab.currentFiliale = foundFiliale
+                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                        let newViewController = storyBoard.instantiateViewController(withIdentifier: "registertab") as! registerTab
+                    
+                    newViewController.modalPresentationStyle = .fullScreen
+                    //or .overFullScreen for transparency
+                    self.present(newViewController, animated: true, completion: nil)
+                } else {
+                    self.showBeautyfulFailedDialog(title: "Lizenz Fehler", description: "Die angegebene Lizenz wurde nicht gefunden. Bitte kontaktiere deine Filiale!")
+                }
             }
-        }
 
+        }
     }
-    
-    func checkLizenzCode() {
-        
-    }
-    
+
 }

@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static var mitarbeiterlist = [Mitarbeiter]()
     static var fragen = [Frage]()
     static var lebensmittellist = [Lebensmittel]()
-    static var lebensmittellieferungenlist = [LebensmittelLieferung]()
+
     
     //Lebensmittel:
     static var backwarenlist = [Lebensmittel]()
@@ -33,14 +33,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static var sonstigeslist = [Lebensmittel]()
     static var getränkelist = [Lebensmittel]()
     
+    
+    static var counter = 1
+    let fbhandler = FBHandler()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
-        AppDelegate.getFilialenFromDatabase()
-        AppDelegate.getMitarbeiterFromDB()
-        AppDelegate.getLizenzcodesFromDB()
-        AppDelegate.getFragenVonDB()
-        AppDelegate.pullLebensmittelFromDB()
+
+        let defaults = UserDefaults.standard
+        let loggedin = defaults.bool(forKey: "LoggedIn")
+        let eula = defaults.bool(forKey: "eula")
+        if loggedin == nil {
+            defaults.set(false, forKey: "LoggedIn")
+        }
+        if eula == nil {
+            defaults.set(false, forKey: "eula")
+        }
+        
+        //IQKeyboardManager.shared.enable = true //pods importieren!
         
         return true
     }
@@ -59,6 +70,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
     
+    static func getUserFromDefaults() -> User {
+        
+        let defaults = UserDefaults.standard
+        let id = defaults.string(forKey: "id")
+        let username = defaults.string(forKey: "username")
+        let password = defaults.string(forKey: "password")
+        let token = defaults.string(forKey: "token")
+        let filialenid = defaults.string(forKey: "filialenid")
+        let foundUser = User(id: id!, username: username!, password: password!, token: token!, filialenid: filialenid!)
+        return foundUser
+        
+    }
     
     //DM Methoden:
     
@@ -148,28 +171,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
     }
-    
-    static func getLebensmittellieferungenVonDB(currentFiliale: Filiale){
-        
-        lebensmittellist.removeAll()
-        mergeAllLebensmittel()
-        lebensmittellieferungenlist.removeAll()
-        var ref: DatabaseReference!
-        
-        ref = Database.database().reference()
-        ref.child("Lebensmittellieferungen").child(currentFiliale.id!).observe(.value) { snapshot in
-            lebensmittellieferungenlist.removeAll()
-            for child in snapshot.children {
-                if let snapshot = child as? DataSnapshot,
-                    let card = LebensmittelLieferung(snapshot: snapshot) {
-                    card.lebensmittel = sucheLebensmittelFuerBarcode(barcode: card.lebensmittelbarcode!)
-                    AppDelegate.lebensmittellieferungenlist.append(card)
-                }
-            }
-        }
-        
-    }
-    
+
     static func sucheLebensmittelFuerBarcode(barcode: String) -> Lebensmittel{
         for currentLebensmittel in lebensmittellist {
             if barcode == currentLebensmittel.barcode {
@@ -342,243 +344,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //-------- LEBENSMITTEL PULLEN END -----------
        
-    static func fillwithLicenses() {
-        for currentFiliale in AppDelegate.filialenList {
-            var ref: DatabaseReference!
-            ref = Database.database().reference()
-            let newId = ref.child("Lizenzen").childByAutoId().key
-            let shortenId = currentFiliale.id!.prefix(10)
-            let newlicenseCode = currentFiliale.name! + shortenId
-            let newLizenz = Lizenz(id: newId!, lizenzcode: newlicenseCode, filialenid: currentFiliale.id!, ablaufdatum: "31.12.2020")
-            ref.child("Lizenzen").child(newId!).setValue(["id": newLizenz.id!, "lizenzcode": newLizenz.lizenzcode!, "filialenid": newLizenz.filialenid!, "ablaufdatum": newLizenz.ablaufdatum!])
-        }
-    }
-       
-       
-       static func getFilialenFromDatabase() {
-           
-           AppDelegate.filialenList.removeAll()
-           var ref: DatabaseReference!
-           
-           ref = Database.database().reference()
-           ref.child("Filialen").observe(.value) { snapshot in
-               AppDelegate.filialenList.removeAll()
-               
-               for child in snapshot.children {
-                   if let snapshot = child as? DataSnapshot,
-                       let card = Filiale(snapshot: snapshot) {
-                    if card.verkauftLebensmittel! {
-                        AppDelegate.filialenList.append(card)
-                    }
-                   }
-               }
-           }
-       }
     
-    
-    
-       
-       static func getReserviertePersonenFuerFilialen(filiale: Filiale) {
-           
-           filiale.reserviertePersonen.removeAll()
-           var ref: DatabaseReference!
-           
-           ref = Database.database().reference()
-           ref.child("Filialen").child(filiale.id!).child("reserviertePersonen").observe(.value) { snapshot in
-               filiale.reserviertePersonen.removeAll()
-               
-               for child in snapshot.children {
-                   if let snapshot = child as? DataSnapshot,
-                       let card = Person(snapshot: snapshot) {
-                       filiale.reserviertePersonen.append(card)
-                   }
-               }
-           }
-       }
-       
-       
-       static func getLiefertermineFuerFiliale(filiale: Filiale) {
-           
-           filiale.reserviertePersonen.removeAll()
-           var ref: DatabaseReference!
-           
-           ref = Database.database().reference()
-           ref.child("Filialen").child(filiale.id!).child("Lieferrungen").observe(.value) { snapshot in
-               filiale.lieferrungen.removeAll()
-               
-               for child in snapshot.children {
-                   if let snapshot = child as? DataSnapshot,
-                       let card = Lieferrung(snapshot: snapshot) {
-                       filiale.lieferrungen.append(card)
-                   }
-               }
-           }
-       }
-       
-       
-           
-       static func getMitarbeiterFromDB() {
-           
-           AppDelegate.mitarbeiterlist.removeAll()
-           var ref: DatabaseReference!
-           
-           ref = Database.database().reference()
-           ref.child("Mitarbeiter").observe(.value) { snapshot in
-               AppDelegate.mitarbeiterlist.removeAll()
-               for child in snapshot.children {
-                   if let snapshot = child as? DataSnapshot,
-                       let card = Mitarbeiter(snapshot: snapshot) {
-                       AppDelegate.mitarbeiterlist.append(card)
-                   }
-               }
-           }
-       }
-       
-       
-       static func saveUpdatedFiliale(currentFiliale: Filiale) {
-           
-           var ref: DatabaseReference!
-           ref = Database.database().reference()
-           ref.child("Filialen").child(currentFiliale.id!).setValue(["id": currentFiliale.id!, "name": currentFiliale.name!, "pictureurl": currentFiliale.pictureURL!, "address": currentFiliale.address!, "zip": currentFiliale.zip!, "city": currentFiliale.city!, "capacity": currentFiliale.capacity!, "currentcustomers": currentFiliale.currentCustomers, "verkauftKlopapier": currentFiliale.verkauftKlopapier, "verkauftLebensmittel": currentFiliale.verkauftLebensmittel, "anzahlKlopapier": currentFiliale.anzahlKlopapier])
-           //AppDelegate.getFilialenFromDatabase()
-           
-       }
-       
-       static func saveCurrentCustomer(currentFiliale: Filiale) {
-           
-           var ref: DatabaseReference!
-           ref = Database.database().reference()
-           ref.child("Filialen").child(currentFiliale.id!).child("currentcustomers").setValue( currentFiliale.currentCustomers)
-           
-       }
-       
-       
-       
-       
-       
-       static func deleteReservation(currentFiliale: Filiale, currentPerson: Person) {
-           
-           var ref: DatabaseReference!
-           ref = Database.database().reference()
-           ref.child("Filialen").child(currentFiliale.id!).child("reserviertePersonen").child(currentPerson.id!).removeValue()
-           
-       }
-       
-       
-       static func saveAnzahlKlopapier(currentFiliale: Filiale) {
-           
-           var ref: DatabaseReference!
-           ref = Database.database().reference()
-           ref.child("Filialen").child(currentFiliale.id!).child("anzahlKlopapier").setValue( currentFiliale.anzahlKlopapier)
-           
-       }
-       
-       
-       static func deleteAllReservations(currentFiliale: Filiale) {
-           
-           saveUpdatedFiliale(currentFiliale: currentFiliale)
-           
-       }
-       
-       static func deleteAllReservationsOfAllFilialen() {
-           for currentFiliale in filialenList {
-               AppDelegate.deleteAllReservations(currentFiliale: currentFiliale)
-           }
-       }
-       
-       
-       static func searchLizenzcode(lizenzcode: String) -> Lizenz {
-            for currentCode in lizenzcodes {
-                if currentCode.lizenzcode == lizenzcode {
-                    return currentCode
-                }
-            }
-            return Lizenz()
-        }
-       
-       
-       static func searchMitarbeiter(mitarbeitercode: String) -> Mitarbeiter {
-           for currentMitarbeiter in mitarbeiterlist {
-               if currentMitarbeiter.mitarbeitercode == mitarbeitercode {
-                   return currentMitarbeiter
-               }
-           }
-           return Mitarbeiter()
-       }
-    
-    
-    static func schauObLebensmittelGefunden(barcode: String) -> Bool {
-        for currentLebensmittel in lebensmittellist {
-            if currentLebensmittel.barcode == barcode {
-                return true
-            }
-         }
-        return false
-    }
-    
-    static func sucheLebensmittelInListe(barcode: String) -> Lebensmittel {
-        for currentLebensmittel in lebensmittellist {
-            if currentLebensmittel.barcode == barcode {
-                return currentLebensmittel
-            }
-         }
-        return Lebensmittel()
-    }
-       
-       static func schauObMitarbeiterCodeGefunden(mitarbeitercode: String) -> Bool {
-           for currentUser in mitarbeiterlist {
-            if currentUser.mitarbeitercode == mitarbeitercode {
-                   return true
-               }
-           }
-           return false
-       }
-       
-       static func schauObLizenzCodeGefunden(lizenzcode: String) -> Bool {
-           for currentCode in lizenzcodes {
-               if currentCode.lizenzcode == lizenzcode {
-                   return true
-               }
-           }
-           return false
-       }
-    
-    static func schauObProduktBereitsVorhanden(lizenzcode: String) -> Bool {
-        for currentLebensmittel in lizenzcodes {
-            if currentLebensmittel.lizenzcode == lizenzcode {
-                return true
-            }
-        }
-        return false
-    }
-    
-    
-    static func mergeLizenzWithFilialen() {
-        for currentFiliale in AppDelegate.filialenList {
-            for currentLizenz in AppDelegate.lizenzcodes {
-                if currentLizenz.filialenid == currentFiliale.id {
-                    currentFiliale.lizenz = currentLizenz
-                    break
-                }
-            }
-        }
-    }
-    
-    
-    static func findFilialeWithFilialenID(filialenid: String) -> Filiale {
-        
-        var counter = 0
-        var gefundeneFiliale: Filiale?
-        for currentFiliale in AppDelegate.filialenList {
-            if currentFiliale.id == filialenid {
-                gefundeneFiliale = AppDelegate.filialenList[counter]
-                break
-            }
-            counter += 1
-        }
-        return gefundeneFiliale!
-    }
-
 
 }
 

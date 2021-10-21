@@ -9,20 +9,42 @@
 import Foundation
 import UIKit
 import FirebaseStorage
+import Kingfisher
 
 class LebensmittelSearchTab: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
 
     @IBOutlet weak var lebensmittelsearchcv: UICollectionView!
     
     let modeldata = ModelData()
-    static var currentList: [Lebensmittel]?
+    var currentList = [Lebensmittel]()
+    static var currentcat: String?
+    let fbhandler = FBHandler()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         lebensmittelsearchcv.delegate = self
         lebensmittelsearchcv.dataSource = self
         hideKeyboardWhenTappedAround()
+        loadLebensmittelliste()
     }
+    
+    
+    func loadLebensmittelliste() {
+        
+        fbhandler.loadLebensmittelFromDBWithCategoriy(currentkategorie: LebensmittelSearchTab.currentcat!) { [self] lebensmittelliste in
+             guard let lebensmittelliste = lebensmittelliste else {
+                return
+                
+            }
+                
+            self.currentList = lebensmittelliste
+            self.currentList.reverse()
+            self.lebensmittelsearchcv.reloadData()
+            
+        }
+        
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
           
@@ -32,13 +54,14 @@ class LebensmittelSearchTab: UIViewController, UICollectionViewDelegate, UIColle
       
       
       func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return LebensmittelSearchTab.currentList!.count
+        return currentList.count
       }
       
       func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let currentLebensmittel = LebensmittelSearchTab.currentList![indexPath.item]
+        let currentLebensmittel = currentList[indexPath.item]
           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "lebensmittelcell", for: indexPath) as! LebensmittelCell
-        cell.bild.image = currentLebensmittel.uiimage
+        let url = URL(string: currentLebensmittel.image!)
+        cell.bild.kf.setImage(with: url)
         cell.name.text = currentLebensmittel.bezeichnung!
         cell.contentView.layer.cornerRadius = 15
         cell.contentView.clipsToBounds = true
@@ -50,7 +73,7 @@ class LebensmittelSearchTab: UIViewController, UICollectionViewDelegate, UIColle
       
       
       func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let currentLebensmittel = LebensmittelSearchTab.currentList![indexPath.item]
+        let currentLebensmittel = currentList[indexPath.item]
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         LebensmittelDetailsTab.currentLebensmittel = currentLebensmittel
         let newViewController: UIViewController?

@@ -11,6 +11,7 @@ import UIKit
 import FirebaseDatabase
 import FirebaseStorage
 import AZDialogView
+import Kingfisher
 
 class LebensmittelDetailsTab: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
     
@@ -28,7 +29,8 @@ class LebensmittelDetailsTab: UIViewController, UICollectionViewDelegate, UIColl
         lebensmitteldetailscv.dataSource = self
         hideKeyboardWhenTappedAround()
         
-        bild.image = LebensmittelDetailsTab.currentLebensmittel?.uiimage
+        let url = URL(string: (LebensmittelDetailsTab.currentLebensmittel?.image)!)
+        bild.kf.setImage(with: url)
         bild.layer.cornerRadius = 10
         bild.clipsToBounds = true
         name.text = LebensmittelDetailsTab.currentLebensmittel?.bezeichnung
@@ -100,7 +102,6 @@ class LebensmittelDetailsTab: UIViewController, UICollectionViewDelegate, UIColl
         
         dialog.addAction(AZDialogAction(title: "Löschen") { (dialog) -> (Void) in
             self.LebensmittelLöschen()
-            AppDelegate.getMitarbeiterFromDB()
             self.presentedViewController?.dismiss(animated: true, completion: {
                 
             })

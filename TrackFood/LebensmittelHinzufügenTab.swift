@@ -62,7 +62,6 @@ class LebensmittelHinzufügenTab: UIViewController, UIPickerViewDelegate, UIPic
             self.showFailedDialog(message: "Bitte fülle alle Felder aus!")
         } else {
             saveInDatabase()
-            AppDelegate.getLebensmittelVonDB()
             dismiss(animated: true) {
             }
         }
@@ -100,9 +99,9 @@ class LebensmittelHinzufügenTab: UIViewController, UIPickerViewDelegate, UIPic
         
         uploadMedia(){ url in
         guard let url = url else { return }
-            let id = ref.child("Lebensmittel").child(self.currentKategoriePick!).childByAutoId().key
-            let currentLebensmittel = Lebensmittel(id: id!, bezeichnung: self.bezeichnungtv.text!.description, barcode: LebensmittelHinzufügenTab.barcode!, ablaufdatum: Date().getSaveableDate(), image: url)
-                ref.child("Lebensmittel").child(self.currentKategoriePick!).child(id!).setValue(["id": id, "bezeichnung": currentLebensmittel.bezeichnung, "barcode": currentLebensmittel.barcode, "ablaufdatum": currentLebensmittel.ablaufdatum, "image": currentLebensmittel.image])
+            let id = ref.child("Lebensmittel").childByAutoId().key
+            let currentLebensmittel = Lebensmittel(id: id!, bezeichnung: self.bezeichnungtv.text!.description, barcode: LebensmittelHinzufügenTab.barcode!, ablaufdatum: Date().getSaveableDate(), image: url, kategorie: self.currentKategoriePick!)
+            ref.child("Lebensmittel").child(id!).setValue(["id": id, "bezeichnung": currentLebensmittel.bezeichnung, "barcode": currentLebensmittel.barcode, "ablaufdatum": currentLebensmittel.ablaufdatum, "image": currentLebensmittel.image, "kategorie": currentLebensmittel.kategorie])
         }
     }
 }
@@ -111,7 +110,7 @@ class LebensmittelHinzufügenTab: UIViewController, UIPickerViewDelegate, UIPic
 extension Date {
     
     func getSaveableDate() -> String {
-        return day + "." + month + "." + year
+        return day + "-" + month + "-" + year
     }
 }
 

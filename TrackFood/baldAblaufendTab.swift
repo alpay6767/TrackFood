@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import FirebaseStorage
+import Kingfisher
 
 class baldAblaufendTab: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
 
@@ -16,14 +17,49 @@ class baldAblaufendTab: UIViewController, UICollectionViewDelegate, UICollection
     
     
     let modeldata = ModelData()
-    static var currentList: [Lebensmittel]?
+    var lieferrungenListe = [Lieferrung]()
+    let fbhandler = FBHandler()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         baldablaufendlieferungencv.delegate = self
         baldablaufendlieferungencv.dataSource = self
         hideKeyboardWhenTappedAround()
+        loadLieferrungen()
     }
+    
+    
+    func loadLieferrungen() {
+        
+        fbhandler.loadLieferrungenFromDBForFiliale(currentfiliale: ViewController.currentFiliale!) { [self] lieferrungenliste in
+             guard let lieferrungenliste = lieferrungenliste else { return }
+                
+            self.lieferrungenListe = lieferrungenliste
+            matchLebensmittel(currentlieferrungen: lieferrungenliste)
+            
+            
+        }
+        
+    }
+    
+    func matchLebensmittel(currentlieferrungen: [Lieferrung]) {
+        for currentlie in currentlieferrungen
+        {
+            fbhandler.checkLebensmittelBarcode(currentbarcode: currentlie.barcode!) { [self] gefunden, gefundenesItem in
+                guard let gefunden = gefunden else { return }
+                guard let gefundenesItem = gefundenesItem else { return }
+                
+                if (gefunden) {
+                    currentlie.lebensmittel = gefundenesItem
+                    self.baldablaufendlieferungencv.reloadData()
+                }
+                
+            }
+        }
+        
+        
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
           
@@ -33,26 +69,27 @@ class baldAblaufendTab: UIViewController, UICollectionViewDelegate, UICollection
       
       
       func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return AppDelegate.lebensmittellieferungenlist.count
+        return (lieferrungenListe.count)
       }
       
       func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let currentLebensmittelLieferung = AppDelegate.lebensmittellieferungenlist[indexPath.item]
+        let currentLebensmittelLieferung = lieferrungenListe[indexPath.item]
           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "lebensmittellieferrungencell", for: indexPath) as! LebensmittelLieferungCell
-        cell.bild.image = currentLebensmittelLieferung.lebensmittel!.uiimage
+        let url = URL(string: (currentLebensmittelLieferung.lebensmittel?.image)!)
+        cell.bild.kf.setImage(with: url!)
         cell.name.text = currentLebensmittelLieferung.lebensmittel!.bezeichnung!
         cell.contentView.layer.cornerRadius = 15
         cell.contentView.clipsToBounds = true
         cell.bild.layer.cornerRadius = 10
         cell.bild.clipsToBounds = true
-        cell.verfallsdatum.text = (currentLebensmittelLieferung.tag?.description)! + "." +  (currentLebensmittelLieferung.monat?.description)! + "." +  (currentLebensmittelLieferung.jahr?.description)!
+        cell.verfallsdatum.text = currentLebensmittelLieferung.date!
           return cell
           
       }
       
       
       func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let currentLebensmittelLieferung = AppDelegate.lebensmittellieferungenlist[indexPath.item]
+        let currentLebensmittelLieferung = lieferrungenListe[indexPath.item]
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         LebensmittelDetailsTab.currentLebensmittel = currentLebensmittelLieferung.lebensmittel
         let newViewController: UIViewController?

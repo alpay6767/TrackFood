@@ -29,12 +29,9 @@ class FilialenDetailTab: UIViewController, UICollectionViewDelegate, UICollectio
         hideKeyboardWhenTappedAround()
         bild.downloaded(from: (FilialenDetailTab.currentFiliale?.pictureURL)!)
         anschrift.text = (FilialenDetailTab.currentFiliale?.name)! + " " + (FilialenDetailTab.currentFiliale?.address)! + " " + (FilialenDetailTab.currentFiliale?.city)!
-        lizenzcode.text = FilialenDetailTab.currentFiliale?.lizenz?.lizenzcode
-        ablaufdatum.text = FilialenDetailTab.currentFiliale?.lizenz?.ablaufdatum
-        
-        
-        listenToLizenzcode()
-        listenToAblaufDatum()
+        lizenzcode.text = FilialenDetailTab.currentFiliale?.lizenz
+        ablaufdatum.text = FilialenDetailTab.currentFiliale?.ablaufdatum
+
     }
     
     
@@ -75,37 +72,6 @@ class FilialenDetailTab: UIViewController, UICollectionViewDelegate, UICollectio
         
       }
     
-    
-    
-    
-    func lizenzErneuern() {
-        FilialenDetailTab.currentFiliale?.lizenz?.updateLizenze()
-    }
-
-    
-    func codeErneuern() {
-        
-    }
-    
-    //DB Methoden:
-    func listenToAblaufDatum() {
-        var ref: DatabaseReference!
-        ref = Database.database().reference()
-        ref.child("Lizenzen").child((FilialenDetailTab.currentFiliale?.lizenz!.id)!).child("ablaufdatum").observe(.value) { snapshot in
-            FilialenDetailTab.currentFiliale?.lizenz?.updateAblaufDatum(snapshot: snapshot)
-            self.ablaufdatum.text = FilialenDetailTab.currentFiliale?.lizenz?.ablaufdatum
-        }
-    }
-    
-    func listenToLizenzcode() {
-        var ref: DatabaseReference!
-        ref = Database.database().reference()
-        ref.child("Lizenzen").child((FilialenDetailTab.currentFiliale?.lizenz!.id)!).child("lizenzcode").observe(.value) { snapshot in
-            FilialenDetailTab.currentFiliale?.lizenz?.updateLizenzcode(snapshot: snapshot)
-            self.lizenzcode.text = FilialenDetailTab.currentFiliale?.lizenz?.lizenzcode
-        }
-    }
-    
     func askLizenzCodeErneuern() {
         let dialog = AZDialogViewController(title: "Bist du sicher?", message: "Willst du den Lizenzcode wirklich erneuern?")
         dialog.titleColor = .black
@@ -125,7 +91,8 @@ class FilialenDetailTab: UIViewController, UICollectionViewDelegate, UICollectio
         }
         
         dialog.addAction(AZDialogAction(title: "Erneuern") { (dialog) -> (Void) in
-            self.codeErneuern()
+            //self.codeErneuern()
+            print("Lizenzcode erneuern")
             dialog.dismiss()
         })
         dialog.show(in: self)
@@ -150,7 +117,8 @@ class FilialenDetailTab: UIViewController, UICollectionViewDelegate, UICollectio
         }
         
         dialog.addAction(AZDialogAction(title: "Erneuern") { (dialog) -> (Void) in
-            self.lizenzErneuern()
+            //self.lizenzErneuern()
+            print("Ablaufdatum erneuern")
             dialog.dismiss()
         })
         dialog.show(in: self)

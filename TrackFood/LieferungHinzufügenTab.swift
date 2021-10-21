@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import FirebaseDatabase
 import AZDialogView
+import Kingfisher
 
 class LieferungHinzufügenTab: UIViewController {
     
@@ -22,7 +23,8 @@ class LieferungHinzufügenTab: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bild.image = LieferungHinzufügenTab.currentLebensmittel?.uiimage
+        let url = URL(string: (LieferungHinzufügenTab.currentLebensmittel?.image)!)
+        bild.kf.setImage(with: url)
         bezeichnung.text = LieferungHinzufügenTab.currentLebensmittel?.bezeichnung
         
     }
@@ -40,13 +42,15 @@ class LieferungHinzufügenTab: UIViewController {
         
         var ref: DatabaseReference!
         ref = Database.database().reference()
-        let id = ref.child("Lebensmittellieferungen").child((ViewController.currentMitarbeiter?.firmenid)!).childByAutoId().key
-        ref.child("Lebensmittellieferungen").child((ViewController.currentMitarbeiter?.firmenid)!).child(id!).setValue(["Tag": getDayfromString(), "Monat": getMonthfromString(), "Jahr": getYearfromString(), "lebensmittelbarcode": LieferungHinzufügenTab.currentLebensmittel?.barcode])
-    }
+        let id = ref.child("Firmen").child((ViewController.currentFiliale?.id)!).child("Lieferrungen").childByAutoId().key
+        ref.child("Firmen").child((ViewController.currentFiliale?.id)!).child("Lieferrungen").child(id!).setValue(["date": getPickedDateAsString(), "barcode": LieferungHinzufügenTab.currentLebensmittel?.barcode])
+ 
+ 
+ }
     
     func getPickedDateAsString() -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
+        formatter.dateFormat = "dd-MM-yyyy"
         let currentDateInString = formatter.string(from: datepicker.date)
         
         
@@ -89,7 +93,7 @@ class LieferungHinzufügenTab: UIViewController {
                }
                dialog.show(in: self)
                
-               AppDelegate.getFilialenFromDatabase()
+               //AppDelegate.getFilialenFromDatabase()
            } else {
                
                let dialog = AZDialogViewController(title: "Fehler", message: "Bitte fülle alle Felder aus!")

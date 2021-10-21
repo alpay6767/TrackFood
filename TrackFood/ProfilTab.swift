@@ -25,8 +25,8 @@ class ProfilTab: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         profiletabcv.dataSource = self
         hideKeyboardWhenTappedAround()
         
-        nametv.text = (ViewController.currentMitarbeiter?.vorname)! + " " +  (ViewController.currentMitarbeiter?.nachname)!
-        mitarbeitertv.text = (ViewController.currentMitarbeiter?.mitarbeitercode)!
+        nametv.text = (ViewController.currentUser?.username)!
+        mitarbeitertv.text = (ViewController.currentUser?.username)!
         
     }
     
@@ -67,7 +67,7 @@ class ProfilTab: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     
     func profillöschen() {
         let ref = Database.database().reference()
-        ref.child("Mitarbeiter").child((ViewController.currentMitarbeiter?.id)!).removeValue()
+        ref.child("Mitarbeiter").child((ViewController.currentUser?.id)!).removeValue()
     }
     
     func askDeleteProfile() {
@@ -91,7 +91,7 @@ class ProfilTab: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         dialog.addAction(AZDialogAction(title: "Löschen") { (dialog) -> (Void) in
             self.profillöschen()
             self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
-            AppDelegate.getMitarbeiterFromDB()
+            //AppDelegate.getMitarbeiterFromDB()
             dialog.dismiss()
         })
         dialog.show(in: self)
