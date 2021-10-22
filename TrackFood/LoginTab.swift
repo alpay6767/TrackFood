@@ -73,7 +73,7 @@ class LoginTab: UIViewController {
 
     }
     @IBAction func register(_ sender: Any) {
-        let mainvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "firmenlizenzchecktab")
+        let mainvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "lizenz_nc")
         self.present(mainvc, animated: true) {}
         
     }

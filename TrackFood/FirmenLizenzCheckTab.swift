@@ -38,11 +38,10 @@ class FirmenLizenzCheckTab: UIViewController {
                 if (authentificated) {
                     registerTab.currentFiliale = foundFiliale
                     let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                        let newViewController = storyBoard.instantiateViewController(withIdentifier: "registertab") as! registerTab
+                    let newViewController = storyBoard.instantiateViewController(withIdentifier: "registertab") as! registerTab
                     
-                    newViewController.modalPresentationStyle = .fullScreen
                     //or .overFullScreen for transparency
-                    self.present(newViewController, animated: true, completion: nil)
+                    self.navigationController?.pushViewController(newViewController, animated: true)
                 } else {
                     self.showBeautyfulFailedDialog(title: "Lizenz Fehler", description: "Die angegebene Lizenz wurde nicht gefunden. Bitte kontaktiere deine Filiale!")
                 }

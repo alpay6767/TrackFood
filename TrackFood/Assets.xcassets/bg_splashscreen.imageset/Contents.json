@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "foodbg.png",
+      "filename" : "bg_splashscreen.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "foodbg@2x.png",
+      "filename" : "bg_splashscreen@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "foodbg@3x.png",
+      "filename" : "bg_splashscreen@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
