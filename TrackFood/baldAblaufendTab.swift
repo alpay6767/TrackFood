@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import FirebaseStorage
 import Kingfisher
+import SwiftDate
 
 class baldAblaufendTab: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
 
@@ -35,7 +36,7 @@ class baldAblaufendTab: UIViewController, UICollectionViewDelegate, UICollection
              guard let lieferrungenliste = lieferrungenliste else { return }
                 
             self.lieferrungenListe = lieferrungenliste
-            matchLebensmittel(currentlieferrungen: lieferrungenliste)
+            matchLebensmittel(currentlieferrungen: self.lieferrungenListe)
             
             
         }
@@ -51,6 +52,7 @@ class baldAblaufendTab: UIViewController, UICollectionViewDelegate, UICollection
                 
                 if (gefunden) {
                     currentlie.lebensmittel = gefundenesItem
+                    sortArray()
                     self.baldablaufendlieferungencv.reloadData()
                 }
                 
@@ -60,6 +62,13 @@ class baldAblaufendTab: UIViewController, UICollectionViewDelegate, UICollection
         
     }
     
+    
+    func sortArray() {
+
+        var ready = self.lieferrungenListe.sorted(by: { $0.date!.compare($1.date!) == .orderedAscending })
+
+        self.lieferrungenListe = ready
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
           
@@ -94,8 +103,7 @@ class baldAblaufendTab: UIViewController, UICollectionViewDelegate, UICollection
         LebensmittelDetailsTab.currentLebensmittel = currentLebensmittelLieferung.lebensmittel
         let newViewController: UIViewController?
             newViewController = storyBoard.instantiateViewController(withIdentifier: "lebensmitteldetailstab") as! LebensmittelDetailsTab
-            present(newViewController!, animated: true) {
-        }
+        self.navigationController?.pushViewController(newViewController!, animated: true)
     }
     
     

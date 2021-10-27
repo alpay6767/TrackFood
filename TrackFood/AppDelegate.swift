@@ -445,10 +445,3 @@ extension Date {
     }
 }
 
-
-extension ViewController: BarcodeScannerCodeDelegate {
-  func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
-    print(code)
-    controller.reset()
-  }
-}

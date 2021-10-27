@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import BarcodeScanner
+import SwiftySound
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate, BarcodeScannerCodeDelegate {
 
     @IBOutlet weak var menucv: UICollectionView!
     let modeldata = ModelData()
@@ -57,24 +59,79 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         let newViewController: UIViewController?
         switch currentMenuPoint.name {
-        case "Lebensmittel":
-            newViewController = storyBoard.instantiateViewController(withIdentifier: "lebensmitteltab") as! LebensmittelTab
+        case "Liste ansehen":
+            newViewController = storyBoard.instantiateViewController(withIdentifier: "listeansehentab") as! ListeAnsehenTab
+            self.present(newViewController!, animated: true, completion: nil)
+
+            break
+        case "Neue Lieferung":
+            newViewController = storyBoard.instantiateViewController(withIdentifier: "neuelieferungtab") as! NeueLieferungTab
+            self.present(newViewController!, animated: true, completion: nil)
+
+            break
+        case "Lebensmittel hinzufügen":
+            openScanner()
             break
         case "Mein Profil":
             newViewController = storyBoard.instantiateViewController(withIdentifier: "profiltab") as! ProfilTab
+            self.present(newViewController!, animated: true, completion: nil)
+
             break
         case "Bald ablaufend":
-            newViewController = storyBoard.instantiateViewController(withIdentifier: "baldablaufendtab") as! baldAblaufendTab
+            newViewController = storyBoard.instantiateViewController(withIdentifier: "ba_nc")
+            self.present(newViewController!, animated: true, completion: nil)
+
             break
         default:
             newViewController = storyBoard.instantiateViewController(withIdentifier: "lebensmitteltab") as! LebensmittelTab
+            self.present(newViewController!, animated: true, completion: nil)
+
             break
         }
         
-        self.present(newViewController!, animated: true, completion: nil)
          
       }
 
+    
+    func openScanner() {
+        let viewController = BarcodeScannerViewController()
+        viewController.headerViewController.titleLabel.text = "Barcode scannen"
+        viewController.messageViewController.textLabel.text = "Platziere den Barcode vor die Kamera um es einzuscannen. Die Suche startet automatisch!"
+        viewController.codeDelegate = self
+        viewController.errorDelegate = self
+        viewController.dismissalDelegate = self
+        viewController.isOneTimeSearch = true
+
+        present(viewController, animated: true, completion: nil)
+    }
+    
+    func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
+        controller.dismiss(animated: true) {
+        }
+        Sound.play(file: "beep.wav")
+        let fbhandler = FBHandler()
+        
+        
+        fbhandler.checkLebensmittelBarcode(currentbarcode: code){ authentificated,foundLebensmittel  in
+         guard let authentificated = authentificated else { return }
+        guard let foundLebensmittel = foundLebensmittel else {return}
+        
+            if (authentificated) {
+                LebensmittelDetailsTab.currentLebensmittel = foundLebensmittel
+                print(code)
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let newViewController: UIViewController?
+                newViewController = storyBoard.instantiateViewController(withIdentifier: "lebensmitteldetailstab") as! LebensmittelDetailsTab
+                self.present(newViewController!, animated: true) {}
+            } else {
+                LebensmittelHinzufügenTab.barcode = code
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let newViewController: UIViewController?
+                newViewController = storyBoard.instantiateViewController(withIdentifier: "lebensmittelhinzufügentab") as! LebensmittelHinzufügenTab
+                self.present(newViewController!, animated: true) {}
+            }
+        }
+    }
 
 }
 
@@ -89,4 +146,17 @@ extension UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+}
+
+
+extension ViewController: BarcodeScannerErrorDelegate {
+     func scanner(_ controller: BarcodeScannerViewController, didReceiveError error: Error) {
+    print(error)
+  }
+}
+
+extension ViewController: BarcodeScannerDismissalDelegate {
+  func scannerDidDismiss(_ controller: BarcodeScannerViewController) {
+    controller.dismiss(animated: true, completion: nil)
+  }
 }

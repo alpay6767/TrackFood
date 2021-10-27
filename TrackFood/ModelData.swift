@@ -41,15 +41,22 @@ class ModelData {
     
     func main(){
         let baldablaufend = MenuPunkt(name: "Bald ablaufend", bild: UIImage(named: "baldablaufen")!)
-        let lebensmittel = MenuPunkt(name: "Lebensmittel", bild: UIImage(named: "lebensmittel")!)
-        let Toilettenpapier = MenuPunkt(name: "Toilettenpapier", bild: UIImage(named: "toilettenpapier")!)
-        let besucher = MenuPunkt(name: "Besucher", bild: UIImage(named: "besucher")!)
+        //let lebensmittel = MenuPunkt(name: "Lebensmittel", bild: UIImage(named: "lebensmittel")!)
+        //let Toilettenpapier = MenuPunkt(name: "Toilettenpapier", bild: UIImage(named: "toilettenpapier")!)
+        //let besucher = MenuPunkt(name: "Besucher", bild: UIImage(named: "besucher")!)
         let meinprofil = MenuPunkt(name: "Mein Profil", bild: UIImage(named: "meinprofil")!)
         
+        let listeansehen = MenuPunkt(name: "Liste ansehen", bild: UIImage(named: "listeansehen")!)
+        let neuelieferung = MenuPunkt(name: "Neue Lieferung", bild: UIImage(named: "neuelieferung")!)
+        let lebensmittelhinzufügen = MenuPunkt(name: "Lebensmittel hinzufügen", bild: UIImage(named: "lebensmittelhinzufügen")!)
+        
         main_menupoints.append(baldablaufend)
-        main_menupoints.append(lebensmittel)
-        main_menupoints.append(Toilettenpapier)
-        main_menupoints.append(besucher)
+        //main_menupoints.append(lebensmittel)
+        //main_menupoints.append(Toilettenpapier)
+        //main_menupoints.append(besucher)
+        main_menupoints.append(listeansehen)
+        main_menupoints.append(neuelieferung)
+        main_menupoints.append(lebensmittelhinzufügen)
         main_menupoints.append(meinprofil)
         
     }

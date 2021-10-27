@@ -34,6 +34,8 @@ class LebensmittelDetailsTab: UIViewController, UICollectionViewDelegate, UIColl
         bild.layer.cornerRadius = 10
         bild.clipsToBounds = true
         name.text = LebensmittelDetailsTab.currentLebensmittel?.bezeichnung
+        
+        self.navigationItem.title = LebensmittelDetailsTab.currentLebensmittel?.bezeichnung
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

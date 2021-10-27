@@ -1,13 +1,6 @@
 PODS:
-  - ASPVideoPlayer (6.1.1)
   - AZDialogView (1.3.8)
   - BarcodeScanner (4.1.3)
-  - BrightFutures (8.0.0)
-  - ChameleonFramework/Default (2.1.0)
-  - ChameleonFramework/Swift (2.1.0):
-    - ChameleonFramework/Default
-  - ColorSlider (4.4)
-  - FaveButton (3.2.1)
   - Firebase (6.14.0):
     - Firebase/Core (= 6.14.0)
   - Firebase/Core (6.14.0):
@@ -89,10 +82,6 @@ PODS:
     - Kingfisher/Core (= 5.15.0)
   - Kingfisher/Core (5.15.0)
   - leveldb-library (1.22)
-  - liquid-swipe (0.7.0):
-    - pop (~> 1.0)
-  - NADocumentPicker (3.3.0):
-    - BrightFutures
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
     - nanopb/encode (= 0.3.9011)
@@ -103,13 +92,11 @@ PODS:
   - NVActivityIndicatorView (5.0.1):
     - NVActivityIndicatorView/Base (= 5.0.1)
   - NVActivityIndicatorView/Base (5.0.1)
-  - Persei (4.0.0)
   - PMAlertController (4.0.0)
-  - pop (1.0.12)
   - PryntTrimmerView (4.0.0)
   - RevealingSplashView (0.6.0)
-  - Shuffle-iOS (0.4.0)
   - SteviaLayout (4.7.3)
+  - SwiftDate (6.3.1)
   - SwiftyCam (4.0.0)
   - SwiftySound (1.2.0)
   - YPImagePicker (4.3.1):
@@ -117,12 +104,8 @@ PODS:
     - SteviaLayout (~> 4.7.3)
 
 DEPENDENCIES:
-  - ASPVideoPlayer
   - AZDialogView
   - BarcodeScanner
-  - ChameleonFramework/Swift
-  - ColorSlider (~> 4.4)
-  - FaveButton
   - Firebase
   - FirebaseDatabase
   - FirebaseStorage
@@ -131,28 +114,20 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - JGProgressHUD
   - Kingfisher
-  - liquid-swipe
-  - NADocumentPicker
   - NewPopMenu (~> 2.0)
   - NumberPicker
   - NVActivityIndicatorView
-  - Persei (~> 4.0)
   - PMAlertController
   - RevealingSplashView
-  - Shuffle-iOS
+  - SwiftDate
   - SwiftyCam
   - SwiftySound
   - YPImagePicker
 
 SPEC REPOS:
   trunk:
-    - ASPVideoPlayer
     - AZDialogView
     - BarcodeScanner
-    - BrightFutures
-    - ChameleonFramework
-    - ColorSlider
-    - FaveButton
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuthInterop
@@ -174,31 +149,22 @@ SPEC REPOS:
     - JGProgressHUD
     - Kingfisher
     - leveldb-library
-    - liquid-swipe
-    - NADocumentPicker
     - nanopb
     - NewPopMenu
     - NumberPicker
     - NVActivityIndicatorView
-    - Persei
     - PMAlertController
-    - pop
     - PryntTrimmerView
     - RevealingSplashView
-    - Shuffle-iOS
     - SteviaLayout
+    - SwiftDate
     - SwiftyCam
     - SwiftySound
     - YPImagePicker
 
 SPEC CHECKSUMS:
-  ASPVideoPlayer: 7a92fafe62d7b0615520f2ec33a9fbd05483a999
   AZDialogView: 5a8d1a9e52f08e1a9cc1b32d304a95880d3197a2
   BarcodeScanner: fce1ad2b3f28286b1ab5091fe0979789618bee27
-  BrightFutures: f8427b46feabaf73c5e71ace7d86d65dfbb47696
-  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
-  ColorSlider: 9a888e65b871fa1e6a26fadebf4931c949935681
-  FaveButton: 93cfebf6030336fa7653fad2068c3152ed668b39
   Firebase: 0219bb4782eb1406f1b9b0628a2e625484ce910d
   FirebaseAnalytics: f68b9f3f1241385129ae0a83b63627fc420c05e5
   FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
@@ -220,23 +186,19 @@ SPEC CHECKSUMS:
   JGProgressHUD: aa403e9a5b45cae98903c4600cccdd98c0c3ec90
   Kingfisher: 1acb67597a520c2d0310677e66d6e0af455ef757
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
-  liquid-swipe: 850f88c0717fe58ba83f0f571c47a191f29ddc1f
-  NADocumentPicker: 4da90d2dad8d682bc0b8769e7b4a4eb5f908e98a
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   NewPopMenu: c6129e08e8192f6257ceb5f9a4357e1b59c6e2e7
   NumberPicker: f1a93880f7b8df5c6c81e6b5ae800322e910b732
   NVActivityIndicatorView: 738e843cb8924e9e4fc3e559d0728031624bf860
-  Persei: 9c22ebdea5ae5d54347dfdd6a2e2c600bbb08e10
   PMAlertController: 5fad2da8b9eb687134ed50c3462fed12c3afe976
-  pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
   PryntTrimmerView: 67e67573ffd4c073f1308effa66aefd0cfa667a0
   RevealingSplashView: 40c5a770894459736acdc95655eeba0dd30ce91c
-  Shuffle-iOS: 87e4d3503475f3d684a375358649911e36fe139f
   SteviaLayout: c2ecdcff57d44e38fd2f65e54ad52aeae28ca0c4
+  SwiftDate: 72d28954e8e1c6c1c0f917ccc8005e4f83c7d4b2
   SwiftyCam: 6e57914771d972fbe508e759dc9d0150a44a93fd
   SwiftySound: 9eb28bb14edb601b40027e44319e0ef8383f88bf
   YPImagePicker: 08bbb809ed62bf4149fc015c97249eb4b9463ff9
 
-PODFILE CHECKSUM: ffd7ab76df646ac3542a292170a9f7f03a0fa817
+PODFILE CHECKSUM: aadadb76aca656eeed5502c6e6d0997879542a93
 
 COCOAPODS: 1.10.1

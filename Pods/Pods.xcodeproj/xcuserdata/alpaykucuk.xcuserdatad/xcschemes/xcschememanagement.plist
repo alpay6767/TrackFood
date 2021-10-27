@@ -4,11 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>ASPVideoPlayer.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>AZDialogView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -25,26 +20,6 @@
 			<false/>
 		</dict>
 		<key>BarcodeScanner.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>BrightFutures.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>ChameleonFramework.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>ColorSlider.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>FaveButton.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -149,11 +124,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>NADocumentPicker.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>NVActivityIndicatorView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -184,11 +154,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Persei.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-TrackFood.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -204,12 +169,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Shuffle-iOS.xcscheme</key>
+		<key>SteviaLayout.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SteviaLayout.xcscheme</key>
+		<key>SwiftDate.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -234,22 +199,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>liquid-swipe-liquid-swipe.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>liquid-swipe.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>nanopb.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>pop.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
