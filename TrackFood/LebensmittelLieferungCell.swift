@@ -15,5 +15,5 @@ class LebensmittelLieferungCell: UICollectionViewCell {
     @IBOutlet weak var verfallsdatum: UILabel!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var bild: UIImageView!
-    
+    @IBOutlet weak var date_view: UIView!
 }

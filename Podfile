@@ -26,5 +26,7 @@ target 'TrackFood' do
   pod 'BarcodeScanner'
   pod 'SwiftySound'
   pod 'SwiftDate'
+  pod 'BulletinBoard'
+
   
 end

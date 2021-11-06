@@ -19,6 +19,7 @@
 		886DF55A244932EA006BC63E /* MenuPunkt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886DF559244932EA006BC63E /* MenuPunkt.swift */; };
 		886DF55C24493335006BC63E /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886DF55B24493335006BC63E /* ModelData.swift */; };
 		886DF55E24493A59006BC63E /* MenuPointCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886DF55D24493A59006BC63E /* MenuPointCell.swift */; };
+		8883F90B2735FEF4007C7F4E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8883F90A2735FEF4007C7F4E /* Constants.swift */; };
 		88922E49244A647B000C46D1 /* AdminModeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88922E48244A647B000C46D1 /* AdminModeTab.swift */; };
 		88922E4B244A6D33000C46D1 /* FirmenLizenzCheckTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88922E4A244A6D33000C46D1 /* FirmenLizenzCheckTab.swift */; };
 		88922E4D244A6F4D000C46D1 /* Lizenz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88922E4C244A6F4D000C46D1 /* Lizenz.swift */; };
@@ -40,9 +41,7 @@
 		88E8687A244B1DA3006E3BB3 /* FilialenVerwaltenTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86879244B1DA3006E3BB3 /* FilialenVerwaltenTab.swift */; };
 		88E8687C244B1E58006E3BB3 /* Filiale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E8687B244B1E58006E3BB3 /* Filiale.swift */; };
 		88E8687E244B1EDB006E3BB3 /* Lieferrung.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E8687D244B1EDB006E3BB3 /* Lieferrung.swift */; };
-		88E86880244B1F0C006E3BB3 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E8687F244B1F0C006E3BB3 /* Person.swift */; };
 		88E86884244B2033006E3BB3 /* Berechtigungscode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86883244B2032006E3BB3 /* Berechtigungscode.swift */; };
-		88E86886244B2525006E3BB3 /* Frage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86885244B2525006E3BB3 /* Frage.swift */; };
 		88E86888244B2F1B006E3BB3 /* FilialenDetailTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E86887244B2F1B006E3BB3 /* FilialenDetailTab.swift */; };
 		88F6F8132514D86700DCC88E /* FBHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F6F8122514D86700DCC88E /* FBHandler.swift */; };
 		88F6F8152514D97700DCC88E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88F6F8142514D97700DCC88E /* GoogleService-Info.plist */; };
@@ -69,6 +68,7 @@
 		886DF559244932EA006BC63E /* MenuPunkt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPunkt.swift; sourceTree = "<group>"; };
 		886DF55B24493335006BC63E /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		886DF55D24493A59006BC63E /* MenuPointCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPointCell.swift; sourceTree = "<group>"; };
+		8883F90A2735FEF4007C7F4E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		88922E48244A647B000C46D1 /* AdminModeTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminModeTab.swift; sourceTree = "<group>"; };
 		88922E4A244A6D33000C46D1 /* FirmenLizenzCheckTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirmenLizenzCheckTab.swift; sourceTree = "<group>"; };
 		88922E4C244A6F4D000C46D1 /* Lizenz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lizenz.swift; sourceTree = "<group>"; };
@@ -90,9 +90,7 @@
 		88E86879244B1DA3006E3BB3 /* FilialenVerwaltenTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilialenVerwaltenTab.swift; sourceTree = "<group>"; };
 		88E8687B244B1E58006E3BB3 /* Filiale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filiale.swift; sourceTree = "<group>"; };
 		88E8687D244B1EDB006E3BB3 /* Lieferrung.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lieferrung.swift; sourceTree = "<group>"; };
-		88E8687F244B1F0C006E3BB3 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		88E86883244B2032006E3BB3 /* Berechtigungscode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Berechtigungscode.swift; sourceTree = "<group>"; };
-		88E86885244B2525006E3BB3 /* Frage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Frage.swift; sourceTree = "<group>"; };
 		88E86887244B2F1B006E3BB3 /* FilialenDetailTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilialenDetailTab.swift; sourceTree = "<group>"; };
 		88F6F8122514D86700DCC88E /* FBHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBHandler.swift; sourceTree = "<group>"; };
 		88F6F8142514D97700DCC88E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -160,10 +158,8 @@
 				88922E48244A647B000C46D1 /* AdminModeTab.swift */,
 				88922E4A244A6D33000C46D1 /* FirmenLizenzCheckTab.swift */,
 				88922E4C244A6F4D000C46D1 /* Lizenz.swift */,
-				88E8687F244B1F0C006E3BB3 /* Person.swift */,
 				88E8687D244B1EDB006E3BB3 /* Lieferrung.swift */,
 				88E86883244B2032006E3BB3 /* Berechtigungscode.swift */,
-				88E86885244B2525006E3BB3 /* Frage.swift */,
 				88E8687B244B1E58006E3BB3 /* Filiale.swift */,
 				88E86875244B1BE8006E3BB3 /* Unternehmen.swift */,
 				88E86877244B1D39006E3BB3 /* FilialenCell.swift */,
@@ -181,6 +177,7 @@
 				88F6F8162514D9CF00DCC88E /* User.swift */,
 				88F6F8182514E18C00DCC88E /* splashScreenTab.swift */,
 				88BA627425165DCD00E534B9 /* createFilialeTab.swift */,
+				8883F90A2735FEF4007C7F4E /* Constants.swift */,
 			);
 			path = TrackFood;
 			sourceTree = "<group>";
@@ -324,7 +321,6 @@
 				88F7E956245117A700B1867F /* LebensmittelLieferungCell.swift in Sources */,
 				88ABF9B9244BC95F006E13F4 /* LebensmittelHinzufügenTab.swift in Sources */,
 				88318CF1244B877F00B85FAD /* ProfilTab.swift in Sources */,
-				88E86886244B2525006E3BB3 /* Frage.swift in Sources */,
 				88E8687A244B1DA3006E3BB3 /* FilialenVerwaltenTab.swift in Sources */,
 				88922E49244A647B000C46D1 /* AdminModeTab.swift in Sources */,
 				88C377F6244A142D004931C1 /* Mitarbeiter.swift in Sources */,
@@ -354,8 +350,8 @@
 				88C33ADB244CF2D400723ADE /* LebensmittelDetailsTab.swift in Sources */,
 				88C33ADF244D271500723ADE /* LieferungHinzufügenTab.swift in Sources */,
 				88E8687C244B1E58006E3BB3 /* Filiale.swift in Sources */,
-				88E86880244B1F0C006E3BB3 /* Person.swift in Sources */,
 				88E8687E244B1EDB006E3BB3 /* Lieferrung.swift in Sources */,
+				8883F90B2735FEF4007C7F4E /* Constants.swift in Sources */,
 				88C377EC2449E346004931C1 /* LebensmittelTab.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -500,7 +496,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 727839F3C3FF56E8349E0CC4 /* Pods-TrackFood.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CMCESWENEQ;
 				INFOPLIST_FILE = TrackFood/Info.plist;
@@ -521,7 +517,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D9D47D5C009AEB3005C9B39C /* Pods-TrackFood.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CMCESWENEQ;
 				INFOPLIST_FILE = TrackFood/Info.plist;

@@ -48,7 +48,7 @@ class LebensmittelSearchTab: UIViewController, UICollectionViewDelegate, UIColle
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
           
-        return CGSize(width: view.bounds.width, height: 82
+        return CGSize(width: view.bounds.width, height: 50
           )
       }
       
@@ -78,8 +78,7 @@ class LebensmittelSearchTab: UIViewController, UICollectionViewDelegate, UIColle
         LebensmittelDetailsTab.currentLebensmittel = currentLebensmittel
         let newViewController: UIViewController?
             newViewController = storyBoard.instantiateViewController(withIdentifier: "lebensmitteldetailstab") as! LebensmittelDetailsTab
-            present(newViewController!, animated: true) {
-        }
+        self.navigationController?.pushViewController(newViewController!, animated: true)
     }
 
 }

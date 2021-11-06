@@ -9,6 +9,8 @@
 import UIKit
 import BarcodeScanner
 import SwiftySound
+import FirebaseDatabase
+import BLTNBoard
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate, BarcodeScannerCodeDelegate {
 
@@ -16,20 +18,54 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     let modeldata = ModelData()
     static var currentUser: User?
     static var currentFiliale: Filiale?
+    var bulletinManager: BLTNItemManager?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         menucv.delegate = self
         menucv.dataSource = self
         hideKeyboardWhenTappedAround()
-        
-        
     }
     
     @IBAction func logout(_ sender: Any) {
-        dismiss(animated: true) {
-            
+        let bulletinItem = createBulletinBoardItemForLogout(title: "Willst du dich wirklich ausloggen?", description: "Du musst dich dann wieder anmelden!", actionButtonText: "Ausloggen", alternativeButtonText: "abbrechen", image: #imageLiteral(resourceName: "people"))
+        self.bulletinManager = BLTNItemManager(rootItem: bulletinItem)
+        
+        self.bulletinManager!.showBulletin(above: self)
+    }
+    
+    func createBulletinBoardItemForLogout(title: String, description: String, actionButtonText: String, alternativeButtonText: String, image: UIImage) -> BLTNItem {
+        let page = BLTNPageItem(title: title)
+        page.image = image
+        
+        page.descriptionText = description
+        page.actionButtonTitle = actionButtonText
+        page.alternativeButtonTitle = alternativeButtonText
+        page.actionHandler = { (item: BLTNActionItem) in
+            item.manager?.dismissBulletin(animated: true)
+            self.vibratePhone()
+            self.logout()
         }
+        page.alternativeHandler = { (item: BLTNActionItem) in
+            item.manager?.dismissBulletin(animated: true)
+            self.vibratePhone()
+        }
+        let rootItem: BLTNItem = page
+        
+        return rootItem
+    }
+    
+    func logout() {
+        
+        let defaults = UserDefaults.standard
+        defaults.set(false, forKey: "LoggedIn")
+        defaults.set("//", forKey: "token")
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        ref.child("Mitarbeiter").child((ViewController.currentUser?.id!)!).child("token").setValue("//")
+        let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "logintab")
+        UIApplication.shared.keyWindow?.rootViewController = loginViewController
+        
     }
     
     
@@ -60,7 +96,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let newViewController: UIViewController?
         switch currentMenuPoint.name {
         case "Liste ansehen":
-            newViewController = storyBoard.instantiateViewController(withIdentifier: "listeansehentab") as! ListeAnsehenTab
+            newViewController = storyBoard.instantiateViewController(withIdentifier: "stoebern_nv")
             self.present(newViewController!, animated: true, completion: nil)
 
             break
@@ -146,6 +182,27 @@ extension UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+    func createBulletinBoardItem(title: String, description: String, actionButtonText: String, alternativeButtonText: String, image: UIImage) -> BLTNItem {
+        let page = BLTNPageItem(title: title)
+        page.image = image
+        
+        page.descriptionText = description
+        page.actionButtonTitle = actionButtonText
+        page.alternativeButtonTitle = alternativeButtonText
+        let rootItem: BLTNItem = page
+        
+        return rootItem
+    }
+    func vibratePhone() {
+        let generator = UIImpactFeedbackGenerator(style: .heavy)
+        generator.impactOccurred()
+    }
+    func vibratePhoneMedium() {
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
+    }
+    
+    
 }
 
 

@@ -149,6 +149,7 @@ class LoginTab: UIViewController {
                         
                         if (authentificated) {
                             ViewController.currentFiliale = foundFiliale
+                            self.fbhandler.saveFilialeToDefaults(filiale: foundFiliale)
                             if (foundUser.username == "Alpay" && foundUser.password == "Hallo123") {
                                 let mainvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "adminmodetab")
                                 mainvc.modalPresentationStyle = .fullScreen
@@ -158,10 +159,8 @@ class LoginTab: UIViewController {
                                 mainvc.modalPresentationStyle = .fullScreen
                                 self.present(mainvc, animated: true) {}
                             }
-                            
-                            print("Eingeloggt: " + foundUser.username!)
+                            //print("Eingeloggt: " + foundUser.username!)
                         }
-                        
                     }
                 } else {
                     self.showLoginFailedAlert()

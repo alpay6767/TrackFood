@@ -134,20 +134,19 @@ class FBHandler {
         
         ref?.child("Lebensmittel").observeSingleEvent(of: .value, with: { snapshot in
 
-            if !snapshot.exists() { return }
+            if !snapshot.exists() {
+                completion(false, Lebensmittel())
+            }
 
             if let result = snapshot.children.allObjects as? [DataSnapshot] {
                 for child in result {
-                        let loadedlebensmittel = Lebensmittel(snapshot: child)
+                    let loadedlebensmittel = Lebensmittel(snapshot: child)
                     if (loadedlebensmittel?.barcode == currentbarcode) {
                             completion(true, loadedlebensmittel)
                             return
                                 
                     }
                 }
-                completion(false, Lebensmittel())
-            }
-            else {
                 completion(false, Lebensmittel())
             }
         })
@@ -325,6 +324,20 @@ class FBHandler {
         defaults.set(user.username, forKey: "username")
         defaults.set(user.password, forKey: "password")
         defaults.set(user.token, forKey: "token")
+        defaults.set(user.filialenid, forKey: "filialenid")
+
+    }
+    
+    func saveFilialeToDefaults(filiale: Filiale) {
+        let defaults = UserDefaults.standard
+        defaults.set(filiale.id, forKey: "f_id")
+        defaults.set(filiale.name, forKey: "name")
+        defaults.set(filiale.pictureURL, forKey: "pictureURL")
+        defaults.set(filiale.address, forKey: "address")
+        defaults.set(filiale.city, forKey: "city")
+        defaults.set(filiale.lizenz, forKey: "lizenz")
+        defaults.set(filiale.zip, forKey: "zip")
+        defaults.set(filiale.ablaufdatum, forKey: "ablaufdatum")
 
     }
     

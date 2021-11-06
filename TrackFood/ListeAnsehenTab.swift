@@ -86,7 +86,7 @@ class ListeAnsehenTab: UIViewController, UICollectionViewDelegate, UICollectionV
             break
         }
         
-        self.present(newVC!, animated: true, completion: nil)
+        self.navigationController?.pushViewController(newVC!, animated: true)
       }
 
 

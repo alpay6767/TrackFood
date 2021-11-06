@@ -72,7 +72,7 @@ class baldAblaufendTab: UIViewController, UICollectionViewDelegate, UICollection
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
           
-        return CGSize(width: view.bounds.width, height: view.bounds.height*0.15
+        return CGSize(width: view.bounds.width, height: 80
           )
       }
       
@@ -89,9 +89,12 @@ class baldAblaufendTab: UIViewController, UICollectionViewDelegate, UICollection
         cell.name.text = currentLebensmittelLieferung.lebensmittel!.bezeichnung!
         cell.contentView.layer.cornerRadius = 15
         cell.contentView.clipsToBounds = true
-        cell.bild.layer.cornerRadius = 10
+        cell.bild.layer.cornerRadius = 5
         cell.bild.clipsToBounds = true
         cell.verfallsdatum.text = currentLebensmittelLieferung.date!
+        cell.date_view.backgroundColor = Constants.DATECOLOR_SOON
+        cell.date_view.layer.cornerRadius = 10
+        cell.date_view.clipsToBounds = true
           return cell
           
       }
