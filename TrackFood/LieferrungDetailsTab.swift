@@ -1,5 +1,5 @@
 //
-//  LebensmittelDetailsTab.swift
+//  LieferrungDetailsTab.swift
 //  TrackFood
 //
 //  Created by Alpay Kücük on 17.04.20.
@@ -13,13 +13,15 @@ import FirebaseStorage
 import AZDialogView
 import Kingfisher
 
-class LebensmittelDetailsTab: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
+class LieferrungDetailsTab: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
     
-    static var currentLebensmittel: Lebensmittel?
+    static var currentLieferrung: Lieferrung?
     
     @IBOutlet weak var lebensmitteldetailscv: UICollectionView!
     let modeldata = ModelData()
     
+    @IBOutlet weak var ablaufdatum: UILabel!
+    @IBOutlet weak var ablaufdatum_layout: UIView!
     @IBOutlet weak var bild: UIImageView!
     @IBOutlet weak var name: UILabel!
     
@@ -29,18 +31,23 @@ class LebensmittelDetailsTab: UIViewController, UICollectionViewDelegate, UIColl
         lebensmitteldetailscv.dataSource = self
         hideKeyboardWhenTappedAround()
         
-        let url = URL(string: (LebensmittelDetailsTab.currentLebensmittel?.image)!)
+        let url = URL(string: (LieferrungDetailsTab.currentLieferrung?.lebensmittel?.image)!)
         bild.kf.setImage(with: url)
         bild.layer.cornerRadius = bild.bounds.width/2
         bild.clipsToBounds = true
-        name.text = LebensmittelDetailsTab.currentLebensmittel?.bezeichnung
+        name.text = LieferrungDetailsTab.currentLieferrung?.lebensmittel?.bezeichnung
+        
+        ablaufdatum.text = LieferrungDetailsTab.currentLieferrung?.date
+        ablaufdatum_layout.backgroundColor = LieferrungDetailsTab.currentLieferrung?.getColorForLieferung()
+        ablaufdatum_layout.layer.cornerRadius = 10
+        ablaufdatum_layout.clipsToBounds = true
         
         self.navigationItem.title = LebensmittelDetailsTab.currentLebensmittel?.bezeichnung
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: view.bounds.width/2 - 30, height: view.bounds.width/2 - 30
+        return CGSize(width: view.bounds.width/2 - 70, height: view.bounds.width/2 - 70
           )
       }
       

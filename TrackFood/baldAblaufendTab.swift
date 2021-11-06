@@ -65,9 +65,10 @@ class baldAblaufendTab: UIViewController, UICollectionViewDelegate, UICollection
     
     func sortArray() {
 
-        var ready = self.lieferrungenListe.sorted(by: { $0.date!.compare($1.date!) == .orderedAscending })
-
-        self.lieferrungenListe = ready
+        
+        //let ready = DateInRegion.sortedByOldest(list: getDateInRegions())
+        
+        self.lieferrungenListe = self.lieferrungenListe.sorted(by: { $0.dateFormtatted!.compare($1.dateFormtatted!) == .orderedAscending })
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -92,7 +93,7 @@ class baldAblaufendTab: UIViewController, UICollectionViewDelegate, UICollection
         cell.bild.layer.cornerRadius = 5
         cell.bild.clipsToBounds = true
         cell.verfallsdatum.text = currentLebensmittelLieferung.date!
-        cell.date_view.backgroundColor = Constants.DATECOLOR_SOON
+        cell.date_view.backgroundColor = currentLebensmittelLieferung.getColorForLieferung()
         cell.date_view.layer.cornerRadius = 10
         cell.date_view.clipsToBounds = true
           return cell
@@ -103,9 +104,9 @@ class baldAblaufendTab: UIViewController, UICollectionViewDelegate, UICollection
       func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let currentLebensmittelLieferung = lieferrungenListe[indexPath.item]
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        LebensmittelDetailsTab.currentLebensmittel = currentLebensmittelLieferung.lebensmittel
+        LieferrungDetailsTab.currentLieferrung = currentLebensmittelLieferung
         let newViewController: UIViewController?
-            newViewController = storyBoard.instantiateViewController(withIdentifier: "lebensmitteldetailstab") as! LebensmittelDetailsTab
+            newViewController = storyBoard.instantiateViewController(withIdentifier: "lieferrungdetailstab") as! LieferrungDetailsTab
         self.navigationController?.pushViewController(newViewController!, animated: true)
     }
     

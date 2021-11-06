@@ -10,6 +10,7 @@
 		8806536D2449D93100B6010D /* LoginTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8806536C2449D93100B6010D /* LoginTab.swift */; };
 		88318CEF244B77D000B85FAD /* registerTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88318CEE244B77D000B85FAD /* registerTab.swift */; };
 		88318CF1244B877F00B85FAD /* ProfilTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88318CF0244B877F00B85FAD /* ProfilTab.swift */; };
+		8849D95D2736BB6E00939829 /* LieferrungDetailsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8849D95C2736BB6E00939829 /* LieferrungDetailsTab.swift */; };
 		886DF54424492DBB006BC63E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886DF54324492DBB006BC63E /* AppDelegate.swift */; };
 		886DF54624492DBB006BC63E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886DF54524492DBB006BC63E /* SceneDelegate.swift */; };
 		886DF54824492DBB006BC63E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886DF54724492DBB006BC63E /* ViewController.swift */; };
@@ -57,6 +58,7 @@
 		8806536C2449D93100B6010D /* LoginTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTab.swift; sourceTree = "<group>"; };
 		88318CEE244B77D000B85FAD /* registerTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerTab.swift; sourceTree = "<group>"; };
 		88318CF0244B877F00B85FAD /* ProfilTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilTab.swift; sourceTree = "<group>"; };
+		8849D95C2736BB6E00939829 /* LieferrungDetailsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LieferrungDetailsTab.swift; sourceTree = "<group>"; };
 		886DF54024492DBB006BC63E /* TrackFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		886DF54324492DBB006BC63E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		886DF54524492DBB006BC63E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				88F6F8182514E18C00DCC88E /* splashScreenTab.swift */,
 				88BA627425165DCD00E534B9 /* createFilialeTab.swift */,
 				8883F90A2735FEF4007C7F4E /* Constants.swift */,
+				8849D95C2736BB6E00939829 /* LieferrungDetailsTab.swift */,
 			);
 			path = TrackFood;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				886DF54824492DBB006BC63E /* ViewController.swift in Sources */,
 				886DF55A244932EA006BC63E /* MenuPunkt.swift in Sources */,
 				88C377F02449F43F004931C1 /* NeueLieferungTab.swift in Sources */,
+				8849D95D2736BB6E00939829 /* LieferrungDetailsTab.swift in Sources */,
 				88F6F8132514D86700DCC88E /* FBHandler.swift in Sources */,
 				88E86876244B1BE8006E3BB3 /* Unternehmen.swift in Sources */,
 				88922E4B244A6D33000C46D1 /* FirmenLizenzCheckTab.swift in Sources */,

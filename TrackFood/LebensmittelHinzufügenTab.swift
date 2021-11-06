@@ -32,6 +32,8 @@ class LebensmittelHinzufügenTab: UIViewController, UIPickerViewDelegate, UIPic
         kategoriepicker.dataSource = self
         hideKeyboardWhenTappedAround()
         currentKategoriePick = modeldata.kategories[0]
+        selectphotobtn.layer.cornerRadius = selectphotobtn.bounds.width/2
+        selectphotobtn.clipsToBounds = true
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
 
     }

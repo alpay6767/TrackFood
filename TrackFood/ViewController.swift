@@ -157,13 +157,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 print(code)
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let newViewController: UIViewController?
-                newViewController = storyBoard.instantiateViewController(withIdentifier: "lebensmitteldetailstab") as! LebensmittelDetailsTab
+                newViewController = storyBoard.instantiateViewController(withIdentifier: "lebensmitteldetails_nc")
                 self.present(newViewController!, animated: true) {}
             } else {
                 LebensmittelHinzufügenTab.barcode = code
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let newViewController: UIViewController?
-                newViewController = storyBoard.instantiateViewController(withIdentifier: "lebensmittelhinzufügentab") as! LebensmittelHinzufügenTab
+                newViewController = storyBoard.instantiateViewController(withIdentifier: "produkthinzufuegen_nc")
                 self.present(newViewController!, animated: true) {}
             }
         }
