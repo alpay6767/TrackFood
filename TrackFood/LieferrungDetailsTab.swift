@@ -42,7 +42,7 @@ class LieferrungDetailsTab: UIViewController, UICollectionViewDelegate, UICollec
         ablaufdatum_layout.layer.cornerRadius = 10
         ablaufdatum_layout.clipsToBounds = true
         
-        self.navigationItem.title = LebensmittelDetailsTab.currentLebensmittel?.bezeichnung
+        self.navigationItem.title = LieferrungDetailsTab.currentLieferrung?.lebensmittel?.bezeichnung
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -69,7 +69,7 @@ class LieferrungDetailsTab: UIViewController, UICollectionViewDelegate, UICollec
         let currentMenuPoint = modeldata.lebensmitteldetails_menupoints[indexPath.item]
         switch currentMenuPoint.name {
         case "Löschen":
-            askDeleteLebensmittel()
+            askDeleteLieferrung()
             break
         default:
             break
@@ -77,22 +77,16 @@ class LieferrungDetailsTab: UIViewController, UICollectionViewDelegate, UICollec
       }
     
     
-    func LebensmittelLöschen() {
+    func lieferrungLoeschen() {
         let ref = Database.database().reference()
-        ref.child("Lebensmittel").child((LebensmittelDetailsTab.currentLebensmittel!.kategorie)!).child((LebensmittelDetailsTab.currentLebensmittel?.id)!).removeValue()
-        
-        let storageRef = Storage.storage().reference().child("Lebensmittel").child((LebensmittelDetailsTab.currentLebensmittel?.kategorie)!).child((LebensmittelDetailsTab.currentLebensmittel?.barcode)! + ".png")
-        storageRef.delete { error in
-            if let error = error {
-                print(error)
-            } else {
-                // File deleted successfully
-            }
-        }
+        ref.child("Firmen").child((ViewController.currentFiliale?.id)!).child("Lieferrungen").child(LieferrungDetailsTab.currentLieferrung!.id!).removeValue()
+        let baldAblaufendTab = self.navigationController?.viewControllers[0] as! baldAblaufendTab
+        baldAblaufendTab.loadLieferrungen()
+        self.navigationController?.popViewController(animated: true)
     }
     
-    func askDeleteLebensmittel() {
-        let dialog = AZDialogViewController(title: "Bist du sicher?", message: "Willst du den deinen Account wirklich löschen?")
+    func askDeleteLieferrung() {
+        let dialog = AZDialogViewController(title: "Bist du sicher?", message: "Willst du diese Lieferrung wirklich löschen?")
         dialog.titleColor = .black
         dialog.messageColor = .black
         dialog.alertBackgroundColor = .white
@@ -110,15 +104,11 @@ class LieferrungDetailsTab: UIViewController, UICollectionViewDelegate, UICollec
         }
         
         dialog.addAction(AZDialogAction(title: "Löschen") { (dialog) -> (Void) in
-            self.LebensmittelLöschen()
-            self.presentedViewController?.dismiss(animated: true, completion: {
-                
-            })
+            self.lieferrungLoeschen()
             dialog.dismiss()
         })
         dialog.show(in: self)
     }
-
 
 
 }

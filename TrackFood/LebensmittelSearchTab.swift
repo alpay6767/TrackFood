@@ -19,6 +19,7 @@ class LebensmittelSearchTab: UIViewController, UICollectionViewDelegate, UIColle
     var currentList = [Lebensmittel]()
     static var currentcat: String?
     let fbhandler = FBHandler()
+    @IBOutlet weak var suchenTf: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +27,48 @@ class LebensmittelSearchTab: UIViewController, UICollectionViewDelegate, UIColle
         lebensmittelsearchcv.dataSource = self
         hideKeyboardWhenTappedAround()
         loadLebensmittelliste()
+        suchenTf.delegate = self
+        suchenTf.addTarget(self, action: #selector(FilialenVerwaltenTab.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
     }
     
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        
+        var key = textField.text!.lowercased()
+        var sorted = currentList.sorted {
+            if $0.bezeichnung?.lowercased() == key && $1.bezeichnung!.lowercased() != key {
+                return true
+            }
+            else if $0.bezeichnung!.lowercased().hasPrefix(key) && !$1.bezeichnung!.lowercased().hasPrefix(key)  {
+                return true
+            }
+            else if $0.bezeichnung!.lowercased().hasPrefix(key) && $1.bezeichnung!.lowercased().hasPrefix(key)
+                && $0.bezeichnung!.count < $1.bezeichnung!.count  {
+                return true
+            }
+            else if $0.bezeichnung!.lowercased().contains(key) && !$1.bezeichnung!.lowercased().contains(key) {
+                return true
+            }
+            else if $0.bezeichnung!.lowercased().contains(key) && $1.bezeichnung!.lowercased().contains(key)
+                && $0.bezeichnung!.count < $1.bezeichnung!.count {
+                return true
+            }
+            return false
+        }
+        
+        
+        self.lebensmittelsearchcv?.scrollToItem(at: IndexPath(row: 0, section: 0),
+              at: .top,
+        animated: true)
+        currentList = sorted
+        lebensmittelsearchcv.reloadData()
+        
+
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
     func loadLebensmittelliste() {
         

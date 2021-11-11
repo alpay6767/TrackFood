@@ -139,7 +139,7 @@ class LoginTab: UIViewController {
                     
                     ViewController.currentUser = foundUser
                     
-                    self.fbhandler.getFirmaMitFirmenID(currentid: foundUser.filialenid!) { authentificated, foundFiliale in
+                    self.fbhandler.getFirmaMitFirmenID(currentid: foundUser.firmenid!) { authentificated, foundFiliale in
                         guard let authentificated = authentificated else {
                             return
                         }

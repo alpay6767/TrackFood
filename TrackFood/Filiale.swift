@@ -9,27 +9,30 @@
 import Foundation
 import UIKit
 import FirebaseDatabase
+import SwiftDate
 
 
 class Filiale {
     
     var id: String?
     var name: String?
-    var pictureURL: String?
     var address: String?
-    var zip: String?
-    var city: String?
     var lizenz: String?
     var ablaufdatum: String?
     
     
-    init(id: String, name: String, pictureURL: String, address: String,zip: String, city: String, lizenz: String, ablaufdatum: String) {
+    init(id: String, name: String, address: String, ablaufdatum: String) {
         self.id = id
         self.name = name
-        self.pictureURL = pictureURL
         self.address = address
-        self.zip = zip
-        self.city = city
+        self.lizenz = randomString(length: 8)
+        self.ablaufdatum = ablaufdatum
+    }
+    
+    init(id: String, name: String, address: String, lizenz: String, ablaufdatum: String) {
+        self.id = id
+        self.name = name
+        self.address = address
         self.lizenz = lizenz
         self.ablaufdatum = ablaufdatum
     }
@@ -39,10 +42,7 @@ class Filiale {
         let value = snapshot.value as? [String : AnyObject]
         self.name = value!["name"] as? String
         self.id = value!["id"] as? String
-        self.pictureURL = value!["pictureurl"] as? String
         self.address = value!["address"] as? String
-        self.zip = value!["zip"] as? String
-        self.city = value!["city"] as? String
         self.ablaufdatum = value!["ablaufdatum"] as? String
         self.lizenz = value!["lizenz"] as? String
     }
@@ -51,28 +51,32 @@ class Filiale {
         
     }
     
-    
-}
-
-
-extension UIImageView {
-    func downloaded(from url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {  // for swift 4.2 syntax just use ===> mode: UIView.ContentMode
-        contentMode = mode
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard
-                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                let data = data, error == nil,
-                let image = UIImage(data: data)
-                else { return }
-            DispatchQueue.main.async() {
-                self.image = image
-            }
-        }.resume()
+    func renewLicensForAYear() {
+        var currentlicense = self.ablaufdatum?.toDate("dd-MM-yyyy")
+        currentlicense = currentlicense! + 1.years
+        self.ablaufdatum = currentlicense?.toString(DateToStringStyles.custom("dd-MM-yyyy"))
+        let ref = Database.database().reference()
+        ref.child("Firmen").child((self.id)!).child("ablaufdatum").setValue(self.ablaufdatum)        
     }
-    func downloaded(from link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {  // for swift 4.2 syntax just use ===> mode: UIView.ContentMode
-        guard let url = URL(string: link) else { return }
-        downloaded(from: url, contentMode: mode)
+    
+    func renewLicensForAMonth() {
+        var currentlicense = self.ablaufdatum?.toDate("dd-MM-yyyy")
+        currentlicense = currentlicense! + 1.months
+        self.ablaufdatum = currentlicense?.toString(DateToStringStyles.custom("dd-MM-yyyy"))
+        let ref = Database.database().reference()
+        ref.child("Firmen").child((self.id)!).child("ablaufdatum").setValue(self.ablaufdatum)
+    }
+    
+    func renewLicenseKey() {
+        let newkey = randomString(length: 8)
+        self.lizenz = newkey
+        let ref = Database.database().reference()
+        ref.child("Firmen").child((self.id)!).child("lizenz").setValue(self.lizenz)
+    }
+    
+    func randomString(length: Int) -> String {
+      let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+      return String((0..<length).map{ _ in letters.randomElement()! })
     }
     
     

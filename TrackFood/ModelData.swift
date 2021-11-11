@@ -100,7 +100,7 @@ class ModelData {
         let filialen = MenuPunkt(name: "Filialen", bild: UIImage(named: "filialen")!)
         let finanzen = MenuPunkt(name: "Finanzen", bild: UIImage(named: "finanzen")!)
         adminmode_menupoints.append(filialen)
-        adminmode_menupoints.append(finanzen)
+        //adminmode_menupoints.append(finanzen)
     }
     
     func filialendetails() {

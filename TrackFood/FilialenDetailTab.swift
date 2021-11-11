@@ -10,11 +10,14 @@ import Foundation
 import UIKit
 import FirebaseDatabase
 import AZDialogView
+import BLTNBoard
 
 class FilialenDetailTab: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
     
     static var currentFiliale: Filiale?
     let modeldata = ModelData()
+    
+    var bulletinManager : BLTNItemManager?
     
     @IBOutlet weak var anschrift: UILabel!
     @IBOutlet weak var bild: UIImageView!
@@ -27,11 +30,14 @@ class FilialenDetailTab: UIViewController, UICollectionViewDelegate, UICollectio
         filialendetailcv.delegate = self
         filialendetailcv.dataSource = self
         hideKeyboardWhenTappedAround()
-        bild.downloaded(from: (FilialenDetailTab.currentFiliale?.pictureURL)!)
-        anschrift.text = (FilialenDetailTab.currentFiliale?.name)! + " " + (FilialenDetailTab.currentFiliale?.address)! + " " + (FilialenDetailTab.currentFiliale?.city)!
+        updateFilialenDetails()
+        self.navigationItem.title = FilialenDetailTab.currentFiliale?.name
+    }
+    
+    func updateFilialenDetails() {
+        anschrift.text = (FilialenDetailTab.currentFiliale?.name)!
         lizenzcode.text = FilialenDetailTab.currentFiliale?.lizenz
         ablaufdatum.text = FilialenDetailTab.currentFiliale?.ablaufdatum
-
     }
     
     
@@ -60,10 +66,10 @@ class FilialenDetailTab: UIViewController, UICollectionViewDelegate, UICollectio
         
         switch currentMenuPoint.name {
         case "Lizenzerneuern":
-            askAblaufdatumErneuern()
+            askToRenewLicense()
             break
         case "Codeerneuern":
-            askLizenzCodeErneuern()
+            askToGenerateNewLicenseKey()
             break
         default:
             print("Default")
@@ -72,60 +78,48 @@ class FilialenDetailTab: UIViewController, UICollectionViewDelegate, UICollectio
         
       }
     
-    func askLizenzCodeErneuern() {
-        let dialog = AZDialogViewController(title: "Bist du sicher?", message: "Willst du den Lizenzcode wirklich erneuern?")
-        dialog.titleColor = .black
-        dialog.messageColor = .black
-        dialog.alertBackgroundColor = .white
-        dialog.dismissDirection = .bottom
-        dialog.dismissWithOutsideTouch = true
-        dialog.showSeparator = true
-        dialog.rubberEnabled = true
-        dialog.blurBackground = false
-        dialog.blurEffectStyle = .light
-        dialog.imageHandler = { (imageView) in
-            imageView.image = UIImage(named: "asklogo")
-                
-               imageView.contentMode = .scaleAspectFill
-               return true //must return true, otherwise image won't show.
-        }
+    
+    func askToRenewLicense() {
+        let page = BLTNPageItem(title: "Lizenz erneuern?")
+        page.image = #imageLiteral(resourceName: "guy1")
         
-        dialog.addAction(AZDialogAction(title: "Erneuern") { (dialog) -> (Void) in
-            //self.codeErneuern()
-            print("Lizenzcode erneuern")
-            dialog.dismiss()
-        })
-        dialog.show(in: self)
+        page.descriptionText = "Willst du die Lizenz wirklich erneuern? Sie wird um einen Monat verlängert!"
+        page.actionButtonTitle = "erneuern"
+        page.actionHandler = { (item: BLTNActionItem) in
+            self.vibratePhone()
+            item.manager?.dismissBulletin(animated: true)
+            //MARK: renew license:
+            FilialenDetailTab.currentFiliale?.renewLicensForAMonth()
+            self.updateFilialenDetails()
+        }
+        let rootItem: BLTNItem = page
+        
+        self.bulletinManager = BLTNItemManager(rootItem: rootItem)
+        self.bulletinManager!.showBulletin(above: self)
+        
     }
     
-    func askAblaufdatumErneuern() {
-        let dialog = AZDialogViewController(title: "Bist du sicher?", message: "Willst du das Ablaufdatum wirklich erneuern?")
-        dialog.titleColor = .black
-        dialog.messageColor = .black
-        dialog.alertBackgroundColor = .white
-        dialog.dismissDirection = .bottom
-        dialog.dismissWithOutsideTouch = true
-        dialog.showSeparator = true
-        dialog.rubberEnabled = true
-        dialog.blurBackground = false
-        dialog.blurEffectStyle = .light
-        dialog.imageHandler = { (imageView) in
-            imageView.image = UIImage(named: "asklogo")
-                
-               imageView.contentMode = .scaleAspectFill
-               return true //must return true, otherwise image won't show.
-        }
+    func askToGenerateNewLicenseKey() {
+        let page = BLTNPageItem(title: "Lizenzschlüssel generieren?")
+        page.image = #imageLiteral(resourceName: "guy1")
         
-        dialog.addAction(AZDialogAction(title: "Erneuern") { (dialog) -> (Void) in
-            //self.lizenzErneuern()
-            print("Ablaufdatum erneuern")
-            dialog.dismiss()
-        })
-        dialog.show(in: self)
+        page.descriptionText = "Willst du wirklich einen neuen Schlüssel generieren?"
+        page.actionButtonTitle = "generieren"
+        page.actionHandler = { (item: BLTNActionItem) in
+            self.vibratePhone()
+            item.manager?.dismissBulletin(animated: true)
+            //MARK: generate new license key:
+            FilialenDetailTab.currentFiliale?.renewLicenseKey()
+            self.updateFilialenDetails()
+        }
+        let rootItem: BLTNItem = page
+        
+        self.bulletinManager = BLTNItemManager(rootItem: rootItem)
+        self.bulletinManager!.showBulletin(above: self)
+        
     }
 
 }
-
 
 
 

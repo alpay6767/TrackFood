@@ -54,7 +54,7 @@ class AdminModeTab: UIViewController, UICollectionViewDelegate, UICollectionView
         let newViewController: UIViewController?
         switch currentMenuPoint.name {
         case "Filialen":
-            newViewController = storyBoard.instantiateViewController(withIdentifier: "filialenverwaltentab") as! FilialenVerwaltenTab
+            newViewController = storyBoard.instantiateViewController(withIdentifier: "filialenverwalten_nc")
             break
         case "Finanzen":
             newViewController = storyBoard.instantiateViewController(withIdentifier: "neuelieferungtab") as! NeueLieferungTab

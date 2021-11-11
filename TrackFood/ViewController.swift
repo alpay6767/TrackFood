@@ -109,7 +109,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             openScanner()
             break
         case "Mein Profil":
-            newViewController = storyBoard.instantiateViewController(withIdentifier: "profiltab") as! ProfilTab
+            newViewController = storyBoard.instantiateViewController(withIdentifier: "profile_nc")
             self.present(newViewController!, animated: true, completion: nil)
 
             break

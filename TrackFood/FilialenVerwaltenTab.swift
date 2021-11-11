@@ -87,7 +87,7 @@ class FilialenVerwaltenTab: UIViewController, UICollectionViewDelegate, UICollec
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
           
-        return CGSize(width: view.bounds.width - 15, height: view.bounds.height*0.17
+        return CGSize(width: view.bounds.width - 15, height: view.bounds.height*0.13
           )
       }
       
@@ -101,9 +101,7 @@ class FilialenVerwaltenTab: UIViewController, UICollectionViewDelegate, UICollec
           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filialencell", for: indexPath) as! FilialenCell
         cell.contentView.layer.cornerRadius = 15
         cell.contentView.clipsToBounds = true
-        cell.anschrift.text = (currentFiliale.name)! + " " + (currentFiliale.address)! + " " + (currentFiliale.city)!
-        let url = URL(string: currentFiliale.pictureURL!)
-        cell.bild.kf.setImage(with: url)
+        cell.anschrift.text = (currentFiliale.name)! + " " + (currentFiliale.address)!
         return cell
           
       }
@@ -115,7 +113,7 @@ class FilialenVerwaltenTab: UIViewController, UICollectionViewDelegate, UICollec
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
     
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "filialendetailtab") as! FilialenDetailTab
-        self.present(newViewController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(newViewController, animated: true)
         
         
       }

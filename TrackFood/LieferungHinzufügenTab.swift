@@ -43,7 +43,7 @@ class LieferungHinzufügenTab: UIViewController {
         var ref: DatabaseReference!
         ref = Database.database().reference()
         let id = ref.child("Firmen").child((ViewController.currentFiliale?.id)!).child("Lieferrungen").childByAutoId().key
-        ref.child("Firmen").child((ViewController.currentFiliale?.id)!).child("Lieferrungen").child(id!).setValue(["date": getPickedDateAsString(), "barcode": LieferungHinzufügenTab.currentLebensmittel?.barcode])
+        ref.child("Firmen").child((ViewController.currentFiliale?.id)!).child("Lieferrungen").child(id!).setValue(["id": id, "date": getPickedDateAsString(), "barcode": LieferungHinzufügenTab.currentLebensmittel?.barcode])
  
  
  }
@@ -123,3 +123,14 @@ class LieferungHinzufügenTab: UIViewController {
 }
 
 
+extension UIViewController {
+    func getCurrentDateAsString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy"
+        let currentDateInString = formatter.string(from: Date())
+        
+        
+        return currentDateInString
+    }
+    
+}

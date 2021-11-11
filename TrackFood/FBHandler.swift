@@ -64,7 +64,9 @@ class FBHandler {
         
         ref?.child("Firmen").child(currentfiliale.id!).child("Lieferrungen").observeSingleEvent(of: .value, with: { snapshot in
 
-            if !snapshot.exists() { return }
+            if !snapshot.exists() {
+                completion([Lieferrung]())
+            }
 
             var newlieferrungenliste = [Lieferrung]()
             if let result = snapshot.children.allObjects as? [DataSnapshot] {
@@ -324,7 +326,7 @@ class FBHandler {
         defaults.set(user.username, forKey: "username")
         defaults.set(user.password, forKey: "password")
         defaults.set(user.token, forKey: "token")
-        defaults.set(user.filialenid, forKey: "filialenid")
+        defaults.set(user.firmenid, forKey: "firmenid")
 
     }
     
@@ -332,11 +334,8 @@ class FBHandler {
         let defaults = UserDefaults.standard
         defaults.set(filiale.id, forKey: "f_id")
         defaults.set(filiale.name, forKey: "name")
-        defaults.set(filiale.pictureURL, forKey: "pictureURL")
         defaults.set(filiale.address, forKey: "address")
-        defaults.set(filiale.city, forKey: "city")
         defaults.set(filiale.lizenz, forKey: "lizenz")
-        defaults.set(filiale.zip, forKey: "zip")
         defaults.set(filiale.ablaufdatum, forKey: "ablaufdatum")
 
     }
@@ -352,27 +351,5 @@ class FBHandler {
     
     
     
-}
-
-
-extension UIImageView {
-    func downloaded(from url: URL, mode: UIView.ContentMode) {  // for swift 4.2 syntax just use ===> mode: UIView.ContentMode
-        contentMode = mode
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard
-                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                let data = data, error == nil,
-                let image = UIImage(data: data)
-                else { return }
-            DispatchQueue.main.async() { [weak self] in
-                self?.image = image
-            }
-        }.resume()
-    }
-    func downloaded(from link: String, mode: UIView.ContentMode) {  // for swift 4.2 syntax just use ===> mode: UIView.ContentMode
-        guard let url = URL(string: link) else { return }
-        downloaded(from: url, contentMode: mode)
-    }
 }
 

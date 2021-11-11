@@ -16,6 +16,7 @@ class baldAblaufendTab: UIViewController, UICollectionViewDelegate, UICollection
 
     @IBOutlet weak var baldablaufendlieferungencv: UICollectionView!
     
+    @IBOutlet weak var suchenTf: UITextField!
     
     let modeldata = ModelData()
     var lieferrungenListe = [Lieferrung]()
@@ -27,23 +28,62 @@ class baldAblaufendTab: UIViewController, UICollectionViewDelegate, UICollection
         baldablaufendlieferungencv.dataSource = self
         hideKeyboardWhenTappedAround()
         loadLieferrungen()
+        suchenTf.delegate = self
+        suchenTf.addTarget(self, action: #selector(FilialenVerwaltenTab.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
     }
     
-    
-    func loadLieferrungen() {
+    @objc func textFieldDidChange(_ textField: UITextField) {
         
-        fbhandler.loadLieferrungenFromDBForFiliale(currentfiliale: ViewController.currentFiliale!) { [self] lieferrungenliste in
-             guard let lieferrungenliste = lieferrungenliste else { return }
-                
-            self.lieferrungenListe = lieferrungenliste
-            matchLebensmittel(currentlieferrungen: self.lieferrungenListe)
+        var key = textField.text!.lowercased()
+        var sorted = lieferrungenListe.sorted {
+            if $0.lebensmittel!.bezeichnung!.lowercased() == key && $1.lebensmittel!.bezeichnung!.lowercased() != key {
+                return true
+            }
+            else if $0.lebensmittel!.bezeichnung!.lowercased().hasPrefix(key) && !$1.lebensmittel!.bezeichnung!.lowercased().hasPrefix(key)  {
+                return true
+            }
+            else if $0.lebensmittel!.bezeichnung!.lowercased().hasPrefix(key) && $1.lebensmittel!.bezeichnung!.lowercased().hasPrefix(key)
+                && $0.lebensmittel!.bezeichnung!.count < $1.lebensmittel!.bezeichnung!.count  {
+                return true
+            }
+            else if $0.lebensmittel!.bezeichnung!.lowercased().contains(key) && !$1.lebensmittel!.bezeichnung!.lowercased().contains(key) {
+                return true
+            }
+            else if $0.lebensmittel!.bezeichnung!.lowercased().contains(key) && $1.lebensmittel!.bezeichnung!.lowercased().contains(key)
+                && $0.lebensmittel!.bezeichnung!.count < $1.lebensmittel!.bezeichnung!.count {
+                return true
+            }
             
-            
+            return false
         }
         
+        self.baldablaufendlieferungencv?.scrollToItem(at: IndexPath(row: 0, section: 0),
+              at: .top,
+        animated: true)
+        lieferrungenListe = sorted
+        baldablaufendlieferungencv.reloadData()
+
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func loadLieferrungen() {
+        fbhandler.loadLieferrungenFromDBForFiliale(currentfiliale: ViewController.currentFiliale!) { [self] lieferrungenliste in
+            guard let lieferrungenliste = lieferrungenliste else { return }
+            self.lieferrungenListe = lieferrungenliste
+            matchLebensmittel(currentlieferrungen: self.lieferrungenListe)
+        }
     }
     
     func matchLebensmittel(currentlieferrungen: [Lieferrung]) {
+        
+        if(currentlieferrungen.isEmpty) {
+            self.baldablaufendlieferungencv.reloadData()
+        }
+        
         for currentlie in currentlieferrungen
         {
             fbhandler.checkLebensmittelBarcode(currentbarcode: currentlie.barcode!) { [self] gefunden, gefundenesItem in
@@ -69,6 +109,7 @@ class baldAblaufendTab: UIViewController, UICollectionViewDelegate, UICollection
         //let ready = DateInRegion.sortedByOldest(list: getDateInRegions())
         
         self.lieferrungenListe = self.lieferrungenListe.sorted(by: { $0.dateFormtatted!.compare($1.dateFormtatted!) == .orderedAscending })
+
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

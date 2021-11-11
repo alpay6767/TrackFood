@@ -76,8 +76,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let username = defaults.string(forKey: "username")
         let password = defaults.string(forKey: "password")
         let token = defaults.string(forKey: "token")
-        let filialenid = defaults.string(forKey: "filialenid")
-        let foundUser = User(id: id!, username: username!, password: password!, token: token!, filialenid: filialenid!)
+        let firmenid = defaults.string(forKey: "firmenid")
+        let foundUser = User(id: id!, username: username!, password: password!, token: token!, firmenid: firmenid!)
         return foundUser
         
     }
@@ -87,13 +87,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let defaults = UserDefaults.standard
         let id = defaults.string(forKey: "f_id")
         let name = defaults.string(forKey: "name")
-        let pictureURL = defaults.string(forKey: "pictureURL")
         let address = defaults.string(forKey: "address")
-        let zip = defaults.string(forKey: "zip")
-        let city = defaults.string(forKey: "city")
         let lizenz = defaults.string(forKey: "lizenz")
         let ablaufdatum = defaults.string(forKey: "ablaufdatum")
-        let currentfiliale = Filiale(id: id!, name: name!, pictureURL: pictureURL!, address: address!, zip: zip!, city: city!, lizenz: lizenz!, ablaufdatum: ablaufdatum!)
+        let currentfiliale = Filiale(id: id!, name: name!, address: address!, lizenz: lizenz!, ablaufdatum: ablaufdatum!)
         return currentfiliale
         
     }

@@ -13,15 +13,16 @@ import SwiftDate
 
 class Lieferrung {
     
+    var id: String?
     var date: String?
     var barcode: String?
     var lebensmittel: Lebensmittel?
     var dateFormtatted: Date?
     
-    init(date: String, barcode: String) {
+    init(id: String, date: String, barcode: String) {
         self.date = date
         self.barcode = barcode
-        
+        self.id = id
         
         var dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"// yyyy-MM-dd"
@@ -32,6 +33,7 @@ class Lieferrung {
         let value = snapshot.value as? [String : AnyObject] 
         self.date = value!["date"] as? String
         self.barcode = value!["barcode"] as? String
+        self.id = value!["id"] as? String
         
         
         var dateFormatter = DateFormatter()

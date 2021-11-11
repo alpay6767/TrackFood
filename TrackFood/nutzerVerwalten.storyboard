@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Password Aendern Tab-->
+        <scene sceneID="46V-Z5-Omr">
+            <objects>
+                <viewController storyboardIdentifier="passwordaenderntab" useStoryboardIdentifierAsRestorationIdentifier="YES" id="y4v-C9-wa1" customClass="PasswordAendernTab" customModule="TrackFood" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zwm-b7-byB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="altes Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9qA-Ub-aQn">
+                                <rect key="frame" x="80" y="144.5" width="254" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="neues Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RhV-7I-Iaa">
+                                <rect key="frame" x="80" y="208.5" width="254" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="neues Password bestätigen" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VEe-1u-eL1">
+                                <rect key="frame" x="80" y="252.5" width="254" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hier kannst du dein Password ändern:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VZp-oB-0io">
+                                <rect key="frame" x="30" y="104" width="354" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFl-iI-BAN">
+                                <rect key="frame" x="132.5" y="306.5" width="149" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="6GZ-35-2bt"/>
+                                    <constraint firstAttribute="width" constant="149" id="qFy-mc-5fp"/>
+                                </constraints>
+                                <state key="normal" image="aendernbtn"/>
+                                <connections>
+                                    <action selector="ändern:" destination="y4v-C9-wa1" eventType="touchUpInside" id="9ZH-QY-no2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="WOB-kb-Gnn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="WOB-kb-Gnn" firstAttribute="trailing" secondItem="VZp-oB-0io" secondAttribute="trailing" constant="30" id="1R6-Sx-GAg"/>
+                            <constraint firstItem="BFl-iI-BAN" firstAttribute="top" secondItem="VEe-1u-eL1" secondAttribute="bottom" constant="20" id="55b-nt-MMF"/>
+                            <constraint firstItem="BFl-iI-BAN" firstAttribute="centerX" secondItem="WOB-kb-Gnn" secondAttribute="centerX" id="8qa-hu-fEQ"/>
+                            <constraint firstItem="VZp-oB-0io" firstAttribute="top" secondItem="WOB-kb-Gnn" secondAttribute="top" constant="16" id="9cX-T1-QMa"/>
+                            <constraint firstItem="WOB-kb-Gnn" firstAttribute="trailing" secondItem="9qA-Ub-aQn" secondAttribute="trailing" constant="80" id="GEj-uN-tkW"/>
+                            <constraint firstItem="9qA-Ub-aQn" firstAttribute="centerX" secondItem="WOB-kb-Gnn" secondAttribute="centerX" id="MA4-5S-db0"/>
+                            <constraint firstItem="RhV-7I-Iaa" firstAttribute="top" secondItem="9qA-Ub-aQn" secondAttribute="bottom" constant="30" id="PEo-Bh-NvQ"/>
+                            <constraint firstItem="WOB-kb-Gnn" firstAttribute="trailing" secondItem="RhV-7I-Iaa" secondAttribute="trailing" constant="80" id="TgG-NH-U2e"/>
+                            <constraint firstItem="VZp-oB-0io" firstAttribute="centerX" secondItem="WOB-kb-Gnn" secondAttribute="centerX" id="Txt-Uc-xei"/>
+                            <constraint firstItem="WOB-kb-Gnn" firstAttribute="trailing" secondItem="VEe-1u-eL1" secondAttribute="trailing" constant="80" id="bIH-KV-G3d"/>
+                            <constraint firstItem="RhV-7I-Iaa" firstAttribute="leading" secondItem="WOB-kb-Gnn" secondAttribute="leading" constant="80" id="bMp-Ks-nMv"/>
+                            <constraint firstItem="VZp-oB-0io" firstAttribute="leading" secondItem="WOB-kb-Gnn" secondAttribute="leading" constant="30" id="clt-l9-yKQ"/>
+                            <constraint firstItem="VEe-1u-eL1" firstAttribute="leading" secondItem="WOB-kb-Gnn" secondAttribute="leading" constant="80" id="dxd-zl-IU9"/>
+                            <constraint firstItem="9qA-Ub-aQn" firstAttribute="leading" secondItem="WOB-kb-Gnn" secondAttribute="leading" constant="80" id="idf-Ui-umt"/>
+                            <constraint firstItem="9qA-Ub-aQn" firstAttribute="top" secondItem="VZp-oB-0io" secondAttribute="bottom" constant="20" id="smx-ka-9oN"/>
+                            <constraint firstItem="VEe-1u-eL1" firstAttribute="top" secondItem="RhV-7I-Iaa" secondAttribute="bottom" constant="10" id="wSu-Iv-39R"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="altesPassword" destination="9qA-Ub-aQn" id="SIw-Yh-INc"/>
+                        <outlet property="ändernBtn" destination="BFl-iI-BAN" id="uT2-cI-fA4"/>
+                        <outlet property="neuesPassword1" destination="RhV-7I-Iaa" id="N5N-YO-UCR"/>
+                        <outlet property="neuesPassword2" destination="VEe-1u-eL1" id="Gbx-vY-Ibv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5fX-Rg-pDN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-291.304347826087" y="85.714285714285708"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="aendernbtn" width="399" height="105"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

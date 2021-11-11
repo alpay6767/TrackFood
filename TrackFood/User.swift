@@ -16,15 +16,15 @@ class User {
     var username: String?
     var password: String?
     var token: String?
-    var filialenid: String?
+    var firmenid: String?
     
     
-    init(id: String, username: String, password: String, token: String, filialenid: String) {
+    init(id: String, username: String, password: String, token: String, firmenid: String) {
         self.id = id
         self.username = username
         self.password = password
         self.token = token
-        self.filialenid = filialenid
+        self.firmenid = firmenid
     }
     
     init?(snapshot: DataSnapshot) {
@@ -33,7 +33,7 @@ class User {
         self.username = value!["username"] as? String
         self.password = value!["password"] as? String
         self.token = value!["token"] as? String
-        self.filialenid = value!["filialenid"] as? String
+        self.firmenid = value!["firmenid"] as? String
     }
     
     init() {
@@ -42,6 +42,14 @@ class User {
     
     init(username: String) {
         self.username = username
+    }
+    
+    func updatePassword(password: String) {
+        self.password = password
+        let ref = Database.database().reference()
+        ref.child("Mitarbeiter").child((self.id)!).child("password").setValue(self.password)
+        let fbhandler = FBHandler()
+        fbhandler.saveUserToDefaults(user: self)
     }
     
 }

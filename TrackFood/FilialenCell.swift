@@ -12,6 +12,5 @@ import UIKit
 class FilialenCell: UICollectionViewCell {
     
     @IBOutlet weak var anschrift: UILabel!
-    @IBOutlet weak var bild: UIImageView!
     
 }
